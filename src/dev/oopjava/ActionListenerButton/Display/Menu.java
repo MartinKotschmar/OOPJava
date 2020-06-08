@@ -24,11 +24,11 @@ public class Menu {
         this.title = title;     //Titel des Fensters
         this.dimension = new Dimension(width, height);
 
-        creatDisplay();     //creat Methode zum eigentlichen erstellen
+        createDisplay();     //create Methode zum eigentlichen erstellen
 
     }
 
-    private void creatDisplay(){
+    private void createDisplay(){
         frame = new JFrame(title);
         frame.setSize(dimension);       //Fenstergröße width, height
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild

@@ -21,6 +21,7 @@ public class Game implements Runnable {
 
         display = new Menu(title, 1980,1080);
 
+
     }
 
     private void Update(){      //Update Fenster Methode
@@ -57,7 +58,7 @@ public class Game implements Runnable {
 
         if(!running)
             return;
-        running =false;
+        running = false;
 
         try {
             thread.join();

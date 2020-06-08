@@ -30,7 +30,7 @@ public class Button implements ActionListenerButton {       //Button Klasse erst
         enabled = true;
     }
 
-    public void ButtonRender (Graphics2D g){
+    public void ButtonRender(Graphics2D g){
         if(pressed){
             g.setColor(Color.BLACK);        //Farbe wenn gedrückt(vorläufig)
         } else{

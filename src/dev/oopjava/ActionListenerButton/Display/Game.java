@@ -5,8 +5,13 @@ import java.awt.event.ActionListener;
 public class Game implements Runnable {
 
     private dev.oopjava.ActionListenerButton.Display.Display display;        //Display Klasse erstellen
+    public dev.oopjava.ActionListenerButton.Display.Button button;
     public int width, height;       //breite, höhe
     public String title;            //Fenster Titel
+
+    private java.awt.Button button1;
+    private java.awt.Button button2;
+    private java.awt.Button button3;
 
     private boolean running = false;
     private Thread thread;      //Thread erstellen
@@ -70,13 +75,9 @@ public class Game implements Runnable {
         }
 
         public void MenuRender(Graphics2D g){
-            button1.ButtonRender(g);
-            button2.ButtonRender(g);
+            button1.button.ButtonRender(g);button2.ButtonRender(g);
             button3.ButtonRender(g);
         }
-        private java.awt.Button button1;
-        private java.awt.Button button2;
-        private Button button3;
 
    /* public Game(){
         button1 = new Button((ActionListener) this,"Spielen",300,100,100,40);

@@ -51,6 +51,8 @@ public class Menu {
         button2 = new JButton("Level");
         button3 = new JButton("Beenden");
 
+        panel.setBorder(BorderFactory.createEmptyBorder(0,10,10,10));
+
         panel.add(button1);
         panel.add(button2);
         panel.add(button3);
@@ -68,7 +70,7 @@ public class Menu {
 
         });
         button2.addActionListener(e -> {
-
+            System.exit(0);
         });
         button3.addActionListener(e -> { //Lamda
             System.exit(0);

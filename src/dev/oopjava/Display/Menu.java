@@ -19,7 +19,6 @@ public class Menu {
     private JButton button2;
     private JButton button3;
 
-
     public Menu(String title, int width, int height){    //Klasse Display zu erstellen einer Bildschirmabbildung
         this.title = title;     //Titel des Fensters
         this.dimension = new Dimension(width, height);

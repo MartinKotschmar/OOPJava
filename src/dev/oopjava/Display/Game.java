@@ -1,5 +1,7 @@
 package dev.oopjava.ActionListenerButton.Display;
 
+import dev.oopjava.tileset.ImageLoader;
+
 public class Game implements Runnable {
 
     private Menu display;        //Display Klasse erstellen
@@ -9,6 +11,10 @@ public class Game implements Runnable {
 
     private boolean running = false;
     private Thread thread;      //Thread erstellen
+
+
+    private BufferedImage testImage;
+
 
     public Game(String title) {     //Game Methode erstellen
         this.width = width;
@@ -21,6 +27,7 @@ public class Game implements Runnable {
 
         display = new Menu(title, 1980,1080);
 
+        testImage = ImageLoader.loadImage("/textures/Assets-pack/Dungeon_Tileset_at.png");
 
     }
 
@@ -30,6 +37,7 @@ public class Game implements Runnable {
 
     private void Render(){      //Render Methode (In weiser Vorraussicht)
 
+        g.drawImage(testImage, 500, 500, null);
     }
 
     public void run() {     //run Methode zum Fenster Updaten

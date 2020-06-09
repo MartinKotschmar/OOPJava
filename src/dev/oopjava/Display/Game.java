@@ -1,6 +1,10 @@
-package dev.oopjava.ActionListenerButton.Display;
+package dev.oopjava.Display;
 
 import dev.oopjava.tileset.ImageLoader;
+
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
 
@@ -27,7 +31,6 @@ public class Game implements Runnable {
 
         display = new Menu(title, 1980,1080);
 
-        testImage = ImageLoader.loadImage("/textures/Assets-pack/Dungeon_Tileset_at.png");
 
     }
 
@@ -37,7 +40,21 @@ public class Game implements Runnable {
 
     private void Render(){      //Render Methode (In weiser Vorraussicht)
 
+        testImage = ImageLoader.loadImage("/textures/Assets-pack/Dungeon_Tileset_at.png");
+
+        BufferStrategy bs = this.getBufferStrategy();
+        if(bs == null){
+            this.createBufferStrategy(3);
+            return;
+        }
+
+        Graphics g = bs.getDrawGraphics();
+
         g.drawImage(testImage, 500, 500, null);
+
+        g.dispose();
+        bs.show();
+
     }
 
     public void run() {     //run Methode zum Fenster Updaten

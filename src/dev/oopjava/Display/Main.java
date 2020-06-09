@@ -1,4 +1,4 @@
-package dev.oopjava.ActionListenerButton.Display;
+package dev.oopjava.Display;
 
 class Main {     //Launcher Spiel start
 

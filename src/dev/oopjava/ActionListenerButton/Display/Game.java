@@ -57,7 +57,7 @@ public class Game implements Runnable  {
 
         if(!running)
             return;
-        running =false;
+        running = false;
 
         try {
             thread.join();

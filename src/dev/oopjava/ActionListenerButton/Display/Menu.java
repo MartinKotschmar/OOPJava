@@ -25,11 +25,11 @@ public class Menu {
         this.dimensionButtonRigidArea = new Dimension(0,65);
         this.dimensionButtonSize = new Dimension(900,250);
 
-        creatDisplay();     //creat Methode zum eigentlichen erstellen
+        createDisplay();     //create Methode zum eigentlichen erstellen
 
     }
 
-    private void creatDisplay(){
+    private void createDisplay(){
         frame = new JFrame(title);
         frame.setSize(dimensionWindow);       //Fenstergröße width, height
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild

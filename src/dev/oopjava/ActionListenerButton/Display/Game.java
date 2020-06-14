@@ -19,7 +19,7 @@ public class Game implements Runnable  {
 
     private void Graphics(){
 
-        display = new Menu(title, 1980,1080);
+        display = new Menu(title, 1920,1080);
 
     }
 

@@ -2,16 +2,15 @@ package dev.oopjava.ActionListenerButton.Display;
 //Import package
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Menu {
 
     private JFrame frame;       //erstellen Fenster
-    private Canvas canvas;      //erstellen Canvas
 
     private String title;       //erstellen Titel
-    private Dimension dimension;
+    private Dimension dimensionWindow;
+    private Dimension dimensionButtonRigidArea;
+    private Dimension dimensionButtonSize;
 
     private JPanel panel;
 
@@ -22,7 +21,9 @@ public class Menu {
 
     public Menu(String title, int width, int height){    //Klasse Display zu erstellen einer Bildschirmabbildung
         this.title = title;     //Titel des Fensters
-        this.dimension = new Dimension(width, height);
+        this.dimensionWindow = new Dimension(width, height);
+        this.dimensionButtonRigidArea = new Dimension(0,65);
+        this.dimensionButtonSize = new Dimension(900,250);
 
         creatDisplay();     //creat Methode zum eigentlichen erstellen
 
@@ -30,7 +31,7 @@ public class Menu {
 
     private void creatDisplay(){
         frame = new JFrame(title);
-        frame.setSize(dimension);       //Fenstergröße width, height
+        frame.setSize(dimensionWindow);       //Fenstergröße width, height
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
         frame.setUndecorated(true);     //
         frame.setResizable(false);      //Größe ändern aus
@@ -42,29 +43,40 @@ public class Menu {
         BoxLayout layout = new BoxLayout(panel, BoxLayout.Y_AXIS);
         panel.setLayout(layout);
 
-        panel.setSize(dimension);
-        panel.setMinimumSize(dimension);
-        panel.setMaximumSize(dimension);
-        panel.setPreferredSize(dimension);
+        panel.setSize(dimensionWindow);
+        panel.setMinimumSize(dimensionWindow);
+        panel.setMaximumSize(dimensionWindow);
+        panel.setPreferredSize(dimensionWindow);
 
         button1 = new JButton("Spielen");
         button2 = new JButton("Level");
         button3 = new JButton("Beenden");
 
+        panel.add(Box.createVerticalGlue()); //Platz nach unten
+
+        button1.setMinimumSize(dimensionButtonSize);
+        button1.setMaximumSize(dimensionButtonSize);
         panel.add(button1);
+        panel.add(Box.createRigidArea(dimensionButtonRigidArea)); //Rigid Area Platzhalter
+        button2.setMinimumSize(dimensionButtonSize);
+        button2.setMaximumSize(dimensionButtonSize);
         panel.add(button2);
+        panel.add(Box.createRigidArea(dimensionButtonRigidArea)); // Rigid Area Platzhalter
+        button3.setMinimumSize(dimensionButtonSize);
+        button3.setMaximumSize(dimensionButtonSize);
         panel.add(button3);
+
+        panel.add(Box.createVerticalGlue()); //Platz nach oben
 
         button1.setAlignmentX(Component.CENTER_ALIGNMENT);
         button2.setAlignmentX(Component.CENTER_ALIGNMENT);
         button3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // panel.add(Box.create...)
-
-
 
         // Action Listener auf Buttons machen
         button1.addActionListener(e -> {
+            frame.dispose();
+            new GameWindow();
 
         });
         button2.addActionListener(e -> {
@@ -73,17 +85,6 @@ public class Menu {
         button3.addActionListener(e -> { //Lamda
             System.exit(0);
         });
-
-
-       /* --> in GameWindow verschieben
-       canvas = new Canvas();      //erstellen Hintergrund(Leinwand)
-       Dimension dimension = frame.getSize();      // Dimension Size getter
-       canvas.setPreferredSize(dimension);     //prefSize getSize
-       canvas.setMinimumSize(dimension);       //min
-       canvas.setMaximumSize(dimension);       //max
-       canvas.add
-       frame.add(canvas);      // add Canvas für Grafik abbildung */
-
 
         frame.add(panel);
         frame.pack();

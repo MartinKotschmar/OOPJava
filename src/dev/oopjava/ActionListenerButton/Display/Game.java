@@ -1,6 +1,6 @@
 package dev.oopjava.ActionListenerButton.Display;
 
-public class Game implements Runnable {
+public class Game implements Runnable  {
 
     private Menu display;        //Display Klasse erstellen
     public int width, height;       //breite, höhe

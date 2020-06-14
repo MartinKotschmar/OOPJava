@@ -17,18 +17,14 @@ public class Menu {
     private Canvas canvas;      //erstellen Canvas
 
     private String title;       //erstellen Titel
-    private Dimension dimension;
-
-    private Dimension scaling;
+    public Dimension dimension;
 
     private JPanel panel;
 
     public Handler handler;
 
-    public Menu(String title, int width, int height, int scale){    //Klasse Display zu erstellen einer Bildschirmabbildung
+    public Menu(String title){    //Klasse Display zu erstellen einer Bildschirmabbildung
         this.title = title;     //Titel des Fensters
-        this.dimension = new Dimension(width, height);
-        this.scaling = new Dimension(width * scale, height * scale);
 
         createDisplay();     //create Methode zum eigentlichen erstellen
 
@@ -36,16 +32,21 @@ public class Menu {
 
     private void createDisplay(){
 
-       // handler = new Handler();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int screenWidth = tk.getScreenSize().width;
+        int screenHeight = tk.getScreenSize().height;
+
+        // handler = new Handler();
+
+        dimension = new Dimension(screenWidth, screenHeight);
 
         frame = new JFrame(title);
         frame.setSize(dimension);       //Fenstergröße width, height
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
         frame.setLocationRelativeTo(null);      //Zentrieren
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
         frame.setUndecorated(false);     //Window Toolbar aus
         frame.setResizable(false);      //Größe ändern aus
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       //Anwendung bei schließen komplett beenden
-
 
         panel = new JPanel();
         BoxLayout layout = new BoxLayout(panel, BoxLayout.Y_AXIS);
@@ -58,22 +59,19 @@ public class Menu {
         panel.setFocusable(true);
         panel.requestFocusInWindow();
 
-
         panel.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-
-
 
         // in GameWindow verschieben
         canvas = new Canvas();      //erstellen Hintergrund(Leinwand)
+        canvas.addKeyListener(new KeyInput(handler));
         //Dimension dimension = frame.getSize();      // Dimension Size getter
-        canvas.setPreferredSize(scaling);     //prefSize getSize
-        canvas.setMinimumSize(scaling);       //min
-        canvas.setMaximumSize(scaling);       //max
+        canvas.setPreferredSize(dimension);     //prefSize getSize
+        canvas.setMinimumSize(dimension);       //min
+        canvas.setMaximumSize(dimension);       //max
         panel.add(canvas);      // add Canvas für Grafik abbildung */
 
 
         frame.add(panel);
-        //canvas.addKeyListener(new KeyInput(handler));
         frame.pack();
         frame.setVisible(true);     // Display Fenster abbilden
 

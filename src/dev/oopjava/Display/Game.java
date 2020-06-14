@@ -37,7 +37,7 @@ public class Game implements Runnable {
 
     private void Graphics(){
 
-        display = new Menu(title, 1920,1080, 10);
+        display = new Menu(title);
 
         Assets.init();
 
@@ -54,6 +54,7 @@ public class Game implements Runnable {
     private void Render(){      //Render Methode (In weiser Vorraussicht)
 
         testImage = ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Character.png");
+
 
 
         tile = new Tileset(testImage);
@@ -74,6 +75,10 @@ public class Game implements Runnable {
         if( 1 == 1 ) {
             g2.scale(10.0,10.0);
 
+            g2.setRenderingHint(
+                    RenderingHints.KEY_TEXT_ANTIALIASING,
+                    RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
+
             g2.drawImage(Assets.cornerLT, 0, 0, null);
             g2.drawImage(Assets.wallTop1, 16, 0, null);
             g2.drawImage(Assets.wallTop1, 64, 0, null);
@@ -83,6 +88,8 @@ public class Game implements Runnable {
             g2.drawImage(Assets.wallTop2, 96, 0, null);
             g2.drawImage(Assets.floor4x3, 16, 16, null);
             g2.drawImage(Assets.floor4x3, 80, 16, null);
+            g2.drawImage(Assets.char1, 16, 16, null);
+
         }
 
         g2.scale(0.1,0.1);

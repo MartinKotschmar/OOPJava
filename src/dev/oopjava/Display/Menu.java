@@ -13,9 +13,6 @@ public class Menu {
 
     private JPanel panel;
 
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
 
     public Menu(String title, int width, int height){    //Klasse Display zu erstellen einer Bildschirmabbildung
         this.title = title;     //Titel des Fensters
@@ -44,44 +41,21 @@ public class Menu {
         panel.setMaximumSize(dimension);
         panel.setPreferredSize(dimension);
 
-        button1 = new JButton("Spielen");
-        button2 = new JButton("Level");
-        button3 = new JButton("Beenden");
 
         panel.setBorder(BorderFactory.createEmptyBorder(0,10,10,10));
 
-        panel.add(button1);
-        panel.add(button2);
-        panel.add(button3);
-
-        button1.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button2.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // panel.add(Box.create...)
 
 
-
-        // Action Listener auf Buttons machen
-        button1.addActionListener(e -> {
-
-        });
-        button2.addActionListener(e -> {
-            System.exit(0);
-        });
-        button3.addActionListener(e -> { //Lamda
-            System.exit(0);
-        });
-
-
-       /* --> in GameWindow verschieben
+       //--> in GameWindow verschieben
        canvas = new Canvas();      //erstellen Hintergrund(Leinwand)
        Dimension dimension = frame.getSize();      // Dimension Size getter
        canvas.setPreferredSize(dimension);     //prefSize getSize
        canvas.setMinimumSize(dimension);       //min
        canvas.setMaximumSize(dimension);       //max
-       canvas.add
-       frame.add(canvas);      // add Canvas für Grafik abbildung */
+       canvas.add();
+       frame.add(canvas);      // add Canvas für Grafik abbildung
 
 
         frame.add(panel);

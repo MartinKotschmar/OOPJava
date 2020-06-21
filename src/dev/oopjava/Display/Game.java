@@ -1,6 +1,8 @@
 package dev.oopjava.Display;
 
-import dev.oopjava.tileset.ImageLoader;
+import dev.oopjava.tileset.*;
+import dev.oopjava.Level.*;
+
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -9,15 +11,16 @@ import java.awt.image.BufferedImage;
 public class Game implements Runnable {
 
     private Menu display;        //Display Klasse erstellen
+
+    private createLevel level;  //Level erstellen
+
+
     public int width, height;       //breite, höhe
     public String title;            //Fenster Titel
 
 
     private boolean running = false;
     private Thread thread;      //Thread erstellen
-
-
-    private BufferedImage testImage;
 
 
     public Game(String title) {     //Game Methode erstellen
@@ -40,20 +43,7 @@ public class Game implements Runnable {
 
     private void Render(){      //Render Methode (In weiser Vorraussicht)
 
-        testImage = ImageLoader.loadImage("/textures/Assets-pack/Dungeon_Tileset_at.png");
-
-        BufferStrategy bs = this.getBufferStrategy();
-        if(bs == null){
-            this.createBufferStrategy(3);
-            return;
-        }
-
-        Graphics g = bs.getDrawGraphics();
-
-        g.drawImage(testImage, 500, 500, null);
-
-        g.dispose();
-        bs.show();
+        level = new createLevel();
 
     }
 

@@ -41,12 +41,16 @@ public class Game implements Runnable {
 
     }
 
-    private void Render(){      //Render Methode (In weiser Vorraussicht)
+    private void Render() {      //Render Methode (In weiser Vorraussicht)
 
+        BufferStrategy bs = this.getBufferStrategy();
+        if (bs == null) {
+            this.createBufferStrategy(3);
+            return;
+
+        }
         level = new createLevel();
-
     }
-
     public void run() {     //run Methode zum Fenster Updaten
 
         Graphics();

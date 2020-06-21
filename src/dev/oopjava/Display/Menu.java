@@ -54,7 +54,7 @@ public class Menu {
        canvas.setPreferredSize(dimension);     //prefSize getSize
        canvas.setMinimumSize(dimension);       //min
        canvas.setMaximumSize(dimension);       //max
-       canvas.add();
+       //canvas.add();
        frame.add(canvas);      // add Canvas für Grafik abbildung
 
 

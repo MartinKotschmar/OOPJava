@@ -7,18 +7,13 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
-public class createLevel() {
+public class createLevel(Graphics g) {
 
     private Menu display;
     //private BufferStrategy bs;
     private BufferedImage testImage;
     private Graphics g;
 
-    BufferStrategy bs = this.getBufferStrategy();
-    if(bs == null){
-        this.createBufferStrategy(3);
-        return;
-    }
         Graphics g = bs.getDrawGraphics();
 
 

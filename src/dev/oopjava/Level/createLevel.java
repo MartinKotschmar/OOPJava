@@ -1,25 +1,54 @@
 package dev.oopjava.Level;
 
-import dev.oopjava.*;
+import dev.oopjava.tileset.*;
 import dev.oopjava.Display.*;
+import dev.oopjava.Display.Menu;
 
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
-public class createLevel(Graphics g) {
+public class createLevel extends Game{
 
     private Menu display;
+    private BufferStrategy bs;
+
     //private BufferStrategy bs;
-    private BufferedImage testImage;
-    private Graphics g;
+    //private BufferedImage testImage;
+    //private Graphics g;
 
-        Graphics g = bs.getDrawGraphics();
+    public createLevel(String title) {
+        super(title);
 
 
-        g.setColor(Color.black);
-        g.fillRect(0,0,1920,1800);
+        render();
+    }
 
-        g.dispose();
-        bs.show();
+
+    private void render(){
+
+    bs = display.getCanvas().getBufferStrategy();
+
+    if(bs == null){
+
+        display.getCanvas().createBufferStrategy(3);
+        return;
+    }
+
+    Graphics g = bs.getDrawGraphics();
+
+
+    Graphics2D g2 = (Graphics2D) g;
+
+
+
+    g.setColor(Color.black);
+    g.fillRect(0,0,1920,1800);
+
+    g.dispose();
+    bs.show();
+
+    }
+
 }

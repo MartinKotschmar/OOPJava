@@ -24,8 +24,6 @@ public class Game implements Runnable {
 
 
     public Game(String title) {     //Game Methode erstellen
-        this.width = width;
-        this.height = height;
         this.title =title;
 
     }
@@ -34,6 +32,7 @@ public class Game implements Runnable {
 
         display = new Menu(title, 1980,1080);
 
+        Assets.init();
 
     }
 
@@ -43,13 +42,7 @@ public class Game implements Runnable {
 
     private void Render() {      //Render Methode (In weiser Vorraussicht)
 
-        BufferStrategy bs = this.getBufferStrategy();
-        if (bs == null) {
-            this.createBufferStrategy(3);
-            return;
-
-        }
-        level = new createLevel();
+        level = new createLevel(title);
     }
     public void run() {     //run Methode zum Fenster Updaten
 

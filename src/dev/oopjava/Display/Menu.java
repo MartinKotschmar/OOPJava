@@ -11,6 +11,10 @@ public class Menu {
     private String title;       //erstellen Titel
     private Dimension dimension;
 
+    public Canvas getCanvas() {
+        return canvas;
+    }
+
     private JPanel panel;
 
 

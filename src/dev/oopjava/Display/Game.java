@@ -159,6 +159,7 @@ public class Game implements Runnable {
 
             //Charakter
             //g2.drawImage(Assets.char1, 16, 16, null); --> wurde in Player.java ausgelagert
+            g2.drawImage(Assets.ghostsythe, 16, 96, null);
 
         }
 

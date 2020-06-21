@@ -17,7 +17,10 @@ public class Assets {
                                 trashsmall, roundentryleft, roundentryright, bones,
                                 bordermiddledown, borderleftdown, borderrightdown, stonessmall,
                                 bordermiddleup, borderleftup, borderrightup, stonesmedium,
-                                entryleft, entryright, entry, ladder;
+                                entryleft, entryright, entry, ladder, oldiespear, oldienormal,
+                                oldiehat, oldieknife, newbiespear, newbieknife, newbienormal,
+                                blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
+                                ghostknife, ghostspear, ghostsythe;
 
     public static void init(){
 
@@ -88,9 +91,24 @@ public class Assets {
 
 
         //Characters
-        Tileset characters = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Character.png"));
+        Tileset characters = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Character_2.png"));
 
-        char1 = characters.location(0,0, width, height);
+        oldiespear = characters.location(0,0, width, height);
+        oldienormal = characters.location(16,0, width, height);
+        oldiehat = characters.location(32,0, width, height);
+        oldieknife = characters.location(48,0, width, height);
+        newbiespear = characters.location(64,0, width, height);
+        newbieknife = characters.location(80,0, width, height);
+        newbienormal = characters.location(96,0, width, height);
+
+        blueflame = characters.location(0,16, width, height);
+        blueflameghost = characters.location(16,16, width, height);
+        femalefrankenstein = characters.location(32,16, width, height);
+        malefrankenstein = characters.location(48,16, width, height);
+        ghostknife = characters.location(64,16, width, height);
+        ghostspear = characters.location(80,16, width, height);
+        ghostsythe = characters.location(96,16, width, height);
+
 
     }
 

@@ -1,42 +1,46 @@
 package dev.oopjava.Entitys;
 
+import dev.oopjava.tileset.Assets;
+import dev.oopjava.tileset.ImageLoader;
+
 import java.awt.*;
 
 public class Player extends ObjectSettings{
 
     Handler handler;
 
-    public Player(int x, int y, ID id, Handler handler) {
-        super(x, y, id);
+    public Player(int x, int y, int speed, ID id, Handler handler) {
+        super(x, y, speed, id);
         this.handler = handler;
+
     }
 
-    @Override
     public void Update() {
         x += velX;
         y += velY;
 
-        if (handler.isUp()) velY = -30;
+        if (handler.isUp()) velY = -speed;
         else if (!handler.isDown()) velY = 0;
 
-        if (handler.isDown()) velY = 30;
+        if (handler.isDown()) velY = speed;
         else if (!handler.isUp()) velY = 0;
 
-        if (handler.isLeft()) velX = -30;
+        if (handler.isLeft()) velX = -speed;
         else if (!handler.isRight()) velX = 0;
 
-        if (handler.isRight()) velX = 30;
+        if (handler.isRight()) velX = speed;
         else if (!handler.isLeft()) velX = 0;
     }
 
-    @Override
     public void Render(Graphics g) {
 
-        g.setColor(Color.white);
-        g.fillRect(x, y, 25, 25);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.scale(10,10);
+        g.drawImage(Assets.char1,x,y, null);
+
+
     }
 
-    @Override
     public Rectangle getBounds() {
         return null;
     }

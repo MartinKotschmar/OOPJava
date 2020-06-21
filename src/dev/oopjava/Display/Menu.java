@@ -21,11 +21,12 @@ public class Menu {
 
     private JPanel panel;
 
-    public Handler handler;
+    private Handler handler;
 
-    public Menu(String title){    //Klasse Display zu erstellen einer Bildschirmabbildung
+
+    public Menu(String title, Handler handler){    //Klasse Display zu erstellen einer Bildschirmabbildung
         this.title = title;     //Titel des Fensters
-
+        this.handler = handler;
         createDisplay();     //create Methode zum eigentlichen erstellen
 
     }
@@ -35,8 +36,6 @@ public class Menu {
         Toolkit tk = Toolkit.getDefaultToolkit();
         int screenWidth = tk.getScreenSize().width;
         int screenHeight = tk.getScreenSize().height;
-
-        // handler = new Handler();
 
         dimension = new Dimension(screenWidth, screenHeight);
 

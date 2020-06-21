@@ -14,6 +14,7 @@ public class Game implements Runnable {
     private Menu display;        //Display Klasse erstellen
     public int width, height;       //breite, höhe
     public String title;            //Fenster Titel
+    private Canvas canvas;
 
 
     private boolean running = false;
@@ -25,37 +26,41 @@ public class Game implements Runnable {
     private Graphics g;
     private Graphics2D g2;
 
+    public Handler handler;
+
 
 
     public Game(String title) {     //Game Methode erstellen
-        this.width = width;
-        this.height = height;
         this.title = title;
 
+        handler = new Handler();
 
     }
 
     private void Graphics(){
 
-        display = new Menu(title);
+        display = new Menu(title, handler);
 
         Assets.init();
 
+        handler.addObject(new Player(0,0, 1, ID.Player, handler));
          /*handler = new Handler();
 
         handler.addObject(new Player(0,0, ID.Player, handler)); */
     }
 
-    private void Update(){      //Update Fenster Methode
+    private void Update(Handler handler){      //Update Fenster Methode
 
-       //   handler.Update();
+        this.handler = handler;
+
+        handler.Update();
     }
 
-    private void Render(){      //Render Methode (In weiser Vorraussicht)
+    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
+
+        this.handler = handler;
 
         testImage = ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Character.png");
-
-
 
         tile = new Tileset(testImage);
 
@@ -66,11 +71,9 @@ public class Game implements Runnable {
         }
 
         g = bs.getDrawGraphics();
+
         Graphics2D g2 = (Graphics2D) g;
 
-
-        g.setColor(Color.black);
-        g.fillRect(0,0,1920,1800);
 
         if( 1 == 1 ) {
             g2.scale(10.0,10.0);
@@ -88,14 +91,13 @@ public class Game implements Runnable {
             g2.drawImage(Assets.wallTop2, 96, 0, null);
             g2.drawImage(Assets.floor4x3, 16, 16, null);
             g2.drawImage(Assets.floor4x3, 80, 16, null);
-            g2.drawImage(Assets.char1, 16, 16, null);
+            //g2.drawImage(Assets.char1, 16, 16, null);
 
         }
 
         g2.scale(0.1,0.1);
 
-
-      //  handler.Render(g);
+        handler.Render(g);
 
         g.dispose();
         bs.show();
@@ -126,11 +128,11 @@ public class Game implements Runnable {
             delta += (now - lastTime) /ns;
             lastTime = now;
             while(delta >= 1) {
-                Update();
+                Update(handler);
                 ticks++;
                 delta--;
             }
-            Render();
+            Render(handler);
             frames++;
 
             if (System.currentTimeMillis() - timer > 1000) {

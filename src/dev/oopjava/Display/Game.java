@@ -143,18 +143,17 @@ public class Game implements Runnable {
             g2.drawImage(Assets.floor4x3, 80, 16, null);
             g2.drawImage(Assets.floor4x3, 144, 16, null);
             g2.drawImage(Assets.floor4x3, 208, 16, null);
-
             g2.drawImage(Assets.floor3x3, 16, 64, null);
             g2.drawImage(Assets.floor3x3, 80, 64, null);
             g2.drawImage(Assets.floor3x3, 144, 64, null);
             g2.drawImage(Assets.floor3x3, 208, 64, null);
-
-
             g2.drawImage(Assets.floor4x3, 16, 96, null);
             g2.drawImage(Assets.floor4x3, 80, 96, null);
             g2.drawImage(Assets.floor4x3, 144, 96, null);
             g2.drawImage(Assets.floor4x3, 208, 96, null);
+            //Items
 
+            g2.drawImage(Assets.ladder, 16, 80, null);
 
 
 

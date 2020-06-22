@@ -9,7 +9,7 @@ public class Player extends ObjectSettings{
 
     Handler handler;
 
-    public Player(int x, int y, int speed, ID id, Handler handler) {
+    public Player(int x, int y, double speed, ID id, Handler handler) {
         super(x, y, speed, id);
         this.handler = handler;
 
@@ -34,9 +34,12 @@ public class Player extends ObjectSettings{
 
     public void Render(Graphics g) {
 
+        int x2 = x + 16;
+        int y2 = y + 16;
+
         Graphics2D g2 = (Graphics2D) g;
         g2.scale(10,10);
-        g.drawImage(Assets.char1,x,y, null);
+        g.drawImage(Assets.char1,x2,y2, null);
 
 
     }

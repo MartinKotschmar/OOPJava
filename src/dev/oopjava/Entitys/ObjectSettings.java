@@ -5,12 +5,12 @@ import java.awt.*;
 public abstract class ObjectSettings {
 
     protected int x,y;
-    protected float velX = 0, velY = 0;
-    protected int speed;
+    protected double velX = 0, velY = 0;
+    protected double speed;
     protected ID id;
 
 
-    public ObjectSettings(int x, int y, int speed, ID id) {
+    public ObjectSettings(int x, int y, double speed, ID id) {
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -31,7 +31,7 @@ public abstract class ObjectSettings {
         this.x = x;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(double speed) {
         this.speed = speed;
     }
 
@@ -47,7 +47,7 @@ public abstract class ObjectSettings {
         return y;
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 

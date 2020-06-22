@@ -34,12 +34,12 @@ public class Player extends ObjectSettings{
 
     public void Render(Graphics g) {
 
-        int x2 = x + 16;
-        int y2 = y + 16;
+        int x2 = x * 8;
+        int y2 = y * 8;
 
         Graphics2D g2 = (Graphics2D) g;
-        g2.scale(10,10);
-        g.drawImage(Assets.char1,x2,y2, null);
+        g2.scale(5,5);
+        g.drawImage(Assets.oldieknife,x2,y2, null);
 
 
     }

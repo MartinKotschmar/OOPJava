@@ -44,9 +44,7 @@ public class Game implements Runnable {
         Assets.init();
 
         handler.addObject(new Player(0,0, 1, ID.Player, handler));
-         /*handler = new Handler();
 
-        handler.addObject(new Player(0,0, ID.Player, handler)); */
     }
 
     private void Update(Handler handler){      //Update Fenster Methode

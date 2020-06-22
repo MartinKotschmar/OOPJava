@@ -52,6 +52,10 @@ public class Game implements Runnable {
         Assets.init();
 
         handler.addObject(new Player(0,0, 1, ID.Player, handler));
+        handler.addObject(new Player(0,200, 1, ID.Player, handler));
+        handler.addObject(new Player(0,400, 1, ID.Player, handler));
+        handler.addObject(new Player(0,600, 1, ID.Player, handler));
+        handler.addObject(new Player(0,800, 1, ID.Player, handler));
 
     }
 
@@ -59,19 +63,21 @@ public class Game implements Runnable {
 
         this.handler = handler;
 
-        handler.Update();
+        //handler.Update();
     }
 
-    private void Render(Handler handler) {      //Render Methode (In weiser Vorraussicht)
+   /* private void Render(Handler handler) {      //Render Methode (In weiser Vorraussicht)
 
         this.handler = handler;
 
         //level = new createLevel(title);
-    }
+    }   */
 
-    /*private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
+    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
 
         this.handler = handler;
+
+        handler.Update();
 
         testImage = ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Character.png");
 
@@ -183,7 +189,7 @@ public class Game implements Runnable {
         g.dispose();
         bs.show();
 
-    }   */
+    }
 
     public void run() {     //run Methode zum Fenster Updaten
 

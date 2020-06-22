@@ -23,6 +23,7 @@ public class Assets {
                                 oldiehat, oldieknife, newbiespear, newbieknife, newbienormal,
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe;
+    public static BufferedImage[] priest1v1, priest1v1left;
 
     public static void init(){
 
@@ -112,6 +113,45 @@ public class Assets {
         ghostknife = characters.location(64,16, width, height);
         ghostspear = characters.location(80,16, width, height);
         ghostsythe = characters.location(96,16, width, height);
+
+        //Animation
+        priest1v1 = new BufferedImage[4];
+
+
+        Tileset animation_priest1v1_2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_2.png"));
+
+        priest1v1[0] = animation_priest1v1_2.location(0,0,width,height);
+        Tileset animation_priest1v1_1 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_1.png"));
+
+        priest1v1[1] = animation_priest1v1_1.location(0,0,width,height);
+
+        Tileset animation_priest1v1_3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_3.png"));
+
+        priest1v1[2] = animation_priest1v1_3.location(0,0,width,height);
+
+        Tileset animation_priest1v1_4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_4.png"));
+
+        priest1v1[3] = animation_priest1v1_4.location(0,0,width,height);
+
+        //left
+
+        Tileset animation_priest1v1_1left = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_1left.png"));
+
+        priest1v1left = new BufferedImage[4];
+
+        priest1v1left[0] = animation_priest1v1_1left.location(0,0,width,height);
+
+        Tileset animation_priest1v1_2left = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_2left.png"));
+
+        priest1v1left[1] = animation_priest1v1_2left.location(0,0,width,height);
+
+        Tileset animation_priest1v1_3left = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_3left.png"));
+
+        priest1v1left[2] = animation_priest1v1_3left.location(0,0,width,height);
+
+        Tileset animation_priest1v1_4left = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_4left.png"));
+
+        priest1v1left[3] = animation_priest1v1_4left.location(0,0,width,height);
 
     }
 

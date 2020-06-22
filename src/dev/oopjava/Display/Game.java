@@ -93,6 +93,8 @@ public class Game implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
+        g.setColor(Color.black);
+        g.fillRect(0,0,1920,1800);
 
         if( 1 == 1 ) {
             g2.scale(5,5);
@@ -101,6 +103,7 @@ public class Game implements Runnable {
                     RenderingHints.KEY_TEXT_ANTIALIASING,
                     RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 
+/*
             //Linke Grenzen
             g2.drawImage(Assets.cornerLT, 0, 0, null);
             g2.drawImage(Assets.cornerLT, 0, 16, null);
@@ -179,6 +182,8 @@ public class Game implements Runnable {
             //Charakter
             //g2.drawImage(Assets.char1, 16, 16, null); --> wurde in Player.java ausgelagert
             g2.drawImage(Assets.ghostsythe, 16, 96, null);
+            */
+
 
         }
 

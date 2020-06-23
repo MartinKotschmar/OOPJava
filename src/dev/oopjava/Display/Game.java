@@ -22,6 +22,7 @@ public class Game implements Runnable {
     //private Canvas canvas;
 
     private boolean running = false;
+    private boolean started = false;
     private Thread thread;      //Thread erstellen
 
     private BufferedImage testImage;
@@ -58,12 +59,6 @@ public class Game implements Runnable {
 
         this.handler = handler;
 
-    }
-
-    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
-
-        this.handler = handler;
-
         handler.Update();
 
         bs = display.getCanvas().getBufferStrategy();
@@ -73,12 +68,11 @@ public class Game implements Runnable {
         }
         try {
             g = bs.getDrawGraphics();
-            //Graphics2D g2 = (Graphics2D) g;
-            //g2.scale(scale,scale);
-            //level = new CreateLevel(g, handler, scale);
-            g.setColor(Color.black);
-            g.fillRect(0,0,1920,1080);
-            //g2.scale(1/scale,1/scale);
+            Graphics2D g2 = (Graphics2D) g;
+            g2.scale(scale,scale);
+            level = new CreateLevel(g, handler, scale, started);
+            started = true;
+            g2.scale(1/scale,1/scale);
             handler.Render(g);
         } finally {
             g.dispose();
@@ -86,31 +80,43 @@ public class Game implements Runnable {
         bs.show();
     }
 
+    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
+
+        this.handler = handler;
+    }
+
     public void run() {     //run Methode zum Fenster Updaten
 
         Graphics();
         long lastTime = System.nanoTime();
         double amountOfTicks = 120.0;
+        double amountOfTicks2 = 2400.0;
         double ns = 1000000000 / amountOfTicks;
+        double ns2 = 1000000000 / amountOfTicks2;
         double delta = 0;
+        double delta2 = 0;
         long timer = System.currentTimeMillis();
         int frames = 0;
         int ticks = 0;
         while (running) {
             long now = System.nanoTime();
             delta += (now - lastTime) /ns;
+            delta2 += (now - lastTime) /ns2;
             lastTime = now;
-            while(delta >= 1) {
+            if(delta >= 1) {
                 Update(handler);
                 ticks++;
                 delta--;
             }
-            Render(handler);
-            frames++;
+            if(delta2 >= 1) {
+                Render(handler);
+                frames++;
+                delta2--;
+            }
 
             if (System.currentTimeMillis() - timer > 1000) { //optional
-                System.out.println(ticks + " fps");
-                System.out.println(frames + " frames");
+                System.out.println(ticks + " Update()");
+                System.out.println(frames + " Render()");
                 timer += 1000;
                 frames = 0;
                 ticks = 0;

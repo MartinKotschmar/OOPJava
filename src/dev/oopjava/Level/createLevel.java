@@ -16,22 +16,23 @@ public class CreateLevel {
     private Menu display;
     private BufferStrategy buffer;
     private Border border;
+    private boolean started;
     Graphics g;
     Handler handler;
     int scale;
 
-    public CreateLevel(Graphics g, Handler handler, int scale) {
+    public CreateLevel(Graphics g, Handler handler, int scale, boolean started) {
         this.g = g;
         this.handler = handler;
         this.scale = scale;
+        this.started = started;
 
         Render();
     }
 
     private void Render(){
-
         g.setColor(Color.black);
         g.fillRect(0,0,1920,1080);
-        border = new Border(g, scale);
+        border = new Border(g, scale, started);
     }
 }

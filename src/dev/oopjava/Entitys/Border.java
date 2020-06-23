@@ -12,17 +12,17 @@ public class Border {
     int width,height, scale, screenWidth, screenHeight, x, y, z,currentWidth, currentHeight;
     private boolean started;
 
-    public Border(Graphics g, int scale) {
+    public Border(Graphics g, int scale, boolean started) {
         this.g = g;
         this.scale = scale;
+        this.started = started;
 
         width = 16 * scale;
         height = 16 * scale;
 
         Random random = new Random();
 
-        if(!started) {
-
+        if(started == false) {
             Toolkit tk = Toolkit.getDefaultToolkit();
             screenWidth = tk.getScreenSize().width;
             screenHeight = tk.getScreenSize().height;
@@ -40,6 +40,5 @@ public class Border {
                 currentWidth += width;
             }
         }
-        started = true;
     }
 }

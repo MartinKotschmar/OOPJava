@@ -5,7 +5,6 @@ import dev.oopjava.Entitys.KeyInput;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferStrategy;
 
 public class GameWindow {
 
@@ -25,12 +24,12 @@ public class GameWindow {
         this.dimensionWindow = new Dimension(width, height);
         this.handler = handler;
 
-        creatDisplay();
-        creatCanvas();
+        createDisplay();
+        createCanvas();
 
     }
 
-    private void creatDisplay() {
+    private void createDisplay() {
         GameFrame = new JFrame(title);
         GameFrame.setSize(dimensionWindow);       //Fenstergröße width, height
         GameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
@@ -57,7 +56,7 @@ public class GameWindow {
 
 
 
-    public void creatCanvas() {
+    public void createCanvas() {
         canvas = new Canvas(); //erstellen Hintergrund(Leinwand)
 
         Dimension dimension = GameFrame.getSize();      // Dimension Size getter

@@ -9,7 +9,8 @@ public class Assets {
     private static final int width = 16, height = 16;
 
     public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3,
-                                wallTop1, wallTop2, wallTop3, wallDown1, wallDown2,
+                                wallTop[],
+                                wallBottom[],
                                 brownboxsmall, greyboxsmall, greyboxmedium, greyboxlarge,
                                 brownboxmedium, greyboxsmall2, goldcoin, bluedrinksmall,
                                 silverkey, reddrinkmedium, burningtorch, burninghalftorch,
@@ -38,11 +39,21 @@ public class Assets {
         cornerRB = parts.location(80,64, width,height);
         floor4x3 = parts.location(96, 0, 64, 48);
         floor3x3 = parts.location(96, 0, 64, 32);
-        wallTop1 = parts.location(16,0, width,height);
-        wallTop2 = parts.location(32,0, width,height);
-        wallTop3 = parts.location(48,0, width,height);
-        wallDown1 = parts.location(16,64, width,height);
-        wallDown2 = parts.location(32,64, width,height);
+
+        //wallTop
+
+        wallTop = new BufferedImage[3];
+
+        wallTop[0] = parts.location(16,0, width,height);
+        wallTop[1] = parts.location(32,0, width,height);
+        wallTop[2] = parts.location(48,0, width,height);
+
+        //wallBottom
+
+        wallBottom = new BufferedImage[2];
+
+        wallBottom[0] = parts.location(16,64, width,height);
+        wallBottom[1] = parts.location(32,64, width,height);
 
         //items and accessoires
 
@@ -117,13 +128,13 @@ public class Assets {
         //Animation
         priest1v1 = new BufferedImage[4];
 
+        Tileset animation_priest1v1_1 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_1.png"));
+
+        priest1v1[0] = animation_priest1v1_1.location(0,0,width,height);
 
         Tileset animation_priest1v1_2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_2.png"));
 
-        priest1v1[0] = animation_priest1v1_2.location(0,0,width,height);
-        Tileset animation_priest1v1_1 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_1.png"));
-
-        priest1v1[1] = animation_priest1v1_1.location(0,0,width,height);
+        priest1v1[1] = animation_priest1v1_2.location(0,0,width,height);
 
         Tileset animation_priest1v1_3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_3.png"));
 
@@ -135,9 +146,9 @@ public class Assets {
 
         //left
 
-        Tileset animation_priest1v1_1left = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_1left.png"));
-
         priest1v1left = new BufferedImage[4];
+
+        Tileset animation_priest1v1_1left = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_1left.png"));
 
         priest1v1left[0] = animation_priest1v1_1left.location(0,0,width,height);
 

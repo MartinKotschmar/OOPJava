@@ -1,33 +1,33 @@
-package dev.oopjava.ActionListenerButton.Display;
+package dev.oopjava.Display;
+
+import dev.oopjava.Entitys.Handler;
+import dev.oopjava.Entitys.KeyInput;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-public class GameWindow implements Runnable {
+public class GameWindow {
 
     public int width, height;       //breite, höhe
     public String title;            //Fenster Titel
 
-    private boolean running = false;
-    private Thread thread;      //Thread erstellen
-
     private JFrame GameFrame;
     private JPanel gamePanel;
+    private Handler handler;
     private Dimension dimensionWindow;
 
-    private BufferStrategy  bs;
-    private Graphics g;
     private Canvas canvas;
 
-    public GameWindow() {
+    public GameWindow(String title, Handler handler) {
         this.width = 1920;
         this.height = 1080;
         this.dimensionWindow = new Dimension(width, height);
+        this.handler = handler;
 
         creatDisplay();
         creatCanvas();
-        start();
+
     }
 
     private void creatDisplay() {
@@ -44,6 +44,10 @@ public class GameWindow implements Runnable {
         gamePanel.setMaximumSize(dimensionWindow);
         gamePanel.setMinimumSize(dimensionWindow);
         gamePanel.setPreferredSize(dimensionWindow);
+        gamePanel.setFocusable(true);
+        gamePanel.requestFocusInWindow();
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(0,10,10,10));
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         GameFrame.add(gamePanel);
 
         GameFrame.pack();
@@ -51,73 +55,13 @@ public class GameWindow implements Runnable {
 
     }
 
-    private void Graphics(){
 
-    }
-
-    private void Update(){      //Update Fenster Methode
-
-    }
-
-    private void Render(){      //Render Methode
-        bs = getCanvas().getBufferStrategy();
-        if(bs == null){
-            getCanvas().createBufferStrategy(3);
-            return;
-        }
-        g = bs.getDrawGraphics();
-        //Assets hier
-        g.clearRect(0,0,width,height);
-        
-        //Test
-        g.fillRect(0,0,width,height);
-
-
-        //Assets ende
-        bs.show();
-        g.dispose();
-    }
-
-    public void run(){     //run Methode zum Fenster Updaten
-
-        Graphics();
-        while(running){
-            Update();
-            Render();
-        }
-
-        stop();
-
-    }
-
-
-    public synchronized void start(){       //erstellen GameLoop (start)
-
-        if(running)
-            return;
-
-        running =true;
-        thread = new Thread( this);
-        thread.start();
-    }
-
-    public synchronized void stop(){        //GameLoop bedingt (stoppen)
-
-        if(!running)
-            return;
-        running =false;
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void creatCanvas() {
         canvas = new Canvas(); //erstellen Hintergrund(Leinwand)
 
         Dimension dimension = GameFrame.getSize();      // Dimension Size getter
+        canvas.addKeyListener(new KeyInput(handler));
         canvas.setPreferredSize(dimension);     //prefSize getSize
         canvas.setMinimumSize(dimension);       //min
         canvas.setMaximumSize(dimension);       //max

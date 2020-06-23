@@ -1,5 +1,6 @@
 package dev.oopjava.Display;
 
+import dev.oopjava.Display.GameWindow;
 import dev.oopjava.tileset.*;
 
 import dev.oopjava.Level.*;
@@ -15,7 +16,7 @@ import java.awt.Graphics2D;
 
 public class Game implements Runnable {
 
-    private Menu display;        //Display Klasse erstellen
+    private GameWindow display;        //Display Klasse erstellen
 
     private createLevel level;  //Level erstellen
 
@@ -47,35 +48,23 @@ public class Game implements Runnable {
 
     private void Graphics(){
 
-        display = new Menu(title, handler);
+        display = new GameWindow(title, handler);
 
         Assets.init();
 
         handler.addObject(new Player(0,0, 1, ID.Player, handler));
-        handler.addObject(new Player(0,200, 1, ID.Player, handler));
-        handler.addObject(new Player(0,400, 1, ID.Player, handler));
-        handler.addObject(new Player(0,600, 1, ID.Player, handler));
-        handler.addObject(new Player(0,800, 1, ID.Player, handler));
-
     }
 
     private void Update(Handler handler){      //Update Fenster Methode
 
         this.handler = handler;
 
-        //handler.Update();
     }
 
-   /* private void Render(Handler handler) {      //Render Methode (In weiser Vorraussicht)
+    private void Render(Handler handler){      //Render Methode
 
         this.handler = handler;
-
         //level = new createLevel(title);
-    }   */
-
-    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
-
-        this.handler = handler;
 
         handler.Update();
 
@@ -96,96 +85,12 @@ public class Game implements Runnable {
         g.setColor(Color.black);
         g.fillRect(0,0,1920,1800);
 
-        if( 1 == 1 ) {
-            g2.scale(5,5);
 
-            g2.setRenderingHint(
-                    RenderingHints.KEY_TEXT_ANTIALIASING,
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
+        g2.scale(5,5);
 
-/*
-            //Linke Grenzen
-            g2.drawImage(Assets.cornerLT, 0, 0, null);
-            g2.drawImage(Assets.cornerLT, 0, 16, null);
-            g2.drawImage(Assets.cornerLT, 0, 32, null);
-            g2.drawImage(Assets.cornerLT, 0, 48, null);
-            g2.drawImage(Assets.cornerLT, 0, 64, null);
-            g2.drawImage(Assets.cornerLT, 0, 80, null);
-            g2.drawImage(Assets.cornerLT, 0, 96, null);
-            g2.drawImage(Assets.cornerLT, 0, 112, null);
-            g2.drawImage(Assets.cornerLT, 0, 128, null);
-            g2.drawImage(Assets.cornerLB, 0, 144, null);
-            //Rechte Grenzen
-            g2.drawImage(Assets.cornerRT, 272, 0, null);
-            g2.drawImage(Assets.cornerRT, 272, 16, null);
-            g2.drawImage(Assets.cornerRT, 272, 32, null);
-            g2.drawImage(Assets.cornerRT, 272, 48, null);
-            g2.drawImage(Assets.cornerRT, 272, 64, null);
-            g2.drawImage(Assets.cornerRT, 272, 80, null);
-            g2.drawImage(Assets.cornerRT, 272, 96, null);
-            g2.drawImage(Assets.cornerRT, 272, 112, null);
-            g2.drawImage(Assets.cornerRT, 272, 128, null);
-            g2.drawImage(Assets.cornerRB, 272, 144, null);
-            //Obere Grenze
-            g2.drawImage(Assets.wallTop1, 16, 0, null);
-            g2.drawImage(Assets.wallTop3, 32, 0, null);
-            g2.drawImage(Assets.wallTop2, 48, 0, null);
-            g2.drawImage(Assets.wallTop1, 64, 0, null);
-            g2.drawImage(Assets.wallTop3, 80, 0, null);
-            g2.drawImage(Assets.wallTop2, 96, 0, null);
-            g2.drawImage(Assets.wallTop1, 112, 0, null);
-            g2.drawImage(Assets.wallTop3, 128, 0, null);
-            g2.drawImage(Assets.wallTop2, 144, 0, null);
-            g2.drawImage(Assets.wallTop1, 160, 0, null);
-            g2.drawImage(Assets.wallTop1, 176, 0, null);
-            g2.drawImage(Assets.wallTop2, 192, 0, null);
-            g2.drawImage(Assets.wallTop3, 208, 0, null);
-            g2.drawImage(Assets.wallTop3, 224, 0, null);
-            g2.drawImage(Assets.wallTop2, 240, 0, null);
-            g2.drawImage(Assets.wallTop2, 256, 0, null);
-            //Untere Grenze
-            g2.drawImage(Assets.wallDown1, 16, 144, null);
-            g2.drawImage(Assets.wallDown2, 32, 144, null);
-            g2.drawImage(Assets.wallDown2, 48, 144, null);
-            g2.drawImage(Assets.wallDown1, 64, 144, null);
-            g2.drawImage(Assets.wallDown1, 80, 144, null);
-            g2.drawImage(Assets.wallDown2, 96, 144, null);
-            g2.drawImage(Assets.wallDown1, 112, 144, null);
-            g2.drawImage(Assets.wallDown2, 128, 144, null);
-            g2.drawImage(Assets.wallDown2, 144, 144, null);
-            g2.drawImage(Assets.wallDown1, 160, 144, null);
-            g2.drawImage(Assets.wallDown1, 176, 144, null);
-            g2.drawImage(Assets.wallDown2, 192, 144, null);
-            g2.drawImage(Assets.wallDown1, 208, 144, null);
-            g2.drawImage(Assets.wallDown1, 224, 144, null);
-            g2.drawImage(Assets.wallDown2, 240, 144, null);
-            g2.drawImage(Assets.wallDown1, 256, 144, null);
-            //Boden
-            g2.drawImage(Assets.floor4x3, 16, 16, null);
-            g2.drawImage(Assets.floor4x3, 80, 16, null);
-            g2.drawImage(Assets.floor4x3, 144, 16, null);
-            g2.drawImage(Assets.floor4x3, 208, 16, null);
-            g2.drawImage(Assets.floor3x3, 16, 64, null);
-            g2.drawImage(Assets.floor3x3, 80, 64, null);
-            g2.drawImage(Assets.floor3x3, 144, 64, null);
-            g2.drawImage(Assets.floor3x3, 208, 64, null);
-            g2.drawImage(Assets.floor4x3, 16, 96, null);
-            g2.drawImage(Assets.floor4x3, 80, 96, null);
-            g2.drawImage(Assets.floor4x3, 144, 96, null);
-            g2.drawImage(Assets.floor4x3, 208, 96, null);
-            //Items
-
-            g2.drawImage(Assets.ladder, 16, 80, null);
-
-
-
-            //Charakter
-            //g2.drawImage(Assets.char1, 16, 16, null); --> wurde in Player.java ausgelagert
-            g2.drawImage(Assets.ghostsythe, 16, 96, null);
-            */
-
-
-        }
+        g2.setRenderingHint(
+                RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 
         g2.scale(0.2,0.2);
 
@@ -197,14 +102,6 @@ public class Game implements Runnable {
     }
 
     public void run() {     //run Methode zum Fenster Updaten
-
-   /*     Graphics();
-        while(running){
-            Update();
-            Render();
-        }
-
-        stop(); */
 
         Graphics();
         long lastTime = System.nanoTime();
@@ -226,7 +123,7 @@ public class Game implements Runnable {
             Render(handler);
             frames++;
 
-            if (System.currentTimeMillis() - timer > 1000) {
+            if (System.currentTimeMillis() - timer > 1000) { //optional
                 System.out.println(ticks + " fps");
                 timer += 1000;
                 frames = 0;

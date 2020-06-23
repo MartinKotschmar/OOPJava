@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 
 public class createLevel extends Game{
 
-    private Menu display;
+    private GameWindow display;
     private BufferStrategy bs;
 
     //private BufferStrategy bs;

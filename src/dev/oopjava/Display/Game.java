@@ -10,39 +10,35 @@ import dev.oopjava.Entitys.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 public class Game implements Runnable {
 
     private Menu display;        //Display Klasse erstellen
+    private CreateLevel level;  //Level erstellen
 
-    private createLevel level;  //Level erstellen
-
-
-    public int width, height;       //breite, höhe
+    public int scale;       //breite, höhe
     public String title;            //Fenster Titel
-    private Canvas canvas;
-
+    //private Canvas canvas;
 
     private boolean running = false;
     private Thread thread;      //Thread erstellen
 
     private BufferedImage testImage;
+    private EntityControl entitys;
     private Tileset tile;
     private BufferStrategy bs;
     private Graphics g;
     private Graphics2D g2;
-
+    private String character;
     public Handler handler;
-
-
 
     public Game(String title) {     //Game Methode erstellen
         this.title = title;
 
-        handler = new Handler();
+        scale = 5;
 
+        handler = new Handler();
+        character = "Priest1";
     }
 
     private void Graphics(){
@@ -51,27 +47,16 @@ public class Game implements Runnable {
 
         Assets.init();
 
-        handler.addObject(new Player(0,0, 1, ID.Player, handler));
-        handler.addObject(new Player(0,200, 1, ID.Player, handler));
-        handler.addObject(new Player(0,400, 1, ID.Player, handler));
-        handler.addObject(new Player(0,600, 1, ID.Player, handler));
-        handler.addObject(new Player(0,800, 1, ID.Player, handler));
+        //entitys = new EntityControl(handler, character, scale);
+
+        handler.addObject(new Player(0,0, 10, scale, ID.Player, handler));
 
     }
 
     private void Update(Handler handler){      //Update Fenster Methode
 
         this.handler = handler;
-
-        //handler.Update();
     }
-
-   /* private void Render(Handler handler) {      //Render Methode (In weiser Vorraussicht)
-
-        this.handler = handler;
-
-        //level = new createLevel(title);
-    }   */
 
     private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
 
@@ -79,10 +64,23 @@ public class Game implements Runnable {
 
         handler.Update();
 
-        testImage = ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Character.png");
-
-        tile = new Tileset(testImage);
-
+        bs = display.getCanvas().getBufferStrategy();
+        if(bs == null){
+            display.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        try {
+            g = bs.getDrawGraphics();
+            Graphics2D g2 = (Graphics2D) g;
+            g2.scale(scale,scale);
+            level = new CreateLevel(g, handler, scale);
+            g2.scale(1/scale,1/scale);
+            handler.Render(g);
+        } finally {
+            g.dispose();
+        }
+        bs.show();
+/*
         bs = display.getCanvas().getBufferStrategy();
         if(bs == null){
             display.getCanvas().createBufferStrategy(3);
@@ -94,7 +92,7 @@ public class Game implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         g.setColor(Color.black);
-        g.fillRect(0,0,1920,1800);
+        g.fillRect(0,0,1920,1080);
 
         if( 1 == 1 ) {
             g2.scale(5,5);
@@ -103,7 +101,7 @@ public class Game implements Runnable {
                     RenderingHints.KEY_TEXT_ANTIALIASING,
                     RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 
-/*
+
             //Linke Grenzen
             g2.drawImage(Assets.cornerLT, 0, 0, null);
             g2.drawImage(Assets.cornerLT, 0, 16, null);
@@ -182,7 +180,7 @@ public class Game implements Runnable {
             //Charakter
             //g2.drawImage(Assets.char1, 16, 16, null); --> wurde in Player.java ausgelagert
             g2.drawImage(Assets.ghostsythe, 16, 96, null);
-            */
+
 
 
         }
@@ -192,7 +190,7 @@ public class Game implements Runnable {
         handler.Render(g);
 
         g.dispose();
-        bs.show();
+        bs.show();  */
 
     }
 
@@ -208,7 +206,7 @@ public class Game implements Runnable {
 
         Graphics();
         long lastTime = System.nanoTime();
-        double amountOfTicks = 60.0;
+        double amountOfTicks = 120.0;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
         long timer = System.currentTimeMillis();
@@ -228,6 +226,7 @@ public class Game implements Runnable {
 
             if (System.currentTimeMillis() - timer > 1000) {
                 System.out.println(ticks + " fps");
+                System.out.println(frames + " frames");
                 timer += 1000;
                 frames = 0;
                 ticks = 0;

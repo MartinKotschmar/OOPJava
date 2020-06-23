@@ -47,7 +47,7 @@ public class Menu {
         frame.setSize(dimension);       //Fenstergröße width, height
         frame.setLocationRelativeTo(null);      //Zentrieren
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
-        frame.setUndecorated(false);     //Window Toolbar aus
+        frame.setUndecorated(true);     //Window Toolbar aus
         frame.setResizable(false);      //Größe ändern aus
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       //Anwendung bei schließen komplett beenden
 

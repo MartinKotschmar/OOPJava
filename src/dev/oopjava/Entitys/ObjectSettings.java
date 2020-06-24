@@ -15,7 +15,6 @@ public abstract class ObjectSettings {
         this.y = y;
         this.speed = speed;
         this.id = id;
-
     }
 
 

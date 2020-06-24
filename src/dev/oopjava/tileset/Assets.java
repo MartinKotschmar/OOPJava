@@ -11,6 +11,8 @@ public class Assets {
     public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3,
                                 wallTop[],
                                 wallBottom[],
+                                wallLeft[],
+                                wallRight[],
                                 brownboxsmall, greyboxsmall, greyboxmedium, greyboxlarge,
                                 brownboxmedium, greyboxsmall2, goldcoin, bluedrinksmall,
                                 silverkey, reddrinkmedium, burningtorch, burninghalftorch,
@@ -47,6 +49,22 @@ public class Assets {
         wallTop[0] = parts.location(16,0, width,height);
         wallTop[1] = parts.location(32,0, width,height);
         wallTop[2] = parts.location(48,0, width,height);
+
+        //wallRight
+
+        wallRight = new BufferedImage[3];
+
+        wallRight[0] = parts.location(80,16, width,height);
+        wallRight[1] = parts.location(80,32, width,height);
+        wallRight[2] = parts.location(80,48, width,height);
+
+        //wallLeft
+
+        wallLeft = new BufferedImage[3];
+
+        wallLeft[0] = parts.location(0,16, width,height);
+        wallLeft[1] = parts.location(0,32, width,height);
+        wallLeft[2] = parts.location(0,48, width,height);
 
         //wallBottom
 

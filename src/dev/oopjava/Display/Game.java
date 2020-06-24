@@ -8,6 +8,7 @@ import dev.oopjava.Level.*;
 import dev.oopjava.Entitys.*;
 
 
+import javax.swing.plaf.synth.SynthScrollBarUI;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -16,8 +17,9 @@ public class Game implements Runnable {
 
     private GameWindow display;        //Display Klasse erstellen
     private CreateLevel level;  //Level erstellen
+    private Border border;
 
-    public int scale;       //breite, höhe
+    public int scale, index;       //breite, höhe
     public String title;            //Fenster Titel
     //private Canvas canvas;
 
@@ -33,13 +35,16 @@ public class Game implements Runnable {
     private Graphics2D g2;
     private String character;
     public Handler handler;
+    public Processing processing;
 
     public Game(String title) {     //Game Methode erstellen
         this.title = title;
 
         scale = 5;
+        index = 0;
 
         handler = new Handler();
+        processing = new Processing();
         character = "Priest1";
     }
 
@@ -58,6 +63,7 @@ public class Game implements Runnable {
     private void Update(Handler handler){      //Update Fenster Methode
 
         this.handler = handler;
+        this.processing = processing;
 
         handler.Update();
 
@@ -66,18 +72,21 @@ public class Game implements Runnable {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
+
         try {
             g = bs.getDrawGraphics();
             Graphics2D g2 = (Graphics2D) g;
             g2.scale(scale,scale);
-            level = new CreateLevel(g, handler, scale, started);
-            started = true;
+            level = new CreateLevel(g, handler, scale, index, processing);
+            processing.Update();
             g2.scale(1/scale,1/scale);
             handler.Render(g);
         } finally {
             g.dispose();
         }
         bs.show();
+        index++;
+        System.out.println(processing.getX());
     }
 
     private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
@@ -89,13 +98,13 @@ public class Game implements Runnable {
 
         Graphics();
         long lastTime = System.nanoTime();
-        double amountOfTicks = 120.0;
-        double amountOfTicks2 = 2400.0;
+        double amountOfTicks = 60.0;
+        double amountOfTicks2 = 600.0;
         double ns = 1000000000 / amountOfTicks;
         double ns2 = 1000000000 / amountOfTicks2;
         double delta = 0;
         double delta2 = 0;
-        long timer = System.currentTimeMillis();
+        long timer = System.currentTimeMillis() -9000;
         int frames = 0;
         int ticks = 0;
         while (running) {
@@ -114,10 +123,10 @@ public class Game implements Runnable {
                 delta2--;
             }
 
-            if (System.currentTimeMillis() - timer > 1000) { //optional
-                System.out.println(ticks + " Update()");
-                System.out.println(frames + " Render()");
-                timer += 1000;
+            if (System.currentTimeMillis() - timer > 10000) { //optional
+                System.out.println(ticks / 10 + " Update()");
+                System.out.println(frames / 10 + " Render()");
+                timer += 10000;
                 frames = 0;
                 ticks = 0;
             }

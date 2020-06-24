@@ -33,7 +33,7 @@ public class GameWindow {
         GameFrame = new JFrame(title);
         GameFrame.setSize(dimensionWindow);       //Fenstergröße width, height
         GameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
-        GameFrame.setUndecorated(true);     //
+        GameFrame.setUndecorated(false);     //
         GameFrame.setResizable(false);      //Größe ändern aus
         GameFrame.setLocationRelativeTo(null);      //Zentrieren
         GameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

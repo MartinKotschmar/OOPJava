@@ -14,10 +14,7 @@ import java.awt.image.BufferedImage;
 
 public class CreateLevel {
 
-    private Menu display;
-    private BufferStrategy buffer;
     private Border border;
-    private boolean started;
     Graphics g;
     Handler handler;
     Processing processing;
@@ -34,7 +31,8 @@ public class CreateLevel {
     }
 
     private void Render(){
-        g.setColor(Color.black);
+        Color gameColor = Color.decode("#25131A");
+        g.setColor(gameColor);
         g.fillRect(0,0,1920,1080);
         border = new Border(g, scale, index, processing);
     }

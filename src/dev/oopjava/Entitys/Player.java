@@ -12,13 +12,11 @@ import java.io.IOException;
 public class Player extends ObjectSettings{
 
     private CharacterAnimation animation;
-    private Image img;
     private int timer;
     private static BufferedImage[] character;
     public int ID;
 
     Handler handler;
-    String image;
     int width, height, scale;
 
 
@@ -38,10 +36,10 @@ public class Player extends ObjectSettings{
         x += velX;
         y += velY;
 
-        if(x < 0) { x = 0; }
-        if(x > 1920/scale - width) { x = 1920/scale - width; }
-        if(y < 0) { y = 0; }
-        if(y > 1080/scale - width) { y = 1080/scale - width; }
+        if(x < width) { x = width; }
+        if(x > 1920/scale - 2 * width) { x = 1920/scale - 2 * width; }
+        if(y < height) { y = height; }
+        if(y > 1080/scale - 2 * height) { y = 1080/scale - 2 * height; }
 
         animation.tick(velX,velY);
 
@@ -53,12 +51,10 @@ public class Player extends ObjectSettings{
 
         if (handler.isLeft()) {
             velX = -speed;
-           // animation = new CharacterAnimation(timer, Assets.priest1v1left);
         }
         else if (!handler.isRight()) velX = 0;
         if (handler.isRight()) {
             velX = speed;
-           // animation = new CharacterAnimation(timer, Assets.priest1v1);
         }
         else if (!handler.isLeft()) velX = 0;
     }

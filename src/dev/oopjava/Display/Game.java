@@ -1,14 +1,8 @@
 package dev.oopjava.Display;
 
-import dev.oopjava.Display.GameWindow;
 import dev.oopjava.tileset.*;
-
 import dev.oopjava.Level.*;
-
 import dev.oopjava.Entitys.*;
-
-
-import javax.swing.plaf.synth.SynthScrollBarUI;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -17,23 +11,18 @@ public class Game implements Runnable {
 
     private GameWindow display;        //Display Klasse erstellen
     private CreateLevel level;  //Level erstellen
-    private Border border;
 
     public int scale, index;       //breite, höhe
     public double backscale;
     public String title;            //Fenster Titel
-    //private Canvas canvas;
 
     private boolean running = false;
     private boolean started = false;
     private Thread thread;      //Thread erstellen
 
-    private BufferedImage testImage;
-    private EntityControl entitys;
-    private Tileset tile;
+    //private EntityControl entitys;
     private BufferStrategy bs;
     private Graphics g;
-    private Graphics2D g2;
     private String character;
     public Handler handler;
     public Processing processing;
@@ -41,7 +30,7 @@ public class Game implements Runnable {
     public Game(String title) {     //Game Methode erstellen
         this.title = title;
 
-        scale = 5;
+        scale = 2;
         backscale = 1/scale;
         index = 0;
 
@@ -58,18 +47,11 @@ public class Game implements Runnable {
 
         //entitys = new EntityControl(handler, character, scale);
 
-        handler.addObject(new Player(80,80, 10, scale, ID.Player, handler));
+        handler.addObject(new Player(80,80, 1, scale, ID.Player, handler));
 
     }
 
     private void Update(Handler handler){      //Update Fenster Methode
-
-        this.handler = handler;
-
-        handler.Update();
-    }
-
-    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
 
         this.handler = handler;
         handler.Update();
@@ -79,20 +61,23 @@ public class Game implements Runnable {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
+
         g = bs.getDrawGraphics();
         Graphics2D g2 = (Graphics2D) g;
 
-            if(true) {
-                g2.scale(scale,scale);
-                level = new CreateLevel(g, handler, scale, index, processing);
-            }
-            g2.scale(0.2,0.2);
-            handler.Render(g);
-
-            g.dispose();
+        if(true) {
+            g2.scale(scale,scale);
+            level = new CreateLevel(g, handler, scale, index, processing);
+        }
+        g2.scale(0.2,0.2);
+        handler.Render(g);
+        g.dispose();
         bs.show();
-        //index++;
-        //System.out.println(processing.getX());
+    }
+
+    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
+
+        this.handler = handler;
     }
 
     public void run() {     //run Methode zum Fenster Updaten

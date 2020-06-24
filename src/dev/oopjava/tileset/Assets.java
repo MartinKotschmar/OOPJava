@@ -10,7 +10,12 @@ public class Assets {
 
     public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3,
                                 floor1,
-                                floor[],
+                                floorLT, floorRT, floorLB, floorRB,
+                                floorTop[],
+                                floorBottom[],
+                                floorLeft,
+                                floorRight,
+                                floorCenter[],
                                 wallTop[],
                                 wallBottom[],
                                 wallLeft[],
@@ -45,14 +50,38 @@ public class Assets {
         floor3x3 = parts.location(96, 0, 64, 32);
         floor1 = parts.location(16,16,width,height);
 
-        floor = new BufferedImage[6];
+        floorCenter = new BufferedImage[12];
 
-        floor[0] = parts.location(16, 16, width, height);
-        floor[1] = parts.location(32, 16, width, height);
-        floor[2] = parts.location(48, 16, width, height);
-        floor[3] = parts.location(32, 32, width, height);
-        floor[4] = parts.location(32, 48, width, height);
-        floor[5] = parts.location(48, 48, width, height);
+        floorCenter[0] = parts.location(96, 0, width, height);
+        floorCenter[1] = parts.location(112, 0, width, height);
+        floorCenter[2] = parts.location(128, 0, width, height);
+        floorCenter[3] = parts.location(144, 0, width, height);
+        floorCenter[4] = parts.location(96, 16, width, height);
+        floorCenter[5] = parts.location(112, 16, width, height);
+        floorCenter[6] = parts.location(128, 16, width, height);
+        floorCenter[7] = parts.location(144, 16, width, height);
+        floorCenter[8] = parts.location(96, 32, width, height);
+        floorCenter[9] = parts.location(112, 32, width, height);
+        floorCenter[10] = parts.location(128, 32, width, height);
+        floorCenter[11] = parts.location(144, 32, width, height);
+
+        floorLT = parts.location(16, 16, width, height);
+        floorRT = parts.location(64, 16, width, height);
+        floorLB = parts.location(16, 48, width, height);
+        floorRB = parts.location(64, 48, width, height);
+
+        floorTop = new BufferedImage[2];
+
+        floorTop[0] = parts.location(32, 16, width, height);
+        floorTop[1] = parts.location(48, 16, width, height);
+
+        floorBottom = new BufferedImage[2];
+
+        floorBottom[0] = parts.location(32, 48, width, height);
+        floorBottom[1] = parts.location(48, 48, width, height);
+
+        floorLeft = parts.location(16, 32, width, height);
+        floorRight = parts.location(64, 32, width, height);
 
         //wallTop
 

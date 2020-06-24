@@ -20,6 +20,7 @@ public class Game implements Runnable {
     private Border border;
 
     public int scale, index;       //breite, höhe
+    public double backscale;
     public String title;            //Fenster Titel
     //private Canvas canvas;
 
@@ -41,6 +42,7 @@ public class Game implements Runnable {
         this.title = title;
 
         scale = 5;
+        backscale = 1/scale;
         index = 0;
 
         handler = new Handler();
@@ -56,15 +58,20 @@ public class Game implements Runnable {
 
         //entitys = new EntityControl(handler, character, scale);
 
-        handler.addObject(new Player(0,0, 10, scale, ID.Player, handler));
+        handler.addObject(new Player(80,80, 10, scale, ID.Player, handler));
 
     }
 
     private void Update(Handler handler){      //Update Fenster Methode
 
         this.handler = handler;
-        this.processing = processing;
 
+        handler.Update();
+    }
+
+    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
+
+        this.handler = handler;
         handler.Update();
 
         bs = display.getCanvas().getBufferStrategy();
@@ -72,26 +79,20 @@ public class Game implements Runnable {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
+        g = bs.getDrawGraphics();
+        Graphics2D g2 = (Graphics2D) g;
 
-        try {
-            g = bs.getDrawGraphics();
-            Graphics2D g2 = (Graphics2D) g;
-            g2.scale(scale,scale);
-            level = new CreateLevel(g, handler, scale, index, processing);
-            processing.Update();
-            g2.scale(1/scale,1/scale);
+            if(true) {
+                g2.scale(scale,scale);
+                level = new CreateLevel(g, handler, scale, index, processing);
+            }
+            g2.scale(0.2,0.2);
             handler.Render(g);
-        } finally {
+
             g.dispose();
-        }
         bs.show();
-        index++;
-        System.out.println(processing.getX());
-    }
-
-    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
-
-        this.handler = handler;
+        //index++;
+        //System.out.println(processing.getX());
     }
 
     public void run() {     //run Methode zum Fenster Updaten
@@ -104,7 +105,7 @@ public class Game implements Runnable {
         double ns2 = 1000000000 / amountOfTicks2;
         double delta = 0;
         double delta2 = 0;
-        long timer = System.currentTimeMillis() -9000;
+        long timer = System.currentTimeMillis();
         int frames = 0;
         int ticks = 0;
         while (running) {
@@ -123,10 +124,10 @@ public class Game implements Runnable {
                 delta2--;
             }
 
-            if (System.currentTimeMillis() - timer > 10000) { //optional
-                System.out.println(ticks / 10 + " Update()");
-                System.out.println(frames / 10 + " Render()");
-                timer += 10000;
+            if (System.currentTimeMillis() - timer > 1000) { //optional
+                System.out.println(ticks + " Update()");
+                System.out.println(frames + " Render()");
+                timer += 1000;
                 frames = 0;
                 ticks = 0;
             }

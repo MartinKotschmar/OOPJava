@@ -16,12 +16,12 @@ public class CharacterAnimation {
 
         tiles = Assets.priest1v1;
 
-        if(velX > 0) {
+        /*if(velX > 0) {
             tiles = Assets.priest1v1;
         }
         if(velX < 0) {
             tiles = Assets.priest1v1left;
-        }
+        }*/
 
         i = 0;
         tick = 0;

@@ -9,6 +9,8 @@ public class Assets {
     private static final int width = 16, height = 16;
 
     public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3,
+                                floor1,
+                                floor[],
                                 wallTop[],
                                 wallBottom[],
                                 wallLeft[],
@@ -41,6 +43,16 @@ public class Assets {
         cornerRB = parts.location(80,64, width,height);
         floor4x3 = parts.location(96, 0, 64, 48);
         floor3x3 = parts.location(96, 0, 64, 32);
+        floor1 = parts.location(16,16,width,height);
+
+        floor = new BufferedImage[6];
+
+        floor[0] = parts.location(16, 16, width, height);
+        floor[1] = parts.location(32, 16, width, height);
+        floor[2] = parts.location(48, 16, width, height);
+        floor[3] = parts.location(32, 32, width, height);
+        floor[4] = parts.location(32, 48, width, height);
+        floor[5] = parts.location(48, 48, width, height);
 
         //wallTop
 
@@ -68,10 +80,11 @@ public class Assets {
 
         //wallBottom
 
-        wallBottom = new BufferedImage[2];
+        wallBottom = new BufferedImage[3];
 
         wallBottom[0] = parts.location(16,64, width,height);
         wallBottom[1] = parts.location(32,64, width,height);
+        wallBottom[2] = parts.location(16,64, width,height);
 
         //items and accessoires
 

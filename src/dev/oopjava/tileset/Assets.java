@@ -33,7 +33,7 @@ public class Assets {
                                 oldiehat, oldieknife, newbiespear, newbieknife, newbienormal,
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe;
-    public static BufferedImage[] priest1v1, priest1v1left;
+    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1;
 
     public static void init(){
 
@@ -223,6 +223,33 @@ public class Assets {
         Tileset animation_priest1v1_4left = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/priests_idle/priest1/v1/priest1_v1_4left.png"));
 
         priest1v1left[3] = animation_priest1v1_4left.location(0,0,width,height);
+
+
+
+        skeleton2v1 = new BufferedImage[4];
+
+        Tileset animation_skeleton2v1 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_1.png"));
+
+        skeleton2v1[0] = animation_skeleton2v1.location(0,0,width,height);
+
+        skeleton2v1 = new BufferedImage[4];
+
+        Tileset animation_skeleton2v2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_1.png"));
+
+        skeleton2v1[1] = animation_skeleton2v2.location(0,0,width,height);
+
+        skeleton2v1 = new BufferedImage[4];
+
+        Tileset animation_skeleton2v3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_1.png"));
+
+        skeleton2v1[2] = animation_skeleton2v3.location(0,0,width,height);
+
+        skeleton2v1 = new BufferedImage[4];
+
+        Tileset animation_skeleton2v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_1.png"));
+
+        skeleton2v1[3] = animation_skeleton2v4.location(0,0,width,height);
+
 
     }
 

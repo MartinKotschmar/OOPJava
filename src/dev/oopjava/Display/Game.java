@@ -5,16 +5,17 @@ import dev.oopjava.Level.*;
 import dev.oopjava.Entitys.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
 
     private GameWindow display;        //Display Klasse erstellen
     private CreateLevel level;  //Level erstellen
+    private Skeleton enemy;
 
     public int scale, index;       //breite, höhe
     public double backscale;
     public String title;            //Fenster Titel
+    long Timer;
 
     private boolean running = false;
     private boolean started = false;
@@ -30,9 +31,10 @@ public class Game implements Runnable {
     public Game(String title) {     //Game Methode erstellen
         this.title = title;
 
-        scale = 2;
+        scale = 5;
         backscale = 1/scale;
         index = 0;
+        Timer = System.currentTimeMillis();
 
         handler = new Handler();
         processing = new Processing();
@@ -47,7 +49,8 @@ public class Game implements Runnable {
 
         //entitys = new EntityControl(handler, character, scale);
 
-        handler.addObject(new Player(80,80, 1, scale, ID.Player, handler));
+        handler.addObject(new Player(16,16, 5, scale, ID.Player, handler));
+        enemy = new Skeleton(32,32, 1, scale, ID.Player, handler);
 
     }
 
@@ -71,6 +74,7 @@ public class Game implements Runnable {
         }
         g2.scale(0.2,0.2);
         handler.Render(g);
+        enemy.Render(g, Timer);
         g.dispose();
         bs.show();
     }

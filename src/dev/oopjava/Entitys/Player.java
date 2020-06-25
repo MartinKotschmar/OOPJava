@@ -29,7 +29,7 @@ public class Player extends ObjectSettings{
         height = 16;
 
         character = Assets.priest1v1;
-        animation = new CharacterAnimation(timer, velX);
+        animation = new CharacterAnimation(timer, velX, character);
     }
 
     public void Update() {

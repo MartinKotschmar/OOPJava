@@ -69,7 +69,7 @@ public class Border {
             currentWidthFloor = width;
             maxfloorheight = (y * a - 2) * 16;
             minCenterDoor = screenWidth / (scale * 2) - 2 * width;
-            maxCenterDoor = screenWidth / (scale * 2) + 2 * width;
+            maxCenterDoor = screenWidth / (scale * 2) + width;
 
 
             g.drawImage(Assets.cornerLB, 0, (y - 1 ) * 16, null); //static corner left bottom
@@ -116,8 +116,7 @@ public class Border {
                 }
                 g.drawImage(Assets.floorBottom[i], currentWidthFloorTB + width, maxfloorheight, null); //create Floor
 
-                if(fbx < minCenterDoor / 16 + 1 || fbx >= maxCenterDoor / 16 + 1) {
-
+                if(fbx < minCenterDoor / 16 - 1 || fbx >= maxCenterDoor / 16) {
 
                     g.drawImage(Assets.floorTop[i], currentWidthFloorTB + width, currentHeightFloorBorderTB, null); //create Floor
                     currentWidthFloorTB += width;

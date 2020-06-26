@@ -18,7 +18,7 @@ public class CreateLevel {
     Graphics g;
     Handler handler;
     Processing processing;
-    int scale, index;
+    int scale, index, e;
 
     public CreateLevel(Graphics g, Handler handler, int scale, int index, Processing processing) {
         this.g = g;
@@ -34,6 +34,7 @@ public class CreateLevel {
         Color gameColor = Color.decode("#25131A");
         g.setColor(gameColor);
         g.fillRect(0,0,1920,1080);
-        border = new Border(g, scale, index, processing);
+        //border = new Border(g, scale, index, 0, processing);
+        border = new Border(g, scale, index, 1, processing);
     }
 }

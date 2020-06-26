@@ -17,7 +17,7 @@ public class Player extends ObjectSettings{
     public int ID;
 
     Handler handler;
-    int width, height, scale;
+    int width, height, scale, minCenterDoor, maxCenterDoor,minBorderX,maxBorderX,minBorderY,maxBorderY;
 
 
     public Player(int x, int y, double speed,int scale, ID id, Handler handler){
@@ -35,11 +35,26 @@ public class Player extends ObjectSettings{
     public void Update() {
         x += velX;
         y += velY;
+        minCenterDoor = 1920/(scale * 2) - 2 * width;
+        maxCenterDoor = 1920/(scale * 2);
+        minBorderX = width;
+        maxBorderX = 1920/scale - 2 * width;
+        minBorderY = height;
+        maxBorderY = 1080/scale - 2 * height;
 
         if(x < width) { x = width; }
-        if(x > 1920/scale - 2 * width) { x = 1920/scale - 2 * width; }
-        if(y < height) { y = height; }
-        if(y > 1080/scale - 2 * height) { y = 1080/scale - 2 * height; }
+        if(x > maxBorderX) { x = maxBorderX; }
+        if(y < height) {
+            y = height;
+           /* if(x > minCenterDoor && x < maxCenterDoor) {
+                y += velY;
+            } else if(x <= minCenterDoor){ x = minCenterDoor;
+            } else if(x >= maxCenterDoor){ x = maxCenterDoor;
+            } */
+        }
+        if(y > maxBorderY) { y = maxBorderY; }
+
+        System.out.println(x + " + " + y);
 
         animation.tick(velX,velY);
 

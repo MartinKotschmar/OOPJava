@@ -71,6 +71,7 @@ public class Game implements Runnable {
         if(true) {
             g2.scale(scale,scale);
             level = new CreateLevel(g, handler, scale, index, processing);
+            g.drawImage(Assets.hara,200,100,null);
         }
         g2.scale(0.2,0.2);
         handler.Render(g);

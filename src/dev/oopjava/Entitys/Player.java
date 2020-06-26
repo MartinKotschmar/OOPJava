@@ -54,8 +54,6 @@ public class Player extends ObjectSettings{
         }
         if(y > maxBorderY) { y = maxBorderY; }
 
-        System.out.println(x + " + " + y);
-
         animation.tick(velX,velY);
 
         if (handler.isUp()) velY = -speed;

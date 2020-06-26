@@ -140,5 +140,41 @@ public class Border {
                 fx = staticfx;
 
             }
+           /* g.drawImage(Assets.wallleft, width, 10 * height, null);
+            g.drawImage(Assets.walls, 2 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 3 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 4 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 5 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 6 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 7 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 8 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 9 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 10 * width, 10 * height, null);
+            g.drawImage(Assets.walls, 11* width, 10 * height, null);
+            g.drawImage(Assets.walls, 12* width, 10 * height, null);
+            g.drawImage(Assets.walls, 13* width, 10 * height, null);
+            g.drawImage(Assets.walls, 14* width, 10 * height, null);
+            g.drawImage(Assets.walls, 15* width, 10 * height, null);
+            g.drawImage(Assets.walls, 16* width, 10 * height, null);
+            g.drawImage(Assets.walls, 17* width, 10 * height, null);
+            g.drawImage(Assets.walls, 18* width, 10 * height, null);
+            g.drawImage(Assets.walls, 19* width, 10 * height, null);
+            g.drawImage(Assets.walls, 20* width, 10 * height, null);
+            g.drawImage(Assets.walls, 21* width, 10 * height, null);
+            g.drawImage(Assets.wallright, 22* width, 10 * height, null);
+            g.drawImage(Assets.walltop, 3 * width, 0, null);
+            g.drawImage(Assets.walldown, 3 * width, height, null);
+            g.drawImage(Assets.walldown, 3 * width, 2 *height, null);
+            g.drawImage(Assets.walldown, 3 * width, 3 *height, null);
+            g.drawImage(Assets.walldown, 3 * width,4 * height, null);
+            g.drawImage(Assets.walldown, 3 * width, 5 *height, null);
+            g.drawImage(Assets.walldown, 3 * width, 6 *height, null);
+            g.drawImage(Assets.walldown, 3 * width, 7 * height, null);
+            g.drawImage(Assets.walldown, 3 * width, 8 * height, null);
+            g.drawImage(Assets.walldown, 3 * width, 9 * height, null);
+            g.drawImage(Assets.walldown, 3 * width, 10 * height, null);
+            g.drawImage(Assets.wallbot, 3 * width, 11 * height, null); */
+
+
         }
 }

@@ -20,6 +20,7 @@ public class Assets {
                                 wallBottom[],
                                 wallLeft[],
                                 wallRight[],
+                                walls, wallleft, wallright, walltop, wallbot, walldown,
                                 brownboxsmall, greyboxsmall, greyboxmedium, greyboxlarge,
                                 brownboxmedium, greyboxsmall2, goldcoin, bluedrinksmall,
                                 silverkey, reddrinkmedium, burningtorch, burninghalftorch,
@@ -32,12 +33,37 @@ public class Assets {
                                 entryleft, entryright, entry, ladder, oldiespear, oldienormal,
                                 oldiehat, oldieknife, newbiespear, newbieknife, newbienormal,
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
-                                ghostknife, ghostspear, ghostsythe;
+                                ghostknife, ghostspear, ghostsythe,
+                                hara;
     public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1;
 
     public static void init(){
 
         Tileset parts = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Tileset.png"));
+
+        Tileset Twall = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Wall.png"));
+
+        walls = Twall.location(0, 0, width, height);
+
+        Tileset Twallleft = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Wallleft.png"));
+
+        wallleft = Twallleft.location(0, 0, width, height);
+
+        Tileset Twallright = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Wallrechts.png"));
+
+        wallright = Twallright.location(0, 0, width, height);
+
+        Tileset Twalltop = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Walloben.png"));
+
+        walltop = Twalltop.location(0, 0, width, height);
+
+        Tileset Twallbot = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Wallunten.png"));
+
+        wallbot = Twallbot.location(0, 0, width, height);
+
+        Tileset Twalldown = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Wallsenkrecht.png"));
+
+        walldown = Twalldown.location(0, 0, width, height);
 
 
         //borders and ground
@@ -168,6 +194,10 @@ public class Assets {
 
         //Characters
         Tileset characters = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Character_2.png"));
+
+        Tileset prof = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/hara.png"));
+
+        hara = prof.location(0,0,48,48);
 
         oldiespear = characters.location(0,0, width, height);
         oldienormal = characters.location(16,0, width, height);

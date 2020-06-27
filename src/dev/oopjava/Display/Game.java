@@ -11,6 +11,7 @@ public class Game implements Runnable {
     private GameWindow display;        //Display Klasse erstellen
     private CreateLevel level;  //Level erstellen
     private Skeleton enemy;
+    private Player player;
 
     public int scale, index;       //breite, höhe
     public double backscale;
@@ -27,6 +28,7 @@ public class Game implements Runnable {
     private String character;
     public Handler handler;
     public Processing processing;
+    public Camera camera;
 
     public Game(String title) {     //Game Methode erstellen
         this.title = title;
@@ -37,8 +39,16 @@ public class Game implements Runnable {
         Timer = System.currentTimeMillis();
 
         handler = new Handler();
-        processing = new Processing();
+        camera = new Camera(this,0 ,0);
         character = "Priest1";
+    }
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public void setCamera(Camera camera) {
+        this.camera = camera;
     }
 
     private void Graphics(){
@@ -47,17 +57,31 @@ public class Game implements Runnable {
 
         Assets.init();
 
+        handler.addObject(new Player(1920/10,1080/10, 1, scale, ID.Player, handler));
+
         //entitys = new EntityControl(handler, character, scale);
 
-        handler.addObject(new Player(16,16, 5, scale, ID.Player, handler));
-        enemy = new Skeleton(32,32, 1, scale, ID.Player, handler);
+        //enemy = new Skeleton(32,32, 1, scale, ID.Player, handler);
 
     }
 
     private void Update(Handler handler){      //Update Fenster Methode
 
-        this.handler = handler;
+        for(int i = 0; i < handler.getObject().size(); i++) {
+            if(handler.getObject().get(i).getId() == ID.Player) {
+                camera.centerOnEntity(handler.getObject().get(i));
+            }
+        }
+
         handler.Update();
+
+       //this.getCamera().move(1,1);
+
+    }
+
+    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
+
+        this.handler = handler;
 
         bs = display.getCanvas().getBufferStrategy();
         if(bs == null){
@@ -67,30 +91,28 @@ public class Game implements Runnable {
 
         g = bs.getDrawGraphics();
         Graphics2D g2 = (Graphics2D) g;
+        g2.translate(-camera.getX(), -camera.getY());
 
-        if(true) {
-            g2.scale(scale,scale);
-            level = new CreateLevel(g, handler, scale, index, processing);
-            g.drawImage(Assets.hara,200,100,null);
-        }
+        g2.scale(5,5);
+        level = new CreateLevel(g, handler, scale, index, processing);
+        g.drawImage(Assets.hara,200,100,null);
         g2.scale(0.2,0.2);
+
         handler.Render(g);
-        enemy.Render(g, Timer);
+        g2.translate(camera.getX(), camera.getY());
+
+        //enemy.Render(g, Timer);
         g.dispose();
         bs.show();
-    }
 
-    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
-
-        this.handler = handler;
     }
 
     public void run() {     //run Methode zum Fenster Updaten
 
         Graphics();
         long lastTime = System.nanoTime();
-        double amountOfTicks = 60.0;
-        double amountOfTicks2 = 600.0;
+        double amountOfTicks = 60;
+        double amountOfTicks2 = 180;
         double ns = 1000000000 / amountOfTicks;
         double ns2 = 1000000000 / amountOfTicks2;
         double delta = 0;

@@ -2,6 +2,7 @@ package dev.oopjava.Level;
 
 import dev.oopjava.Entitys.Border;
 import dev.oopjava.Entitys.Handler;
+import dev.oopjava.Entitys.MainBorder;
 import dev.oopjava.Entitys.Processing;
 import dev.oopjava.tileset.*;
 import dev.oopjava.Display.*;
@@ -14,10 +15,11 @@ import java.awt.image.BufferedImage;
 
 public class CreateLevel {
 
-    private Border border;
+    private MainBorder border;
     Graphics g;
     Handler handler;
     Processing processing;
+    Game game;
     int scale, index, e;
 
     public CreateLevel(Graphics g, Handler handler, int scale, int index, Processing processing) {
@@ -33,8 +35,9 @@ public class CreateLevel {
     private void Render(){
         Color gameColor = Color.decode("#25131A");
         g.setColor(gameColor);
-        g.fillRect(0,0,1920,1080);
+        g.fillRect(0 ,0,1920 * 5, 1080 * 5);
         //border = new Border(g, scale, index, 0, processing);
-        border = new Border(g, scale, index, 1, processing);
+        //border = new Border(g, scale, index, 1, processing);
+        border = new MainBorder(2,1920,1080,1920,1080,0,0,0,0,0,0,scale,true,g);
     }
 }

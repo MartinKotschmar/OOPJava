@@ -17,6 +17,14 @@ public class Handler {
             }
     }
 
+    public LinkedList<ObjectSettings> getObject() {
+        return object;
+    }
+
+    public void setObject(LinkedList<ObjectSettings> object) {
+        this.object = object;
+    }
+
     public void Render (Graphics g) {
 
         for(int i = 0; i < object.size(); i++) {

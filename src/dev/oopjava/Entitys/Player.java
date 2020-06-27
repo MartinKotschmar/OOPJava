@@ -12,7 +12,9 @@ import java.io.IOException;
 public class Player extends ObjectSettings{
 
     private CharacterAnimation animation;
+    private Camera camera;
     private int timer;
+    private int exX, exY;
     private static BufferedImage[] character;
     public int ID;
 
@@ -32,9 +34,27 @@ public class Player extends ObjectSettings{
         animation = new CharacterAnimation(timer, velX, character);
     }
 
+    public int getExX() {
+        return exX;
+    }
+
+    public void setExX(int exX) {
+        this.exX = exX;
+    }
+
+    public int getExY() {
+        return exY;
+    }
+
+    public void setExY(int exY) {
+        this.exY = exY;
+    }
+
     public void Update() {
         x += velX;
         y += velY;
+        exX = x;
+        exY = y;
         minCenterDoor = 1920/(scale * 2) - 2 * width;
         maxCenterDoor = 1920/(scale * 2);
         minBorderX = width;
@@ -42,17 +62,17 @@ public class Player extends ObjectSettings{
         minBorderY = height;
         maxBorderY = 1080/scale - 2 * height;
 
-        if(x < width) { x = width; }
+       /* if(x < width) { x = width; }
         if(x > maxBorderX) { x = maxBorderX; }
         if(y < height) {
             y = height;
-           /* if(x > minCenterDoor && x < maxCenterDoor) {
+            if(x > minCenterDoor && x < maxCenterDoor) {
                 y += velY;
             } else if(x <= minCenterDoor){ x = minCenterDoor;
             } else if(x >= maxCenterDoor){ x = maxCenterDoor;
-            } */
+            }
         }
-        if(y > maxBorderY) { y = maxBorderY; }
+        if(y > maxBorderY) { y = maxBorderY; }*/
 
         animation.tick(velX,velY);
 

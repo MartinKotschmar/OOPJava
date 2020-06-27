@@ -14,12 +14,11 @@ public class Camera {
         this.game = game;
         this.x = x;
         this.y = y;
-
     }
 
     public void centerOnEntity(ObjectSettings object){
-        x = ((object.getX()));
-        y = ((object.getY()));
+        x = object.getX() * 5 - 1920/2;
+        y = object.getY() * 5 - 1080/2;
     }
 
    /*public void move(float xAmt, float yAmt){

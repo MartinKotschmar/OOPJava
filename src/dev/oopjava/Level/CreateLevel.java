@@ -38,6 +38,9 @@ public class CreateLevel {
         g.fillRect(0 ,0,1920 * 5, 1080 * 5);
         //border = new Border(g, scale, index, 0, processing);
         //border = new Border(g, scale, index, 1, processing);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.scale(5,5);
         border = new MainBorder(2,1920,1080,1920,1080,0,0,0,0,0,0,scale,true,g);
+        g2.scale(0.2,0.2);
     }
 }

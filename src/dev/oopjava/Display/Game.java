@@ -57,7 +57,7 @@ public class Game implements Runnable {
 
         Assets.init();
 
-        handler.addObject(new Player(1920/10,1080/10, 1, scale, ID.Player, handler));
+        handler.addObject(new Player(1920/5,1080/5, 1, scale, ID.Player, handler));
 
         //entitys = new EntityControl(handler, character, scale);
 
@@ -66,6 +66,8 @@ public class Game implements Runnable {
     }
 
     private void Update(Handler handler){      //Update Fenster Methode
+
+        this.handler = handler;
 
         for(int i = 0; i < handler.getObject().size(); i++) {
             if(handler.getObject().get(i).getId() == ID.Player) {
@@ -93,10 +95,9 @@ public class Game implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
         g2.translate(-camera.getX(), -camera.getY());
 
-        g2.scale(5,5);
         level = new CreateLevel(g, handler, scale, index, processing);
-        g.drawImage(Assets.hara,200,100,null);
-        g2.scale(0.2,0.2);
+        //g.drawImage(Assets.hara,200,100,null);
+        //g2.scale(0.2,0.2);
 
         handler.Render(g);
         g2.translate(camera.getX(), camera.getY());

@@ -58,17 +58,17 @@ public class MainBorder {
         levelWidthSize = numberOfRooms * screenWidth;
         levelHeightSize = numberOfRooms * screenHeight;
 
+        width = 16;
+        height = 16;
+        i = 0;
+
         currentHeightWallLeft = height;
         currentHeightWallRight = height;
 
         currentWidthWallTop = width;
 
-        width = 16;
-        height = 16;
-        i = 0;
-
         //if(itemroom == true) {normalRooms = numberOfRooms - 1;} else normalRooms = numberOfRooms;
-        normalRooms = numberOfRooms;
+        normalRooms = 0;
 
         CreateBorder();
 
@@ -85,63 +85,76 @@ public class MainBorder {
         for(;YAssetParts > 0; YAssetParts--) {
 
             if(i>1) {i=0;}
-            g.drawImage(Assets.wallLeft[i], 0, currentHeightWallLeft - height + a, null);   //create wall left
-            g.drawImage(Assets.wallRight[i], maxX - width, currentHeightWallLeft - height + a , null); //create wall right
+            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10), currentHeightWallLeft - height + a, null);   //create wall left
+            g.drawImage(Assets.wallRight[i],  1920/5 - width - ((1920 - x)/10), currentHeightWallLeft - height + a , null); //create wall right
             currentHeightWallLeft += height;
             i++;
         }
         currentHeightWallLeft -= height;
         i = 0;
         StaticBorder(currentHeightWallLeft);
+        BorderTopBottom(currentHeightWallLeft);
     }
 
-    public void StaticBorder(int heightWallBottom) {
+    public void StaticBorder( int currentHeightWallLeft) {
+        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner left bottom
+        g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner right bottom
+    }
+
+    public void BorderTopBottom(int heightWallBottom) {
         this.heightWallBottom = heightWallBottom;
 
         for(;XAssetParts > 0; XAssetParts--) {
             if(i>2){i = 0; }
 
-            g.drawImage(Assets.wallTop[i], currentWidthWallTop, 0 + a, null); //create wall top
-            g.drawImage(Assets.wallBottom[i], currentWidthWallTop, heightWallBottom + a, null); //create wall bottom
+            g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x)/10), 0 + a, null); //create wall top
+            g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x)/10), heightWallBottom + a, null); //create wall bottom
             currentWidthWallTop += width;
             i++;
         }
+        currentWidthWallTop = width;
+        currentHeightWallLeft = height;
         i = 0;
     }
 
     public void CreateBorder() {
 
-        for(;normalRooms > 0; normalRooms--) {
+        if(itemroom == true) {
+            x = screenWidth/2;
+            y = screenHeight/2;
+        }
+
+        for(;normalRooms < numberOfRooms; normalRooms++) {
             index = normalRooms;
             switch(index) {
-                case(1):
+                case(0):
                     x = x1;
                     y = y1;
                     a = 0;
                     BorderLeftRight();
                     break;
-                case(2):
+                case(1):
                     x = x2;
                     y = y2;
-                    a = y1;
+                    a = heightWallBottom + height;
+                    BorderLeftRight();
+                    break;
+                case(2):
+                    x = x3;
+                    y = y3;
+                    a += heightWallBottom + height;
                     BorderLeftRight();
                     break;
                 case(3):
-                    x = x3;
-                    y = y3;
-                    a = y1 + y2;
+                    x = x4;
+                    y = y4;
+                    a += heightWallBottom + height;
                     BorderLeftRight();
                     break;
                 case(4):
-                    x = x4;
-                    y = y4;
-                    a = y1 + y2 + y3;
-                    BorderLeftRight();
-                    break;
-                case(5):
                     x = x5;
                     y = y5;
-                    a = y1 + y2 + y3 + y4;
+                    a += heightWallBottom + height;
                     BorderLeftRight();
                     break;
                 default:

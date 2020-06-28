@@ -57,7 +57,7 @@ public class Game implements Runnable {
 
         Assets.init();
 
-        handler.addObject(new Player(1920/5,1080/5, 1, scale, ID.Player, handler));
+        handler.addObject(new Player(1920/10,1080/10, 10, scale, ID.Player, handler));
 
         //entitys = new EntityControl(handler, character, scale);
 

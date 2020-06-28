@@ -6,19 +6,19 @@ import java.awt.*;
 
 public class MainBorder {
     private int screenWidth,screenHeight;
-    private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, scale;
+    private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, scale;
     private int totalX, totalY,levelWidthSize, levelHeightSize,normalRooms, index;
-    private int x, y, i, a;
+    private int x, y, i, a, a2;
     private int YAssetParts, XAssetParts, maxX, maxY;
-    private int xz1, xz2, xz3, xz4, xz5;
-    private int yz1, yz2, yz3, yz4, yz5;
+    private int xz1, xz2, xz3, xz4;
+    private int yz1, yz2, yz3, yz4;
     private int width, height;
     private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
     private boolean itemroom;
     Graphics g;
 
 
-    public MainBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5, int scale, boolean itemroom, Graphics g) {
+    public MainBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
         this.numberOfRooms = numberOfRooms;
         this.x1 = x1;
         this.y1 = y1;
@@ -28,8 +28,6 @@ public class MainBorder {
         this.y3 = y3;
         this.x4 = x4;
         this.y4 = y4;
-        this.x5 = x5;
-        this.y5 = y5;
         this.scale = scale;
         this.itemroom = itemroom;
         this.g = g;
@@ -52,8 +50,8 @@ public class MainBorder {
         screenWidth = tk.getScreenSize().width;
         screenHeight = tk.getScreenSize().height;
 
-        totalX = x1 + x2 + x3 + x4 + x5;
-        totalY = y1 + y2 + y3 + y4 + y5;
+        totalX = x1 + x2 + x3 + x4;
+        totalY = y1 + y2 + y3 + y4;
 
         levelWidthSize = numberOfRooms * screenWidth;
         levelHeightSize = numberOfRooms * screenHeight;
@@ -85,8 +83,8 @@ public class MainBorder {
         for(;YAssetParts > 0; YAssetParts--) {
 
             if(i>1) {i=0;}
-            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10), currentHeightWallLeft - height + a, null);   //create wall left
-            g.drawImage(Assets.wallRight[i],  1920/5 - width - ((1920 - x)/10), currentHeightWallLeft - height + a , null); //create wall right
+            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10 + (a2/5)), currentHeightWallLeft - height + a, null);   //create wall left
+            g.drawImage(Assets.wallRight[i],  (1920)/5 - width - ((1920 - x)/10) + a2/5, currentHeightWallLeft - height + a , null); //create wall right
             currentHeightWallLeft += height;
             i++;
         }
@@ -97,8 +95,8 @@ public class MainBorder {
     }
 
     public void StaticBorder( int currentHeightWallLeft) {
-        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner left bottom
-        g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner right bottom
+        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10) + a2/5, currentHeightWallLeft + a, null); //static corner left bottom
+        g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10) + a2/5, currentHeightWallLeft + a, null); //static corner right bottom
     }
 
     public void BorderTopBottom(int heightWallBottom) {
@@ -107,8 +105,8 @@ public class MainBorder {
         for(;XAssetParts > 0; XAssetParts--) {
             if(i>2){i = 0; }
 
-            g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x)/10), 0 + a, null); //create wall top
-            g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x)/10), heightWallBottom + a, null); //create wall bottom
+            g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, 0 + a, null); //create wall top
+            g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, heightWallBottom + a, null); //create wall bottom
             currentWidthWallTop += width;
             i++;
         }
@@ -131,29 +129,25 @@ public class MainBorder {
                     x = x1;
                     y = y1;
                     a = 0;
+                    a2 = 0;
                     BorderLeftRight();
                     break;
                 case(1):
                     x = x2;
                     y = y2;
-                    a = heightWallBottom + height;
+                    a += heightWallBottom + width;
+                    a2 = 0;
                     BorderLeftRight();
                     break;
                 case(2):
                     x = x3;
                     y = y3;
-                    a += heightWallBottom + height;
+                    a2 -= x2;
                     BorderLeftRight();
                     break;
                 case(3):
                     x = x4;
                     y = y4;
-                    a += heightWallBottom + height;
-                    BorderLeftRight();
-                    break;
-                case(4):
-                    x = x5;
-                    y = y5;
                     a += heightWallBottom + height;
                     BorderLeftRight();
                     break;

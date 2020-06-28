@@ -34,13 +34,15 @@ public class CreateLevel {
         g.setColor(gameColor);
         g.fillRect(-1920 * 5,-1080 * 5,1920 * 10, 1080 * 10);
         g.setColor(Color.blue);
-        g.fillRect(0,0,1920,1080 * 5);
+        g.fillRect(-1920,0,1920 *2,1080 * 5);
         //border = new Border(g, scale, index, 0, processing);
         //border = new Border(g, scale, index, 1, processing);
         Graphics2D g2 = (Graphics2D) g;
         g2.scale(5,5);
-        border = new MainBorder(5,1920,1080,1440,1080,480,756,1920,1080,1920,1080,scale,true,g);
+        border = new MainBorder(4,480, 756,1440,1080,1440,1080,480,756, scale, true,g);
         //wall = new WallGenerator();
+
+        //1920, 1080, 1440, 1080, 480, 756
         //g2.scale(0.2,0.2);
     }
 }

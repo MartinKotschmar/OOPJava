@@ -8,8 +8,7 @@ public class Assets {
 
     private static final int width = 16, height = 16;
 
-    public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3,
-                                floor1,
+    public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3, floor1,
                                 floorLT, floorRT, floorLB, floorRB,
                                 floorTop[],
                                 floorBottom[],

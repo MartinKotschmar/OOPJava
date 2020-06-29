@@ -1,6 +1,7 @@
 package dev.oopjava.Level;
 
 import dev.oopjava.Entitys.*;
+import dev.oopjava.tileset.Assets;
 import dev.oopjava.tileset.*;
 import dev.oopjava.Display.*;
 import dev.oopjava.Display.Menu;
@@ -40,6 +41,7 @@ public class CreateLevel {
         Graphics2D g2 = (Graphics2D) g;
         g2.scale(5,5);
         border = new MainBorder(4,480, 756,1440,1080,1440,1080,480,756, scale, true,g);
+        //g2.drawImage(Assets.bones,0,0, null);
         //wall = new WallGenerator();
 
         //1920, 1080, 1440, 1080, 480, 756

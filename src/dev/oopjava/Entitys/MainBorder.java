@@ -16,6 +16,7 @@ public class MainBorder {
     private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
     private boolean itemroom;
     Graphics g;
+    private Backgroundaccessoires backgroundaccessoires;
 
 
     public MainBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
@@ -113,7 +114,10 @@ public class MainBorder {
         currentWidthWallTop = width;
         currentHeightWallLeft = height;
         i = 0;
+
+        backgroundaccessoires = new Backgroundaccessoires();
     }
+
 
     public void CreateBorder() {
 

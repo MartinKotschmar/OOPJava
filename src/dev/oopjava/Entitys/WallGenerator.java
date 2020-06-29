@@ -41,7 +41,7 @@ public class WallGenerator {
         z = xz - x;
         g.drawImage(Assets.wallleft, x,y,null);
         for(;z > 2; z--) {
-            g.drawImage(Assets.walldown,x + width,y,null);
+            g.drawImage(Assets.walls,x + width,y,null);
             x+= width;
         }
         g.drawImage(Assets.wallright,xz,y,null);

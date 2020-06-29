@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class Backgroundaccessoires{
 
-    public Backgroundaccessoires {
+    public Backgroundaccessoires(int x, int y) {
         one = g2.drawImage(Assets.bones, 16, 0, null);
     }
 }

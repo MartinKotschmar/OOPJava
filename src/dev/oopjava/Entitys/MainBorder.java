@@ -12,6 +12,7 @@ public class MainBorder {
     private int YAssetParts, XAssetParts, maxX, maxY;
     private int xz1, xz2, xz3, xz4;
     private int yz1, yz2, yz3, yz4;
+    private int newX, newY, newA;
     private int width, height;
     private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
     private boolean itemroom;
@@ -60,6 +61,7 @@ public class MainBorder {
         width = 16;
         height = 16;
         i = 0;
+        newA = 0;
 
         currentHeightWallLeft = height;
         currentHeightWallRight = height;
@@ -115,7 +117,12 @@ public class MainBorder {
         currentHeightWallLeft = height;
         i = 0;
 
-        backgroundaccessoires = new Backgroundaccessoires();
+        newX = x;
+        newY = y;
+        if(a2 == 0 || a2 == newA) {newY += heightWallBottom + height;
+        } else {newX = a2;}
+        backgroundaccessoires = new Backgroundaccessoires(newX,newY);
+        newA = a2;
     }
 
 

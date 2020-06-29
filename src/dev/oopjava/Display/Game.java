@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 
 public class Game implements Runnable {
 
+    private Randomizer randomizer;
     private GameWindow display;        //Display Klasse erstellen
     private CreateLevel level;  //Level erstellen
     private Skeleton enemy;
@@ -157,6 +158,7 @@ public class Game implements Runnable {
         running = true;
         thread = new Thread(this);
         thread.start();
+        randomizer = new Randomizer();
     }
 
     public synchronized void stop(){        //GameLoop bedingt (stoppen)

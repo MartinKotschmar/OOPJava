@@ -9,9 +9,20 @@ import java.awt.*;
 
 
 public class Backgroundaccessoires{
+    private int x;
+    private int y;
+    Graphics g;
 
-    public Backgroundaccessoires(int x, int y) {
-        one = g2.drawImage(Assets.bones, 16, 0, null);
+    public Backgroundaccessoires(int x, int y, Graphics g) {
+        this.x =x;
+        this.y =y;
+        this.g = g;
+
+        Graphics2D g2 = (Graphics2D) g;
+
+        g.drawImage(Assets.bones, x/5, y/5, null);
     }
+
+
 }
 

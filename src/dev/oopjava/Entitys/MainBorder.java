@@ -117,11 +117,9 @@ public class MainBorder {
         currentHeightWallLeft = height;
         i = 0;
 
-        newX = x;
-        newY = y;
-        if(a2 == 0 || a2 == newA) {newY += heightWallBottom + height;
-        } else {newX = a2;}
-        backgroundaccessoires = new Backgroundaccessoires(newX,newY);
+        if(a2 == 0 || a2 == newA){newY += heightWallBottom + height;
+        } else {newX += a2;}
+        backgroundaccessoires = new Backgroundaccessoires(newX,newY,g);
         newA = a2;
     }
 
@@ -139,6 +137,8 @@ public class MainBorder {
                 case(0):
                     x = x1;
                     y = y1;
+                    newX = x;
+                    newY = y;
                     a = 0;
                     a2 = 0;
                     BorderLeftRight();
@@ -153,7 +153,7 @@ public class MainBorder {
                 case(2):
                     x = x3;
                     y = y3;
-                    a2 -= x2;
+                    a2 += -x2;
                     BorderLeftRight();
                     break;
                 case(3):

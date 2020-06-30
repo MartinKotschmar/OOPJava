@@ -14,10 +14,11 @@ public class MainBorder {
     private int yz1, yz2, yz3, yz4;
     private int newX, newY, newA;
     private int width, height;
-    private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
+    private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop, heightWallBottom;
     private boolean itemroom;
     Graphics g;
     private Backgroundaccessoires backgroundaccessoires;
+    private Randomizer randomizer;
 
 
     public MainBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
@@ -75,55 +76,6 @@ public class MainBorder {
 
     }
 
-    public void BorderLeftRight() {
-
-        YAssetParts = (int) Math.ceil(y / (16 * scale)) - 1; //Number of Tiles y total height except corner tile bottom
-        XAssetParts = (int) Math.ceil(x / (16 * scale)) - 2; //Number of Tiles x Corners will be added by left and right wall
-
-        maxX = x / scale;
-        maxY = y / scale;
-
-        for(;YAssetParts > 0; YAssetParts--) {
-
-            if(i>1) {i=0;}
-            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10 + (a2/5)), currentHeightWallLeft - height + a, null);   //create wall left
-            g.drawImage(Assets.wallRight[i],  (1920)/5 - width - ((1920 - x)/10) + a2/5, currentHeightWallLeft - height + a , null); //create wall right
-            currentHeightWallLeft += height;
-            i++;
-        }
-        currentHeightWallLeft -= height;
-        i = 0;
-        StaticBorder(currentHeightWallLeft);
-        BorderTopBottom(currentHeightWallLeft);
-    }
-
-    public void StaticBorder( int currentHeightWallLeft) {
-        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10) + a2/5, currentHeightWallLeft + a, null); //static corner left bottom
-        g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10) + a2/5, currentHeightWallLeft + a, null); //static corner right bottom
-    }
-
-    public void BorderTopBottom(int heightWallBottom) {
-        this.heightWallBottom = heightWallBottom;
-
-        for(;XAssetParts > 0; XAssetParts--) {
-            if(i>2){i = 0; }
-
-            g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, 0 + a, null); //create wall top
-            g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, heightWallBottom + a, null); //create wall bottom
-            currentWidthWallTop += width;
-            i++;
-        }
-        currentWidthWallTop = width;
-        currentHeightWallLeft = height;
-        i = 0;
-
-        if(a2 == 0 || a2 == newA){newY += heightWallBottom + height;
-        } else {newX += a2;}
-        backgroundaccessoires = new Backgroundaccessoires(newX,newY,g);
-        newA = a2;
-    }
-
-
     public void CreateBorder() {
 
         if(itemroom == true) {
@@ -131,7 +83,7 @@ public class MainBorder {
             y = screenHeight/2;
         }
 
-        for(;normalRooms < numberOfRooms; normalRooms++) {
+        for(i = 0; normalRooms < numberOfRooms; normalRooms++) {
             index = normalRooms;
             switch(index) {
                 case(0):
@@ -166,6 +118,62 @@ public class MainBorder {
                     break;
             }
         }
+    }
 
+    public void BorderLeftRight() {
+
+        YAssetParts = (int) Math.ceil(y / (16 * scale)) - 1; //Number of Tiles y total height except corner tile bottom
+        XAssetParts = (int) Math.ceil(x / (16 * scale)) - 2; //Number of Tiles x Corners will be added by left and right wall
+
+        maxX = x / scale;
+        maxY = y / scale;
+
+        for(;YAssetParts > 0; YAssetParts--) {
+
+            if(i > 1) {i = 0;}
+            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10 + (a2/5)), currentHeightWallLeft - height + a, null);   //create wall left
+            g.drawImage(Assets.wallRight[i],  (1920)/5 - width - ((1920 - x)/10) + a2/5, currentHeightWallLeft - height + a , null); //create wall right
+            currentHeightWallLeft += height;
+            i++;
+        }
+        currentHeightWallLeft -= height;
+        i = 0;
+        StaticBorder(currentHeightWallLeft);
+        BorderTopBottom(currentHeightWallLeft);
+    }
+
+    public void StaticBorder( int currentHeightWallLeft) {
+        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10) + a2/5, currentHeightWallLeft + a, null); //static corner left bottom
+        g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10) + a2/5, currentHeightWallLeft + a, null); //static corner right bottom
+    }
+
+    public void BorderTopBottom(int heightWallBottom) {
+        this.heightWallBottom = heightWallBottom;
+
+        for(;XAssetParts > 0; XAssetParts--) {
+            if(i > 2){i = 0;}
+
+            g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, 0 + a, null); //create wall top
+            g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, heightWallBottom + a, null); //create wall bottom
+            currentWidthWallTop += width;
+            i++;
+        }
+        currentWidthWallTop = width;
+        currentHeightWallLeft = height;
+        i = 0;
+
+        randomizer = new Randomizer();
+        //TODO:
+        // Raumkoordinaten der 5 Räume ausrechnen
+        // Randomize- Wert ausgeben
+        // An Randomizestelle Asset reinpacken
+
+
+
+
+        if(a2 == 0 || a2 == newA){newY += heightWallBottom + height;
+        } else {newX += a2;}
+        backgroundaccessoires = new Backgroundaccessoires(newX,newY,g);
+        newA = a2;
     }
 }

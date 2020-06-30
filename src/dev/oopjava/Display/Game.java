@@ -14,7 +14,7 @@ public class Game implements Runnable {
     private Skeleton enemy;
     private Player player;
 
-    public int scale, index;       //breite, höhe
+    public int scale, index;       //Breite, Höhe
     public double backscale;
     public String title;            //Fenster Titel
     long Timer;

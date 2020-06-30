@@ -34,13 +34,15 @@ public class Assets {
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe,
                                 hara;
-    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems;
+    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes;
 
 
 
     public static void init(){
 
         randomitems = new BufferedImage[9];
+        flames = new BufferedImage[5];
+        boxes = new BufferedImage[6];
 
         Tileset parts = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Tileset.png"));
 

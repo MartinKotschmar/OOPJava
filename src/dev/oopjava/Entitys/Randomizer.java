@@ -14,16 +14,12 @@ public class Randomizer {
 
     public Randomizer() {
         r = new Random();
-
     }
 
     public void Generator(){
         //Arrays erstellen, und rausziehen
-
-        i = 0;
-        for(; i < 5; i++) {
-            randomNumbers[i] = r.nextInt();
-
+        for(i = 0; i < 5; i++) {
+            randomNumbers[i] = r.nextInt(9-0+1);
         }
     }
 }

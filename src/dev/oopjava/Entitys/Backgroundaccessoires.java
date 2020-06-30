@@ -13,6 +13,8 @@ public class Backgroundaccessoires{
     private int y;
     Graphics g;
     BufferedImage[] randomitems;
+    BufferedImage[] flames;
+    BufferedImage[] boxes;
 
     public Backgroundaccessoires(int x, int y, Graphics g) {
         this.x =x;
@@ -23,6 +25,8 @@ public class Backgroundaccessoires{
 
         g.drawImage(Assets.bones, x/5, y/5, null);
         randomitems = Assets.randomitems;
+        flames = Assets.flames;
+        boxes = Assets.boxes;
     }
 }
 

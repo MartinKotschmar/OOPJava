@@ -167,8 +167,7 @@ public class MainBorder {
         // Raumkoordinaten der 5 Räume ausrechnen
         // Randomize- Wert ausgeben
         // An Randomizestelle Asset reinpacken
-
-
+        g.drawImage(Assets.randomitems[i], width + ((1920 - x)/10) + a2/5, height + a, null);
 
 
         if(a2 == 0 || a2 == newA){newY += heightWallBottom + height;

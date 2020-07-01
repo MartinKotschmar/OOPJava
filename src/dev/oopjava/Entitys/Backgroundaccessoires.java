@@ -23,7 +23,6 @@ public class Backgroundaccessoires{
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g.drawImage(Assets.bones, x/5, y/5, null);
         randomitems = Assets.randomitems;
         flames = Assets.flames;
         boxes = Assets.boxes;

@@ -16,6 +16,8 @@ public class MainBorder {
     private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
     private boolean itemroom;
     private int currentWidthFloor, currentHeightFloor;
+    private int YFloorParts, XFloorParts;
+    private int currentWidthFloorTB, currentHeightFloorTB;
     Graphics g;
     private WallGenerator wall;
 
@@ -78,8 +80,10 @@ public class MainBorder {
 
     public void BorderLeftRight() {
 
-        YAssetParts = (int) Math.ceil(y / (16 * scale)) - 1; //Number of Tiles y total height except corner tile bottom
+        YAssetParts = (int) Math.ceil(y / (16 * scale)); //- 1; //Number of Tiles y total height except corner tile bottom -1 für ein Raum < als der Bildschirm
         XAssetParts = (int) Math.ceil(x / (16 * scale)) - 2; //Number of Tiles x Corners will be added by left and right wall
+        YFloorParts = (int) Math.ceil(y / (16 * scale)) - 3;
+        XFloorParts = (int) Math.ceil(x / (16 * scale)) - 4;
 
         maxX = x / scale;
         maxY = y / scale;
@@ -107,10 +111,48 @@ public class MainBorder {
     public void FloorCorners( int currentHeightWallLeft) {
         currentWidthFloor = width;
         currentHeightFloor = height;
+        currentWidthFloorTB = width;
+        currentHeightFloorTB = height;
         g.drawImage(Assets.floorLT, currentWidthFloor + (1920 - x)/10, currentHeightFloor + a, null); //create Floor
         g.drawImage(Assets.floorRT, x / scale - (2 * width) + (1920 - x)/10, currentHeightFloor + a , null); //create Floor
         g.drawImage(Assets.floorLB, currentWidthFloor + (1920 - x)/10, currentHeightWallLeft - height + a, null); //create Floor
         g.drawImage(Assets.floorRB, x / scale - 2 * width + (1920 - x)/10, currentHeightWallLeft - height +a , null); //create Floor
+
+        for(; YFloorParts > 0; YFloorParts--) {
+            g.drawImage(Assets.floorLeft, currentWidthFloor + (1920 - x)/10, currentHeightFloor + a + height, null); //create Floor
+            g.drawImage(Assets.floorRight, x / scale - (2 * width) + (1920 - x)/10, currentHeightFloor + a + height, null); //create Floor
+            currentHeightFloor += height;
+        }
+        for(; XFloorParts > 0; XFloorParts--) {
+
+            if (i > 1) {i = 0;}
+            g.drawImage(Assets.floorBottom[i], currentWidthFloorTB + (1920 - x)/10 + width, currentHeightWallLeft -height + a, null); //create Floor
+            g.drawImage(Assets.floorTop[i], currentWidthFloorTB + (1920 - x)/10 + width,height + a , null); //create Floor
+            currentWidthFloorTB += width;
+            i++;
+        }
+        XFloorParts = (int) Math.ceil(x / (16 * scale)) - 4;
+        YFloorParts = (int) Math.ceil(y / (16 * scale)) - 3;
+        currentWidthFloor = width;
+        currentHeightFloor = height;
+        for (; YFloorParts > 0; YFloorParts--) {
+
+            for (; XFloorParts > 0; XFloorParts--) {
+                if (i > 11) {
+                    i = 0;
+                }
+                g.drawImage(Assets.floorCenter[i], currentWidthFloor + width + (1920 - x)/10, currentHeightFloor + height + a, null); //create Floor
+                currentWidthFloor += width;
+                i++;
+            }
+            currentWidthFloor = width;
+            currentHeightFloor += height;
+            XFloorParts = (int) Math.ceil(x / (16 * scale)) - 4;
+        }
+    }
+
+    public void Floor() {
+
     }
 
     public void BorderTopBottom(int heightWallBottom) {

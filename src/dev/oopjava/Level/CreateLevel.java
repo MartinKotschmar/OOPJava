@@ -39,7 +39,7 @@ public class CreateLevel {
         //border = new Border(g, scale, index, 1, processing);
         Graphics2D g2 = (Graphics2D) g;
         g2.scale(5,5);
-        g.drawImage(Assets.hara,150,150,null);
+        //g.drawImage(Assets.hara,150,160,null);
         border = new MainBorder(5,1920,1080,1440,1080,480,756,960,1080,1920,1080,scale,true,g);
         //wall = new WallGenerator();
         //g2.scale(0.2,0.2);

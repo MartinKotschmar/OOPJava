@@ -15,6 +15,7 @@ public class MainBorder {
     private int width, height;
     private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
     private boolean itemroom;
+    private int currentWidthFloor, currentHeightFloor;
     Graphics g;
     private WallGenerator wall;
 
@@ -94,12 +95,22 @@ public class MainBorder {
         currentHeightWallLeft -= height;
         i = 0;
         StaticBorder(currentHeightWallLeft);
+        FloorCorners(currentHeightWallLeft);
         BorderTopBottom(currentHeightWallLeft);
     }
 
     public void StaticBorder( int currentHeightWallLeft) {
         g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner left bottom
         g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner right bottom
+    }
+
+    public void FloorCorners( int currentHeightWallLeft) {
+        currentWidthFloor = width;
+        currentHeightFloor = height;
+        g.drawImage(Assets.floorLT, currentWidthFloor + (1920 - x)/10, currentHeightFloor + a, null); //create Floor
+        g.drawImage(Assets.floorRT, x / scale - (2 * width) + (1920 - x)/10, currentHeightFloor + a , null); //create Floor
+        g.drawImage(Assets.floorLB, currentWidthFloor + (1920 - x)/10, currentHeightWallLeft - height + a, null); //create Floor
+        g.drawImage(Assets.floorRB, x / scale - 2 * width + (1920 - x)/10, currentHeightWallLeft - height +a , null); //create Floor
     }
 
     public void BorderTopBottom(int heightWallBottom) {
@@ -133,13 +144,14 @@ public class MainBorder {
                     y = y1;
                     a = 0;
                     BorderLeftRight();
-                    wall = new WallGenerator(48,0,48,160,g);
+                    wall = new WallGenerator(48,0,48,96,g);
                     break;
                 case(1):
                     x = x2;
                     y = y2;
                     a = heightWallBottom + height;
                     BorderLeftRight();
+                    wall = new WallGenerator(16,48,64,48,g);
                     break;
                 case(2):
                     x = x3;

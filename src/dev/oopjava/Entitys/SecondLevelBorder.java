@@ -4,10 +4,10 @@ import dev.oopjava.tileset.Assets;
 
 import java.awt.*;
 
-public class MainBorder {
+public class SecondLevelBorder {
     private int screenWidth,screenHeight;
     private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, scale;
-    private int totalX, totalY,levelWidthSize, levelHeightSize,normalRooms, index;
+    private int totalX, totalY, levelWidthSize, levelHeightSize, normalRooms, index;
     private int x, y, i, a, a2;
     private int YAssetParts, XAssetParts, maxX, maxY;
     private int xz1, xz2, xz3, xz4;
@@ -18,10 +18,10 @@ public class MainBorder {
     private boolean itemroom;
     Graphics g;
     private Backgroundaccessoires backgroundaccessoires;
-    private Randomizer randomizer;
+    //private Randomizer randomizer; (Randomassets in weißer Voraussicht)
 
 
-    public MainBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
+    public SecondLevelBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
         this.numberOfRooms = numberOfRooms;
         this.x1 = x1;
         this.y1 = y1;
@@ -93,26 +93,69 @@ public class MainBorder {
                     newY = y;
                     a = 0;
                     a2 = 0;
+                    g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 16, height + a + 80, null);
+                    g.drawImage(Assets.stonessmall, width + ((1920 - x)/10) + a2/5 + 32, height + a + 80, null);
+
                     BorderLeftRight();
+
+                    g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5, height + a - 16, null);
+                    g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 48, height + a - 16, null);
                     break;
                 case(1):
                     x = x2;
                     y = y2;
                     a += heightWallBottom + width;
                     a2 = 0;
+                    g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 192, height + a + 160, null);
+                    g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 208, height + a + 160, null);
+                    g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 224, height + a + 160, null);
+                    g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 224, height + a + 144, null);
+                    g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 112, null);
+                    g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 128, null);
+                    g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 144, null);
+                    g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 160, null);
+                    g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 64, height + a + 128, null);
+                    g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 48, null);
+                    g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 64, null);
+                    g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 80, height + a + 64, null);
+                    g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5, height + a + 32, null);
+                    g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5, height + a + 128, null);
+
                     BorderLeftRight();
+
+                    g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 64, height + a - 16, null);
+                    g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 176, height + a - 16, null);
+
                     break;
                 case(2):
                     x = x3;
                     y = y3;
                     a2 += -x2;
+                    g.drawImage(Assets.boxes[4], width + ((1920 - x)/10) + a2/5 + 240, height + a, null);
+                    g.drawImage(Assets.trashmedium, width + ((1920 - x)/10) + a2/5 + 32, height + a + 112, null);
+                    g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 64, height + a + 128, null);
+                    g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 48, null);
+                    g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 64, null);
+                    g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 80, height + a + 64, null);
+                    g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5 + 240, height + a + 32, null);
+                    g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5 + 240, height + a + 128, null);
+
                     BorderLeftRight();
+
+                    g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5, height + a + 160, null);
+                    g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5+16, height + a + 160, null);
                     break;
                 case(3):
                     x = x4;
                     y = y4;
                     a += heightWallBottom + height;
+
                     BorderLeftRight();
+
+                    g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5, height + a - 16, null);
+                    g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 48, height + a - 16, null);
+                    g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5, height + a + 16, null);
+                    g.drawImage(Assets.trashsmall, width + ((1920 - x)/10) + a2/5 + 32, height + a + 32, null);
                     break;
                 default:
                     break;
@@ -162,12 +205,13 @@ public class MainBorder {
         currentHeightWallLeft = height;
         i = 0;
 
-        //randomizer = new Randomizer(randomNumbers);
+
         //TODO:
         // Raumkoordinaten der 5 Räume ausrechnen
         // Randomize- Wert ausgeben
         // An Randomizestelle Asset reinpacken
-        g.drawImage(Assets.randomitems[i], width + ((1920 - x)/10) + a2/5, height + a, null);
+        //g.drawImage(Assets.randomitems[i], width + ((1920 - x)/10) + a2/5, height + a, null);
+        //g.drawImage(Assets.boxes[4], width + ((1920 - x)/10) + a2/5 + 32, height + a + 16, null);
 
 
         if(a2 == 0 || a2 == newA){newY += heightWallBottom + height;

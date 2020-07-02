@@ -148,53 +148,53 @@ public class Assets {
 
         //items and accessoires
 
-        entryleft = parts.location(96,48, width,height);
-        entryright = parts.location(112,48, width,height);
-        entry = parts.location(128,48, width,height);
-        ladder = parts.location(144,48, width,height);
+        entryleft = parts.location(96,48, width,height); // entryleft
+        entryright = parts.location(112,48, width,height); // entryright
+        entry = parts.location(128,48, width,height); // entry
+        ladder = parts.location(144,48, width,height); // ladder
 
-        bordermiddleup = parts.location(96,64, width,height);
-        borderleftup = parts.location(112,64, width,height);
-        borderrightup = parts.location(128,64, width,height);
-        stonesmedium = parts.location(144,64, width,height);
+        bordermiddleup = parts.location(96,64, width,height); // bordermiddle
+        borderleftup = parts.location(112,64, width,height); // borderleftup
+        borderrightup = parts.location(128,64, width,height); // borderrightup
+        stonesmedium = parts.location(144,64, width,height); // stonesmedium
 
-        bordermiddledown = parts.location(96,80, width,height);
-        borderleftdown = parts.location(112,80, width,height);
-        borderrightdown = parts.location(128,80, width,height);
-        stonessmall = parts.location(144,80, width,height);
+        bordermiddledown = parts.location(96,80, width,height); // bordermiddledown
+        borderleftdown = parts.location(112,80, width,height); // borderleftdown
+        borderrightdown = parts.location(128,80, width,height); // borderrightdown
+        stonessmall = parts.location(144,80, width,height); // stonessmall
 
-        trashmedium = parts.location(64,96, width,height);
-        trashsmall = parts.location(80,96, width,height);
-        roundentryleft = parts.location(96,96, width,height);
-        roundentryright = parts.location(112,96, width,height);
+        trashmedium = parts.location(64,96, width,height); // trashmedium
+        trashsmall = parts.location(80,96, width,height); // trashsmall
+        roundentryleft = parts.location(96,96, width,height); // roundentryleft
+        roundentryright = parts.location(112,96, width,height); // roundentryright
         randomitems[0] = parts.location(128,96, width,height);  //bones
 
-        flag = parts.location(64,112, width,height);
-        trophysmall = parts.location(80,112, width,height);
-        trophymedium = parts.location(96,112, width,height);
-        skeleton = parts.location(112,112, width,height);
+        flag = parts.location(64,112, width,height); // flag
+        trophysmall = parts.location(80,112, width,height); // trophysmall
+        trophymedium = parts.location(96,112, width,height); // trophymedium
+        skeleton = parts.location(112,112, width,height); // skeleton
 
-        brownboxsmall = parts.location(0,128, width,height);
-        greyboxsmall = parts.location(16,128, width,height);
-        greyboxmedium = parts.location(32,128, width,height);
-        brownboxmedium = parts.location(48,128, width,height);
-        greyboxlarge = parts.location(64,128, width,height);
-        greyboxsmall2 = parts.location(80,128, width,height);
-        goldcoin = parts.location(96,128, width,height);
-        bluedrinksmall = parts.location(112,128, width,height);
-        silverkey = parts.location(128,128, width,height);
-        reddrinkmedium = parts.location(144,128, width,height);
+        boxes[0] = parts.location(0,128, width,height); //brownboxsmall
+        boxes[1] = parts.location(16,128, width,height); //greyboxsmall
+        boxes[2] = parts.location(32,128, width,height); //greyboxmedium
+        boxes[3] = parts.location(48,128, width,height); //brownboxmedium
+        boxes[4] = parts.location(64,128, width,height); //greyboxlarge
+        boxes[5] = parts.location(80,128, width,height); //greyboxsmall
+        goldcoin = parts.location(96,128, width,height); // goldcoin
+        bluedrinksmall = parts.location(112,128, width,height); // bluedrinksmall
+        silverkey = parts.location(128,128, width,height); // silverkey
+        reddrinkmedium = parts.location(144,128, width,height); // reddrinkmedium
 
-        burningtorch = parts.location(0,144, width,height);
-        burninghalftorch = parts.location(16,144, width,height);
-        torch = parts.location(32,144, width,height);
-        burningconsolemedium = parts.location(48,144, width,height);
-        consolemedium = parts.location(64,144, width,height);
-        burningconsolesmall = parts.location(80,144, width,height);
-        consolesmall = parts.location(96,144, width,height);
-        bluedrinkmedium = parts.location(112,144, width,height);
-        reddrinksmall = parts.location(128,144, width,height);
-        goldenkey = parts.location(144,144, width,height);
+        burningtorch = parts.location(0,144, width,height); // burningtorch
+        burninghalftorch = parts.location(16,144, width,height); // burninghalftorch
+        torch = parts.location(32,144, width,height); // torch
+        burningconsolemedium = parts.location(48,144, width,height); // burningconsolemedium
+        consolemedium = parts.location(64,144, width,height); // consolemedium
+        burningconsolesmall = parts.location(80,144, width,height); // burningconsolesmall
+        consolesmall = parts.location(96,144, width,height); // consolesmall
+        bluedrinkmedium = parts.location(112,144, width,height); // bluedrinkmedium
+        reddrinksmall = parts.location(128,144, width,height); // reddrinksmall
+        goldenkey = parts.location(144,144, width,height); // goldenkey
 
 
         //Characters

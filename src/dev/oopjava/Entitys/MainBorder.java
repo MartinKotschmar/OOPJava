@@ -162,7 +162,7 @@ public class MainBorder {
         currentHeightWallLeft = height;
         i = 0;
 
-        randomizer = new Randomizer();
+        //randomizer = new Randomizer(randomNumbers);
         //TODO:
         // Raumkoordinaten der 5 Räume ausrechnen
         // Randomize- Wert ausgeben

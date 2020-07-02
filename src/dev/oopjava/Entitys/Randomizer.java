@@ -1,8 +1,5 @@
 package dev.oopjava.Entitys;
 
-import dev.oopjava.tileset.Assets;
-
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 
@@ -14,12 +11,19 @@ public class Randomizer {
 
     public Randomizer() {
         r = new Random();
+        Generator();
     }
 
+
+
     public void Generator(){
+
+        int[] arr =  new int[5];
         //Arrays erstellen, und rausziehen
         for(i = 0; i < 5; i++) {
-            randomNumbers[i] = r.nextInt(9-0+1);
+
+            arr[i] = r.nextInt(9-0+1);
         }
+        System.out.println(arr[0] + arr[1]);
     }
 }

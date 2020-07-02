@@ -56,6 +56,8 @@ public class Game implements Runnable {
 
         display = new GameWindow(title, handler);
 
+        randomizer = new Randomizer();
+
         Assets.init();
 
         handler.addObject(new Player(1920/10,1080/10, 10, scale, ID.Player, handler));
@@ -158,7 +160,6 @@ public class Game implements Runnable {
         running = true;
         thread = new Thread(this);
         thread.start();
-        randomizer = new Randomizer();
     }
 
     public synchronized void stop(){        //GameLoop bedingt (stoppen)

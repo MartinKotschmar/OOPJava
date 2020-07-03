@@ -227,7 +227,7 @@ public class MainBorder {
 
         if(a2 == 0 || a2 == newA){newY += heightWallBottom + height;
         } else {newX += a2;}
-        backgroundaccessoires = new Backgroundaccessoires(newX,newY,g);
+        //backgroundaccessoires = new Backgroundaccessoires(newX,newY,g);
         newA = a2;
     }
 }

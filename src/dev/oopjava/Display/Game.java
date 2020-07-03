@@ -8,12 +8,13 @@ import java.awt.image.BufferStrategy;
 
 public class Game implements Runnable {
 
+    private Randomizer randomizer;
     private GameWindow display;        //Display Klasse erstellen
     private CreateLevel level;  //Level erstellen
     private Skeleton enemy;
     private Player player;
 
-    public int scale, index;       //breite, höhe
+    public int scale, index;       //Breite, Höhe
     public double backscale;
     public String title;            //Fenster Titel
     long Timer;
@@ -54,6 +55,8 @@ public class Game implements Runnable {
     private void Graphics(){
 
         display = new GameWindow(title, handler);
+
+        randomizer = new Randomizer();
 
         Assets.init();
 

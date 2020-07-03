@@ -8,8 +8,7 @@ public class Assets {
 
     private static final int width = 16, height = 16;
 
-    public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3,
-                                floor1,
+    public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3, floor1,
                                 floorLT, floorRT, floorLB, floorRB,
                                 floorTop[],
                                 floorBottom[],
@@ -35,9 +34,15 @@ public class Assets {
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe,
                                 hara;
-    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1;
+    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes;
+
+
 
     public static void init(){
+
+        randomitems = new BufferedImage[9];
+        flames = new BufferedImage[5];
+        boxes = new BufferedImage[6];
 
         Tileset parts = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Tileset.png"));
 
@@ -162,7 +167,7 @@ public class Assets {
         trashsmall = parts.location(80,96, width,height);
         roundentryleft = parts.location(96,96, width,height);
         roundentryright = parts.location(112,96, width,height);
-        bones = parts.location(128,96, width,height);
+        randomitems[0] = parts.location(128,96, width,height);  //bones
 
         flag = parts.location(64,112, width,height);
         trophysmall = parts.location(80,112, width,height);
@@ -214,6 +219,7 @@ public class Assets {
         ghostknife = characters.location(64,16, width, height);
         ghostspear = characters.location(80,16, width, height);
         ghostsythe = characters.location(96,16, width, height);
+
 
         //Animation
         priest1v1 = new BufferedImage[4];

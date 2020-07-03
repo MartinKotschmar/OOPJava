@@ -83,9 +83,9 @@ public class Menu {
             game.start();
         });
         button2.addActionListener(e -> {
-
+            //Levelauswahl
         });
-        button3.addActionListener(e -> { //Lamda
+        button3.addActionListener(e -> { //Lambda
             System.exit(0);
         });
 

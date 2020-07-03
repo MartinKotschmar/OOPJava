@@ -5,7 +5,7 @@ import dev.oopjava.Display.Game;
 public class Camera {
 
     Game game;
-    private MainBorder border;
+    private MainBorderSecondLevel border;
     private Player player;
     private float x, y;
     private float X, Y;

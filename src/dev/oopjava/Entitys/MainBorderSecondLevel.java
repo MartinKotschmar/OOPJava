@@ -4,7 +4,7 @@ import dev.oopjava.tileset.Assets;
 
 import java.awt.*;
 
-public class MainBorder {
+public class MainBorderSecondLevel {
     private int screenWidth,screenHeight;
     private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, scale;
     private int totalX, totalY,levelWidthSize, levelHeightSize,normalRooms, index;
@@ -21,7 +21,7 @@ public class MainBorder {
     private Randomizer randomizer;
 
 
-    public MainBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
+    public MainBorderSecondLevel(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
         this.numberOfRooms = numberOfRooms;
         this.x1 = x1;
         this.y1 = y1;

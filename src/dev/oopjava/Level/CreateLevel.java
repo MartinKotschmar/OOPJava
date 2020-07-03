@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class CreateLevel {
 
-    private MainBorderSecondLevel border;
+    private SecondLevelBorder border;
     Graphics g;
     Handler handler;
     Processing processing;
@@ -34,7 +34,7 @@ public class CreateLevel {
         //border = new Border(g, scale, index, 1, processing);
         Graphics2D g2 = (Graphics2D) g;
         g2.scale(5,5);
-        border = new MainBorderSecondLevel(4,480, 756,1440,1080,1440,1080,480,756, scale, true,g);
+        border = new SecondLevelBorder(4,480, 756,1440,1080,1440,1080,480,756, scale, true,g);
         //g2.drawImage(Assets.bones,0,0, null);
         //wall = new WallGenerator();
 

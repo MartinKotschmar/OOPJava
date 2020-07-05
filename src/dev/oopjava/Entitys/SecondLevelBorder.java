@@ -3,6 +3,7 @@ package dev.oopjava.Entitys;
 import dev.oopjava.tileset.Assets;
 
 import java.awt.*;
+import java.awt.geom.Arc2D;
 
 public class SecondLevelBorder {
         private int screenWidth,screenHeight;
@@ -170,8 +171,8 @@ public class SecondLevelBorder {
 
             public void BorderLeftRight() {
 
-                YAssetParts = (int) Math.ceil(y / (16 * scale)) - 1; //Number of Tiles y total height except corner tile bottom
-                XAssetParts = (int) Math.ceil(x / (16 * scale)) - 2; //Number of Tiles x Corners will be added by left and right wall
+                YAssetParts = (int) Math.ceil(y / (16d * scale)) - 1; //Number of Tiles y total height except corner tile bottom
+                XAssetParts = (int) Math.ceil(x / (16d * scale)) - 2; //Number of Tiles x Corners will be added by left and right wall
 
                 maxX = x / scale;
                 maxY = y / scale;

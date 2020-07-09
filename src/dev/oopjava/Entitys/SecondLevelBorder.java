@@ -95,13 +95,8 @@ public class SecondLevelBorder {
                             a = 0;
                             a2 = 0;
                             acc = new Backgroundaccessoires(x,y,a, a2,g);
-                          /*  g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 16, height + a + 80, null);
-                            g.drawImage(Assets.stonessmall, width + ((1920 - x)/10) + a2/5 + 32, height + a + 80, null);*/
                             BorderLeftRight();
                             acc.FirstLevel();
-
-                         /*   g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5, height + a - 16, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 48, height + a - 16, null);*/
                             break;
                         case(1):
                             x = x2;
@@ -109,25 +104,7 @@ public class SecondLevelBorder {
                             a += heightWallBottom + width;
                             a2 = 0;
                             acc = new Backgroundaccessoires(x,y, a , a2,g);
-                            /*g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 192, height + a + 160, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 208, height + a + 160, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 224, height + a + 160, null);
-                            g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 224, height + a + 144, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 112, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 128, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 144, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 160, null);
-                            g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 64, height + a + 128, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 48, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 64, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 80, height + a + 64, null);
-                            g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5, height + a + 32, null);
-                            g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5, height + a + 128, null);*/
-
                             BorderLeftRight();
-
-                          /*  g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 64, height + a - 16, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 176, height + a - 16, null);*/
                             acc.SecondLevel();
                             break;
                         case(2):
@@ -135,32 +112,15 @@ public class SecondLevelBorder {
                             y = y3;
                             a2 += -x2;
                             acc = new Backgroundaccessoires(x,y, a, a2, g);
-                           /* g.drawImage(Assets.boxes[4], width + ((1920 - x)/10) + a2/5 + 240, height + a, null);
-                            g.drawImage(Assets.trashmedium, width + ((1920 - x)/10) + a2/5 + 32, height + a + 112, null);
-                            g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 64, height + a + 128, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 48, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 64, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 80, height + a + 64, null);
-                            g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5 + 240, height + a + 32, null);
-                            g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5 + 240, height + a + 128, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5, height + a + 160, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5+16, height + a + 160, null); */
                             BorderLeftRight();
                             acc.ThirdLevel();
-
                             break;
                         case(3):
                             x = x4;
                             y = y4;
                             a += heightWallBottom + height;
                             acc = new Backgroundaccessoires(x,y,a, a2, g);
-
                             BorderLeftRight();
-
-                            /*g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5, height + a - 16, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 48, height + a - 16, null);
-                            g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5, height + a + 16, null);
-                            g.drawImage(Assets.trashsmall, width + ((1920 - x)/10) + a2/5 + 32, height + a + 32, null);*/
                             acc.FourthLevel();
                             break;
                         default:

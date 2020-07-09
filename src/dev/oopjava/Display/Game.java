@@ -67,6 +67,7 @@ public class Game implements Runnable {
         //entitys = new EntityControl(handler, character, scale);
 
         enemy = new Skeleton(32,32, 1, scale, ID.Skeleton, handler);
+        enemy.setMove(true, 100);
         handler.addObject(enemy);
         handler.addCollidableObject(enemy);
     }

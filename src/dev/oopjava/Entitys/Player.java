@@ -61,17 +61,6 @@ public class Player extends ObjectSettings{
         minBorderY = height;
         maxBorderY = 1080/scale - 2 * height;
 
-       /* if(x < width) { x = width; }
-        if(x > maxBorderX) { x = maxBorderX; }
-        if(y < height) {
-            y = height;
-            if(x > minCenterDoor && x < maxCenterDoor) {
-                y += velY;
-            } else if(x <= minCenterDoor){ x = minCenterDoor;
-            } else if(x >= maxCenterDoor){ x = maxCenterDoor;
-            }
-        }
-        if(y > maxBorderY) { y = maxBorderY; }*/
 
         animation.tick(velX,velY);
 

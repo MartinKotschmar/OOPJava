@@ -13,7 +13,6 @@ public class Player extends ObjectSettings{
     private static BufferedImage[] character;
     private DIRECTIONS viewDirection;
     private int attackRectSize;
-    private final double attackDamage = 0.5;
 
     int minCenterDoor, maxCenterDoor,minBorderX,maxBorderX,minBorderY,maxBorderY;
 
@@ -27,6 +26,7 @@ public class Player extends ObjectSettings{
         health = 100;
         viewDirection = DIRECTIONS.RIGHT;
         attackRectSize = 8;
+        attackDamage = 0.5;
 
         character = Assets.priest1v1;
         animation = new CharacterAnimation(tick, velX, character);
@@ -151,6 +151,7 @@ public class Player extends ObjectSettings{
 
         for(ObjectSettings tempObj : collidableObjects) {
             if (newPosition.getBounds().intersects(tempObj.getBounds())) {
+                removeHealth(tempObj.getAttackDamage());
                 return true;
             }
         }
@@ -164,7 +165,7 @@ public class Player extends ObjectSettings{
 
     @Override
     protected void die() {
-
+        handler.playerDied();
     }
 
     public void setID(ID id) {

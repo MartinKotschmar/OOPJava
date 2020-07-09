@@ -13,6 +13,7 @@ public abstract class ObjectSettings {
     protected int width, height, scale;
     protected int tick;
     protected double health;
+    protected double attackDamage;
 
     public ObjectSettings(int x, int y, int speed, ID id) {
         this.x = x;
@@ -72,4 +73,7 @@ public abstract class ObjectSettings {
         health += healthAmountToAdd;
     }
 
+    public double getAttackDamage() {
+        return attackDamage;
+    }
 }

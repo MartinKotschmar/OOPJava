@@ -11,7 +11,7 @@ public class GameWindow {
     public int width, height;       //breite, höhe
     public String title;            //Fenster Titel
 
-    private JFrame GameFrame;
+    private JFrame gameFrame;
     private JPanel gamePanel;
     private Handler handler;
     private Dimension dimensionWindow;
@@ -46,13 +46,13 @@ public class GameWindow {
     }
 
     private void createDisplay() {
-        GameFrame = new JFrame(title);
-        GameFrame.setSize(dimensionWindow);       //Fenstergröße width, height
-        GameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
-        GameFrame.setUndecorated(false);     //
-        GameFrame.setResizable(false);      //Größe ändern aus
-        GameFrame.setLocationRelativeTo(null);      //Zentrieren
-        GameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame = new JFrame(title);
+        gameFrame.setSize(dimensionWindow);       //Fenstergröße width, height
+        gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
+        gameFrame.setUndecorated(false);     //
+        gameFrame.setResizable(false);      //Größe ändern aus
+        gameFrame.setLocationRelativeTo(null);      //Zentrieren
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         gamePanel = new JPanel();
         gamePanel.setSize(dimensionWindow);
@@ -60,22 +60,20 @@ public class GameWindow {
         gamePanel.setMinimumSize(dimensionWindow);
         gamePanel.setPreferredSize(dimensionWindow);
         gamePanel.setFocusable(true);
-        gamePanel.requestFocusInWindow();
         gamePanel.setBorder(BorderFactory.createEmptyBorder(0,10,10,10));
         gamePanel.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-        GameFrame.add(gamePanel);
+        gameFrame.add(gamePanel);
 
-        GameFrame.pack();
-        GameFrame.setVisible(true);
-
+        gameFrame.pack();
+        gameFrame.setVisible(true);
+        gameFrame.requestFocus();
+        gamePanel.requestFocus();
     }
-
-
 
     public void createCanvas() {
         canvas = new Canvas(); //erstellen Hintergrund(Leinwand)
 
-        Dimension dimension = GameFrame.getSize();      // Dimension Size getter
+        Dimension dimension = gameFrame.getSize();      // Dimension Size getter
         canvas.addKeyListener(new KeyInput(handler));
         canvas.setPreferredSize(dimension);     //prefSize getSize
         canvas.setMinimumSize(dimension);       //min

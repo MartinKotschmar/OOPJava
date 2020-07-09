@@ -1,6 +1,9 @@
 package dev.oopjava.Entitys;
 
+import dev.oopjava.Display.Game;
+
 import javax.management.ObjectName;
+import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
@@ -8,8 +11,13 @@ public class Handler {
 
     LinkedList<ObjectSettings> object = new LinkedList<>();
     private LinkedList<ObjectSettings> collidableObjects = new LinkedList<>();
+    private Game activeGame;
 
     private boolean up = false, down = false, left = false, right = false, attack = false;
+
+    public Handler(Game game) {
+        this.activeGame = game;
+    }
 
     public void Update() {
         for (ObjectSettings tempObject : object) {
@@ -90,5 +98,18 @@ public class Handler {
 
     public LinkedList<ObjectSettings> getCollidableObjects() {
         return collidableObjects;
+    }
+
+    public void playerDied(){
+        showDeathScreen();
+        activeGame.stop();
+    }
+
+    private void showDeathScreen() {
+        JFrame deathScreen = new JFrame();
+        deathScreen.add(new JLabel("Du bist gestorben"));
+        deathScreen.pack();
+        deathScreen.setLocationRelativeTo(null);
+        deathScreen.setVisible(true);
     }
 }

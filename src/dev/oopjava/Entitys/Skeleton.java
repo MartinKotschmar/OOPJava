@@ -17,12 +17,11 @@ public class Skeleton extends ObjectSettings{
         width = 16;
         height = 16;
         health = 100;
+        attackDamage = 0.5;
 
         //TODO Change
         character = Assets.priest1v1;
         animation = new CharacterAnimation(tick, speed, character);
-
-
     }
 
     public void Update() {

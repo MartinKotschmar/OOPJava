@@ -64,8 +64,9 @@ public class Game implements Runnable {
 
         //entitys = new EntityControl(handler, character, scale);
 
-        //enemy = new Skeleton(32,32, 1, scale, ID.Player, handler);
-
+        enemy = new Skeleton(32,32, 1, scale, ID.Skeleton, handler);
+        handler.addObject(enemy);
+        handler.addCollidableObject(enemy);
     }
 
     private void Update(Handler handler){      //Update Fenster Methode

@@ -10,18 +10,17 @@ public class CharacterAnimation {
     private long current, tick;
     private BufferedImage[] tiles;
 
-    public CharacterAnimation(int timer, double velX) {
+    public CharacterAnimation(int timer, double velX, BufferedImage[] tiles) {
         this.timer = timer;
-        //this.tiles = tiles;
+        this.tiles = tiles;
 
-        tiles = Assets.priest1v1;
 
-        if(velX > 0) {
+        /*if(velX > 0) {
             tiles = Assets.priest1v1;
         }
         if(velX < 0) {
             tiles = Assets.priest1v1left;
-        }
+        }*/
 
         i = 0;
         tick = 0;

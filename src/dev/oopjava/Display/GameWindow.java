@@ -29,6 +29,22 @@ public class GameWindow {
 
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
     private void createDisplay() {
         GameFrame = new JFrame(title);
         GameFrame.setSize(dimensionWindow);       //Fenstergröße width, height
@@ -71,4 +87,5 @@ public class GameWindow {
     public Canvas getCanvas() {
         return canvas;
     }
+
 }

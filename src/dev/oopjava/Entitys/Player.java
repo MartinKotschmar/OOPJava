@@ -12,14 +12,14 @@ import java.io.IOException;
 public class Player extends ObjectSettings{
 
     private CharacterAnimation animation;
-    private Image img;
+    private Camera camera;
     private int timer;
+    private int exX, exY;
     private static BufferedImage[] character;
     public int ID;
 
     Handler handler;
-    String image;
-    int width, height, scale;
+    int width, height, scale, minCenterDoor, maxCenterDoor,minBorderX,maxBorderX,minBorderY,maxBorderY;
 
 
     public Player(int x, int y, double speed,int scale, ID id, Handler handler){
@@ -31,17 +31,48 @@ public class Player extends ObjectSettings{
         height = 16;
 
         character = Assets.priest1v1;
-        animation = new CharacterAnimation(timer, velX);
+        animation = new CharacterAnimation(timer, velX, character);
+    }
+
+    public int getExX() {
+        return exX;
+    }
+
+    public void setExX(int exX) {
+        this.exX = exX;
+    }
+
+    public int getExY() {
+        return exY;
+    }
+
+    public void setExY(int exY) {
+        this.exY = exY;
     }
 
     public void Update() {
         x += velX;
         y += velY;
+        exX = x;
+        exY = y;
+        minCenterDoor = 1920/(scale * 2) - 2 * width;
+        maxCenterDoor = 1920/(scale * 2);
+        minBorderX = width;
+        maxBorderX = 1920/scale - 2 * width;
+        minBorderY = height;
+        maxBorderY = 1080/scale - 2 * height;
 
-        if(x < 0) { x = 0; }
-        if(x > 1920/scale - width) { x = 1920/scale - width; }
-        if(y < 0) { y = 0; }
-        if(y > 1080/scale - width) { y = 1080/scale - width; }
+       /* if(x < width) { x = width; }
+        if(x > maxBorderX) { x = maxBorderX; }
+        if(y < height) {
+            y = height;
+            if(x > minCenterDoor && x < maxCenterDoor) {
+                y += velY;
+            } else if(x <= minCenterDoor){ x = minCenterDoor;
+            } else if(x >= maxCenterDoor){ x = maxCenterDoor;
+            }
+        }
+        if(y > maxBorderY) { y = maxBorderY; }*/
 
         animation.tick(velX,velY);
 
@@ -53,12 +84,10 @@ public class Player extends ObjectSettings{
 
         if (handler.isLeft()) {
             velX = -speed;
-           // animation = new CharacterAnimation(timer, Assets.priest1v1left);
         }
         else if (!handler.isRight()) velX = 0;
         if (handler.isRight()) {
             velX = speed;
-           // animation = new CharacterAnimation(timer, Assets.priest1v1);
         }
         else if (!handler.isLeft()) velX = 0;
     }
@@ -66,7 +95,7 @@ public class Player extends ObjectSettings{
     public void Render(Graphics g) {
 
         Graphics2D g2 = (Graphics2D) g;
-        g2.scale(scale,scale);
+        //g2.scale(scale,scale);
 
         g.drawImage(animation.getTiles(),x,y, null);
     }

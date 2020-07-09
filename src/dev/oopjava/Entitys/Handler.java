@@ -9,14 +9,20 @@ public class Handler {
 
         private boolean up = false, down = false, left = false, right = false;
 
-
-
     public void Update() {
             for(int i = 0; i < object.size(); i++) {
                 ObjectSettings tempObject = object.get(i);
 
                 tempObject.Update();
             }
+    }
+
+    public LinkedList<ObjectSettings> getObject() {
+        return object;
+    }
+
+    public void setObject(LinkedList<ObjectSettings> object) {
+        this.object = object;
     }
 
     public void Render (Graphics g) {

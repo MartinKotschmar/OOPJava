@@ -5,7 +5,7 @@ import java.awt.*;
 public abstract class ObjectSettings {
 
     protected int x,y;
-    protected double velX = 0, velY = 0;
+    protected double velX = 1, velY = 1;
     protected double speed;
     protected ID id;
 
@@ -15,7 +15,6 @@ public abstract class ObjectSettings {
         this.y = y;
         this.speed = speed;
         this.id = id;
-
     }
 
 

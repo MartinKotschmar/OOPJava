@@ -16,10 +16,12 @@ public class Skeleton extends ObjectSettings{
         tick = 150;
         width = 16;
         height = 16;
+        health = 100;
 
         //TODO Change
         character = Assets.priest1v1;
         animation = new CharacterAnimation(tick, speed, character);
+
 
     }
 
@@ -28,7 +30,6 @@ public class Skeleton extends ObjectSettings{
     }
 
     public void Render(Graphics g) {
-
         Graphics2D g2 = (Graphics2D) g;
         //g2.scale(scale,scale);
         g.drawImage(animation.getTiles(),x,y, null);
@@ -45,6 +46,15 @@ public class Skeleton extends ObjectSettings{
 
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
+    }
+
+
+    //TODO Die Asset
+
+    @Override
+    protected void die() {
+        handler.removeObject(this);
+        handler.removeCollidableObject(this);
     }
 
     public void setID(ID id) {

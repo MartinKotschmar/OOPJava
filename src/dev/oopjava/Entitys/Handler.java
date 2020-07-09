@@ -9,7 +9,7 @@ public class Handler {
     LinkedList<ObjectSettings> object = new LinkedList<>();
     private LinkedList<ObjectSettings> collidableObjects = new LinkedList<>();
 
-    private boolean up = false, down = false, left = false, right = false;
+    private boolean up = false, down = false, left = false, right = false, attack = false;
 
     public void Update() {
         for (ObjectSettings tempObject : object) {
@@ -44,6 +44,10 @@ public class Handler {
         object.remove(tempObject);
     }
 
+    public void removeCollidableObject(ObjectSettings tempObject) {
+        collidableObjects.remove(tempObject);
+    }
+
     public boolean isUp() {
         return up;
     }
@@ -74,6 +78,14 @@ public class Handler {
 
     public void setRight(boolean right) {
         this.right = right;
+    }
+
+    public boolean isAttacking() {
+        return attack;
+    }
+
+    public void setAttack(boolean attack) {
+        this.attack = attack;
     }
 
     public LinkedList<ObjectSettings> getCollidableObjects() {

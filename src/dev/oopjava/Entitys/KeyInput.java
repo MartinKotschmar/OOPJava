@@ -22,6 +22,7 @@ public class KeyInput extends KeyAdapter {
             if(key == KeyEvent.VK_DOWN) handler.setDown(true);
             if(key == KeyEvent.VK_LEFT) handler.setLeft(true);
             if(key == KeyEvent.VK_RIGHT) handler.setRight(true);
+            if(key == KeyEvent.VK_SPACE) handler.setAttack(true);
          }
       }
    }
@@ -37,6 +38,7 @@ public class KeyInput extends KeyAdapter {
             if(key == KeyEvent.VK_DOWN) handler.setDown(false);
             if(key == KeyEvent.VK_LEFT) handler.setLeft(false);
             if(key == KeyEvent.VK_RIGHT) handler.setRight(false);
+            if(key == KeyEvent.VK_SPACE) handler.setAttack(false);
          }
       }
    }

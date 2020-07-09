@@ -1,13 +1,9 @@
 package dev.oopjava.Entitys;
 
 import dev.oopjava.tileset.Assets;
-import dev.oopjava.tileset.ImageLoader;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
 
 public class Player extends ObjectSettings{
@@ -15,6 +11,9 @@ public class Player extends ObjectSettings{
     private Camera camera;
     private int exX, exY;
     private static BufferedImage[] character;
+    private DIRECTIONS viewDirection;
+    private int attackRectSize;
+    private final double attackDamage = 0.5;
 
     int minCenterDoor, maxCenterDoor,minBorderX,maxBorderX,minBorderY,maxBorderY;
 
@@ -25,6 +24,9 @@ public class Player extends ObjectSettings{
         tick = 150;
         width = 16;
         height = 16;
+        health = 100;
+        viewDirection = DIRECTIONS.RIGHT;
+        attackRectSize = 8;
 
         character = Assets.priest1v1;
         animation = new CharacterAnimation(tick, velX, character);
@@ -38,6 +40,13 @@ public class Player extends ObjectSettings{
         g.drawImage(animation.getTiles(),x,y, null);
         g.setColor(Color.red);
         ((Graphics2D) g).draw(getBounds());
+        g.setColor(Color.green);
+
+        // Render Health
+        g.setColor(Color.white);
+        g.setFont(new Font(g.getFont().getName(), Font.PLAIN, 5));
+        int viewHealth = (int) health;
+        g.drawString(""+ viewHealth, x+3, y+20);
     }
 
     public void Update() {
@@ -66,20 +75,59 @@ public class Player extends ObjectSettings{
 
         animation.tick(velX,velY);
 
-        if (handler.isUp() && !isColliding("up")) velY = -speed;
-        else if (!handler.isDown()) velY = 0;
+        move();
+        checkAttack();
+    }
 
-        if (handler.isDown() && !isColliding("down")) velY = speed;
-        else if (!handler.isUp()) velY = 0;
-
+    private void move() {
+        // UP
+        if (handler.isUp() && !isColliding("up")){
+            velY = -speed;
+            viewDirection = DIRECTIONS.UP;
+        } else if (!handler.isDown()){
+            velY = 0;
+        }
+        // DOWN
+        if (handler.isDown() && !isColliding("down")){
+            velY = speed;
+            viewDirection = DIRECTIONS.DOWN;
+        } else if (!handler.isUp()){
+            velY = 0;
+        }
+        // LEFT
         if (handler.isLeft() && !isColliding("left")) {
             velX = -speed;
+            viewDirection = DIRECTIONS.LEFT;
+        } else if (!handler.isRight()){
+            velX = 0;
         }
-        else if (!handler.isRight()) velX = 0;
+        // RIGHT
         if (handler.isRight() && !isColliding("right")) {
             velX = speed;
+            viewDirection = DIRECTIONS.RIGHT;
+        } else if (!handler.isLeft()){
+            velX = 0;
         }
-        else if (!handler.isLeft()) velX = 0;
+    }
+
+    private void checkAttack() {
+        if(handler.isAttacking()) {
+            Rectangle attackRect = getBounds();
+
+            switch (viewDirection) {
+                case UP -> attackRect.y -= attackRectSize;
+                case DOWN -> attackRect.y += attackRectSize;
+                case LEFT -> attackRect.x -= attackRectSize;
+                case RIGHT -> attackRect.x += attackRectSize;
+            }
+
+            for(ObjectSettings tempObj : handler.getCollidableObjects()) {
+                if (attackRect.getBounds().intersects(tempObj.getBounds())) {
+                    tempObj.removeHealth(attackDamage);
+                }
+            }
+
+        }
     }
 
     public boolean isColliding(String direction){
@@ -112,6 +160,11 @@ public class Player extends ObjectSettings{
 
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
+    }
+
+    @Override
+    protected void die() {
+
     }
 
     public void setID(ID id) {

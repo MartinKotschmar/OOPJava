@@ -12,6 +12,7 @@ public abstract class ObjectSettings {
     protected Handler handler;
     protected int width, height, scale;
     protected int tick;
+    protected double health;
 
     public ObjectSettings(int x, int y, int speed, ID id) {
         this.x = x;
@@ -19,7 +20,6 @@ public abstract class ObjectSettings {
         this.speed = speed;
         this.id = id;
     }
-
 
     public abstract void Update();
     public abstract void Render(Graphics g);
@@ -55,6 +55,21 @@ public abstract class ObjectSettings {
 
     public ID getId() {
         return id;
+    }
+
+    public void removeHealth(double healthAmountToRemove) {
+        if(health > 0) {
+            health -= healthAmountToRemove;
+        }
+        if(health <= 0) {
+            die();
+        }
+    }
+
+    protected abstract void die();
+
+    public void addHealth(double healthAmountToAdd) {
+        health += healthAmountToAdd;
     }
 
 }

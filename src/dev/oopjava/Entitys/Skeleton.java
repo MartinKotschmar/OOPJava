@@ -20,7 +20,7 @@ public class Skeleton extends ObjectSettings{
         attackDamage = 0.5;
 
         //TODO Change
-        character = Assets.priest1v1;
+        character = Assets.skeleton2v1;
         animation = new CharacterAnimation(tick, speed, character);
     }
 

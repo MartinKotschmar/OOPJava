@@ -268,24 +268,17 @@ public class Assets {
 
         skeleton2v1[0] = animation_skeleton2v1.location(0,0,width,height);
 
-        skeleton2v1 = new BufferedImage[4];
-
-        Tileset animation_skeleton2v2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_1.png"));
+        Tileset animation_skeleton2v2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_2.png"));
 
         skeleton2v1[1] = animation_skeleton2v2.location(0,0,width,height);
 
-        skeleton2v1 = new BufferedImage[4];
-
-        Tileset animation_skeleton2v3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_1.png"));
+        Tileset animation_skeleton2v3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_3.png"));
 
         skeleton2v1[2] = animation_skeleton2v3.location(0,0,width,height);
 
-        skeleton2v1 = new BufferedImage[4];
-
-        Tileset animation_skeleton2v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_1.png"));
+        Tileset animation_skeleton2v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_4.png"));
 
         skeleton2v1[3] = animation_skeleton2v4.location(0,0,width,height);
-
 
     }
 

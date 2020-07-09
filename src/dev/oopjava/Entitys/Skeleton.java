@@ -21,7 +21,7 @@ public class Skeleton extends ObjectSettings{
         tick = 150;
         width = 16;
         height = 16;
-        health = 100;
+        health = 50;
         attackDamage = 0.5;
 
         //TODO Change

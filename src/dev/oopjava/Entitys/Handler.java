@@ -11,12 +11,19 @@ public class Handler {
 
     LinkedList<ObjectSettings> object = new LinkedList<>();
     private LinkedList<ObjectSettings> collidableObjects = new LinkedList<>();
+    private LinkedList<Rectangle> wallRectangles = new LinkedList<>();
     private Game activeGame;
+
+    private static Handler instance;
+    public static Handler getInstance() {
+        return instance;
+    }
 
     private boolean up = false, down = false, left = false, right = false, attack = false;
 
     public Handler(Game game) {
         this.activeGame = game;
+        instance = this;
     }
 
     public void Update() {
@@ -98,6 +105,14 @@ public class Handler {
 
     public LinkedList<ObjectSettings> getCollidableObjects() {
         return collidableObjects;
+    }
+
+    public LinkedList<Rectangle> getWallRectangles() {
+        return wallRectangles;
+    }
+
+    public void addWallRectangles(Rectangle wallRectangle) {
+        this.wallRectangles.add(wallRectangle);
     }
 
     public void playerDied(){

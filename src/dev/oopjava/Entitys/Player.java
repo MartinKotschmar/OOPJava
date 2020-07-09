@@ -121,6 +121,7 @@ public class Player extends ObjectSettings{
 
     public boolean isColliding(String direction){
         LinkedList<ObjectSettings> collidableObjects = handler.getCollidableObjects();
+        LinkedList<Rectangle> wallRectangles = handler.getWallRectangles();
         Rectangle newPosition = getBounds();
         switch (direction) {
             case "up":
@@ -141,6 +142,12 @@ public class Player extends ObjectSettings{
         for(ObjectSettings tempObj : collidableObjects) {
             if (newPosition.getBounds().intersects(tempObj.getBounds())) {
                 removeHealth(tempObj.getAttackDamage());
+                return true;
+            }
+        }
+
+        for(Rectangle wallrect : wallRectangles){
+            if(newPosition.getBounds().intersects(wallrect)) {
                 return true;
             }
         }

@@ -91,11 +91,18 @@ public class MainBorder {
         for(;YAssetParts > 0; YAssetParts--) {
 
             if(i>1) {i=0;}
-            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10), currentHeightWallLeft - height + a, null);   //create wall left
+            g.drawImage(Assets.wallLeft[i], ((1920 - x) / 10), currentHeightWallLeft - height + a, null);   //create wall left
             g.drawImage(Assets.wallRight[i],  1920/5 - width - ((1920 - x)/10), currentHeightWallLeft - height + a , null); //create wall right
             currentHeightWallLeft += height;
             i++;
         }
+
+        //Collision Wall
+        Rectangle tempLeftRect = new Rectangle(((1920 - x) / 10),a,16, currentHeightWallLeft);
+        Rectangle tempRightRect = new Rectangle(1920/5 - width - ((1920 - x)/10),a,16, currentHeightWallLeft);
+        Handler.getInstance().addWallRectangles(tempLeftRect);
+        Handler.getInstance().addWallRectangles(tempRightRect);
+
         currentHeightWallLeft -= height;
         i = 0;
         StaticBorder(currentHeightWallLeft);
@@ -140,6 +147,7 @@ public class MainBorder {
         }
         XFloorParts = (int) Math.ceil(x / (16 * scale)) - 4;
         YFloorParts = (int) Math.ceil(y / (16 * scale)) - 3;
+
         currentWidthFloor = width;
         currentHeightFloor = height;
         for (; YFloorParts > 0; YFloorParts--) {
@@ -169,16 +177,29 @@ public class MainBorder {
             if(i>2){i = 0; }
 
             if(XAssetParts < ((int) Math.ceil(x / (16 * scale)) - 2)/2 || XAssetParts > ((int) Math.ceil(x / (16 * scale)) - 2)/2 +1) {
-                g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x) / 10), 0 + a, null); //create wall top
+                g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x) / 10), a, null); //create wall top
                 g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x) / 10), heightWallBottom + a, null); //create wall bottom
             } else {
-                g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10), 0 + a, null);
+                g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10), a, null);
                 g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10), heightWallBottom + a, null);
                 currentWidthFloor += width * 2;
             }
             currentWidthWallTop += width;
             i++;
         }
+
+        Rectangle tempTopARect = new Rectangle((((1920 - x) / 10)), a,currentWidthWallTop/2-8, 16);
+        Rectangle tempTopBRect = new Rectangle(tempTopARect);
+        tempTopBRect.x += 32 + tempTopARect.width;
+        Rectangle tempDownARect = new Rectangle(((1920 - x)/10),heightWallBottom + a,currentWidthWallTop/2-8,16);
+        Rectangle tempDownBRect = new Rectangle(tempDownARect);
+        tempDownBRect.x += 32 + tempDownARect.width;
+
+        Handler.getInstance().addWallRectangles(tempTopARect);
+        Handler.getInstance().addWallRectangles(tempTopBRect);
+        Handler.getInstance().addWallRectangles(tempDownARect);
+        Handler.getInstance().addWallRectangles(tempDownBRect);
+
         currentWidthWallTop = width;
         currentHeightWallLeft = height;
         i = 0;

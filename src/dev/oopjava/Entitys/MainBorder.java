@@ -126,10 +126,17 @@ public class MainBorder {
         for(; XFloorParts > 0; XFloorParts--) {
 
             if (i > 1) {i = 0;}
-            g.drawImage(Assets.floorBottom[i], currentWidthFloorTB + (1920 - x)/10 + width, currentHeightWallLeft -height + a, null); //create Floor
-            g.drawImage(Assets.floorTop[i], currentWidthFloorTB + (1920 - x)/10 + width,height + a , null); //create Floor
-            currentWidthFloorTB += width;
-            i++;
+
+            if(XFloorParts < ((int) Math.ceil(x / (16 * scale)) -4)/2|| XFloorParts > ((int) Math.ceil(x / (16 * scale)) - 4)/2+1) {
+                g.drawImage(Assets.floorBottom[i], currentWidthFloorTB + (1920 - x) / 10 + width, currentHeightWallLeft - height + a, null); //create Floor
+                g.drawImage(Assets.floorTop[i], currentWidthFloorTB + (1920 - x) / 10 + width, height + a, null); //create Floor
+                currentWidthFloorTB += width;
+                i++;
+            } else {
+                g.drawImage(Assets.floorCenter[i], currentWidthFloorTB + ((1920 - x) / 10) + width, currentHeightWallLeft - height + a, null);
+                g.drawImage(Assets.floorCenter[i], currentWidthFloorTB + ((1920 - x) / 10) + width, height + a, null);
+                currentWidthFloorTB += width; i++;
+            }
         }
         XFloorParts = (int) Math.ceil(x / (16 * scale)) - 4;
         YFloorParts = (int) Math.ceil(y / (16 * scale)) - 3;
@@ -147,7 +154,7 @@ public class MainBorder {
             }
             currentWidthFloor = width;
             currentHeightFloor += height;
-            XFloorParts = (int) Math.ceil(x / (16 * scale)) - 2;
+            XFloorParts = (int) Math.ceil(x / (16 * scale)) - 4;
         }
     }
 
@@ -165,6 +172,8 @@ public class MainBorder {
                 g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x) / 10), 0 + a, null); //create wall top
                 g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x) / 10), heightWallBottom + a, null); //create wall bottom
             } else {
+                g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10), 0 + a, null);
+                g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10), heightWallBottom + a, null);
                 currentWidthFloor += width * 2;
             }
             currentWidthWallTop += width;

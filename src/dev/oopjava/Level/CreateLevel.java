@@ -36,10 +36,8 @@ public class CreateLevel {
         Graphics2D g2 = (Graphics2D) g;
         g2.scale(5,5);
         //g.drawImage(Assets.hara,150,160,null);
-        //border = new MainBorder(5,1920,1080,1440,1080,480,756,960,1080, 1920,1080,scale,true,g);
-
-        //border = new MainBorder(4,480, 756,1440,1080,1440,1080,480,756, scale, true,g);
-        border2 = new SecondLevelBorder(4,480, 756,1440,1080,1440,1080,480,756, scale, true,g);
+        border = new MainBorder(5,1920,1080,1440,1080,480,756,960,1080, 1920,1080,scale,true,g);
+        //border2 = new SecondLevelBorder(4,480, 756,1440,1080,1440,1080,480,756, scale, true,g);
         //g2.drawImage(Assets.bones,0,0, null);
         //wall = new WallGenerator();
 

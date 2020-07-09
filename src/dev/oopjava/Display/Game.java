@@ -3,6 +3,8 @@ package dev.oopjava.Display;
 import dev.oopjava.tileset.*;
 import dev.oopjava.Level.*;
 import dev.oopjava.Entitys.*;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
@@ -39,7 +41,7 @@ public class Game implements Runnable {
         index = 0;
         Timer = System.currentTimeMillis();
 
-        handler = new Handler();
+        handler = new Handler(this);
         camera = new Camera(this,0 ,0);
         character = "Priest1";
     }
@@ -64,8 +66,9 @@ public class Game implements Runnable {
 
         //entitys = new EntityControl(handler, character, scale);
 
-        //enemy = new Skeleton(32,32, 1, scale, ID.Player, handler);
-
+        enemy = new Skeleton(32,32, 1, scale, ID.Skeleton, handler);
+        handler.addObject(enemy);
+        handler.addCollidableObject(enemy);
     }
 
     private void Update(Handler handler){      //Update Fenster Methode
@@ -173,5 +176,7 @@ public class Game implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
     }
+
 }

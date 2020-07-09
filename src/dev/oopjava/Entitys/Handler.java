@@ -1,20 +1,28 @@
 package dev.oopjava.Entitys;
 
+import dev.oopjava.Display.Game;
+
+import javax.management.ObjectName;
+import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
 public class Handler {
 
-        LinkedList<ObjectSettings> object = new LinkedList<ObjectSettings>();
+    LinkedList<ObjectSettings> object = new LinkedList<>();
+    private LinkedList<ObjectSettings> collidableObjects = new LinkedList<>();
+    private Game activeGame;
 
-        private boolean up = false, down = false, left = false, right = false;
+    private boolean up = false, down = false, left = false, right = false, attack = false;
+
+    public Handler(Game game) {
+        this.activeGame = game;
+    }
 
     public void Update() {
-            for(int i = 0; i < object.size(); i++) {
-                ObjectSettings tempObject = object.get(i);
-
-                tempObject.Update();
-            }
+        for (ObjectSettings tempObject : object) {
+            tempObject.Update();
+        }
     }
 
     public LinkedList<ObjectSettings> getObject() {
@@ -25,21 +33,27 @@ public class Handler {
         this.object = object;
     }
 
-    public void Render (Graphics g) {
+    public void Render(Graphics g) {
 
-        for(int i = 0; i < object.size(); i++) {
-            ObjectSettings tempObject = object.get(i);
-
+        for (ObjectSettings tempObject : object) {
             tempObject.Render(g);
         }
     }
 
-    public void addObject(ObjectSettings tempObject){
+    public void addObject(ObjectSettings tempObject) {
         object.add(tempObject);
+    }
+
+    public void addCollidableObject(ObjectSettings tempObject) {
+        collidableObjects.add(tempObject);
     }
 
     public void removeObject(ObjectSettings tempObject) {
         object.remove(tempObject);
+    }
+
+    public void removeCollidableObject(ObjectSettings tempObject) {
+        collidableObjects.remove(tempObject);
     }
 
     public boolean isUp() {
@@ -66,10 +80,36 @@ public class Handler {
         this.left = left;
     }
 
-    public boolean isRight() { return right; }
+    public boolean isRight() {
+        return right;
+    }
 
     public void setRight(boolean right) {
         this.right = right;
     }
 
+    public boolean isAttacking() {
+        return attack;
+    }
+
+    public void setAttack(boolean attack) {
+        this.attack = attack;
+    }
+
+    public LinkedList<ObjectSettings> getCollidableObjects() {
+        return collidableObjects;
+    }
+
+    public void playerDied(){
+        showDeathScreen();
+        activeGame.stop();
+    }
+
+    private void showDeathScreen() {
+        JFrame deathScreen = new JFrame();
+        deathScreen.add(new JLabel("Du bist gestorben"));
+        deathScreen.pack();
+        deathScreen.setLocationRelativeTo(null);
+        deathScreen.setVisible(true);
+    }
 }

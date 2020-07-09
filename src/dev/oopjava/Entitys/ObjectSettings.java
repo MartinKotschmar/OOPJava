@@ -4,19 +4,23 @@ import java.awt.*;
 
 public abstract class ObjectSettings {
 
+    protected CharacterAnimation animation;
     protected int x,y;
-    protected double velX = 1, velY = 1;
-    protected double speed;
+    protected int velX = 1, velY = 1;
+    protected int speed;
     protected ID id;
+    protected Handler handler;
+    protected int width, height, scale;
+    protected int tick;
+    protected double health;
+    protected double attackDamage;
 
-
-    public ObjectSettings(int x, int y, double speed, ID id) {
+    public ObjectSettings(int x, int y, int speed, ID id) {
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.id = id;
     }
-
 
     public abstract void Update();
     public abstract void Render(Graphics g);
@@ -30,7 +34,7 @@ public abstract class ObjectSettings {
         this.x = x;
     }
 
-    public void setSpeed(double speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
@@ -54,4 +58,22 @@ public abstract class ObjectSettings {
         return id;
     }
 
+    public void removeHealth(double healthAmountToRemove) {
+        if(health > 0) {
+            health -= healthAmountToRemove;
+        }
+        if(health <= 0) {
+            die();
+        }
+    }
+
+    protected abstract void die();
+
+    public void addHealth(double healthAmountToAdd) {
+        health += healthAmountToAdd;
+    }
+
+    public double getAttackDamage() {
+        return attackDamage;
+    }
 }

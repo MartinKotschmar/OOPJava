@@ -14,6 +14,8 @@ public class Player extends ObjectSettings{
     private static BufferedImage[] character;
     private DIRECTIONS viewDirection;
     private int attackRectSize;
+    private int defaultX = 1920/10;
+    private int defaultY = 1080/10;
 
     int minCenterDoor, maxCenterDoor,minBorderX,maxBorderX,minBorderY,maxBorderY;
 
@@ -202,5 +204,10 @@ public class Player extends ObjectSettings{
     public void tp(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public void resetLocation(){
+        this.x = this.defaultX;
+        this.y = this.defaultY;
     }
 }

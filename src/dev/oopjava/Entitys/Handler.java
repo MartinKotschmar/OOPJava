@@ -148,6 +148,10 @@ public class Handler {
 
     public void resetObjects() {
         object = new LinkedList<>();
+        collidableObjects = new LinkedList<>();
+        wallRectangles = new LinkedList<>();
+        activeGame.getPlayer().resetLocation();
         object.add(activeGame.getPlayer());
+
     }
 }

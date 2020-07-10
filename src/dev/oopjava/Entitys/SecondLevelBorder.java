@@ -79,7 +79,7 @@ public class SecondLevelBorder {
 
             public void CreateBorder() {
 
-                if(itemroom == true) {
+                if(itemroom) {
                     x = screenWidth/2;
                     y = screenHeight/2;
                 }
@@ -180,7 +180,7 @@ public class SecondLevelBorder {
                 for(;YAssetParts > 0; YAssetParts--) {
 
                     if(i > 1) {i = 0;}
-                    g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10 + (a2/5)), currentHeightWallLeft - height + a, null);   //create wall left
+                    g.drawImage(Assets.wallLeft[i], ((1920 - x) / 10 + (a2 / 5)), currentHeightWallLeft - height + a, null);   //create wall left
                     g.drawImage(Assets.wallRight[i],  (1920)/5 - width - ((1920 - x)/10) + a2/5, currentHeightWallLeft - height + a , null); //create wall right
                     currentHeightWallLeft += height;
                     i++;
@@ -192,7 +192,7 @@ public class SecondLevelBorder {
             }
 
             public void StaticBorder( int currentHeightWallLeft) {
-                g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10) + a2/5, currentHeightWallLeft + a, null); //static corner left bottom
+                g.drawImage(Assets.cornerLB, ((1920 - x) / 10) + a2 / 5, currentHeightWallLeft + a, null); //static corner left bottom
                 g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10) + a2/5, currentHeightWallLeft + a, null); //static corner right bottom
             }
 
@@ -202,7 +202,7 @@ public class SecondLevelBorder {
                 for(;XAssetParts > 0; XAssetParts--) {
                     if(i > 2){i = 0;}
 
-                    g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, 0 + a, null); //create wall top
+                    g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, a, null); //create wall top
                     g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, heightWallBottom + a, null); //create wall bottom
                     currentWidthWallTop += width;
                     i++;

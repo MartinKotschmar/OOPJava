@@ -1,5 +1,6 @@
 package dev.oopjava.Entitys;
 
+import dev.oopjava.Level.LEVELS;
 import dev.oopjava.tileset.Assets;
 
 import java.awt.*;
@@ -115,7 +116,6 @@ public class Player extends ObjectSettings{
                     tempObj.removeHealth(attackDamage);
                 }
             }
-
         }
     }
 

@@ -111,7 +111,7 @@ public class MainBorder {
     }
 
     public void StaticBorder( int currentHeightWallLeft) {
-        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner left bottom
+        g.drawImage(Assets.cornerLB, ((1920 - x) / 10), currentHeightWallLeft + a, null); //static corner left bottom
         g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner right bottom
     }
 
@@ -166,10 +166,6 @@ public class MainBorder {
         }
     }
 
-    public void Floor() {
-
-    }
-
     public void BorderTopBottom(int heightWallBottom) {
         this.heightWallBottom = heightWallBottom;
 
@@ -207,7 +203,7 @@ public class MainBorder {
 
     public void CreateBorder() {
 
-        if(itemroom == true) {
+        if(itemroom) {
             x = screenWidth/2;
             y = screenHeight/2;
         }

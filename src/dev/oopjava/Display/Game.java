@@ -45,6 +45,7 @@ public class Game implements Runnable {
         handler = new Handler(this);
         camera = new Camera(this,0 ,0);
         character = "Priest1";
+        level = new CreateLevel(handler, scale, index, processing);
     }
 
     public Camera getCamera() {
@@ -101,7 +102,7 @@ public class Game implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
         g2.translate(-camera.getX(), -camera.getY());
 
-        level = new CreateLevel(g, handler, scale, index, processing);
+        level.Render(g);
         //g.drawImage(Assets.hara,200,100,null);
         //g2.scale(0.2,0.2);
 
@@ -179,4 +180,7 @@ public class Game implements Runnable {
 
     }
 
+    public void setLevel(LEVELS level) {
+        this.level.setLevel(level);
+    }
 }

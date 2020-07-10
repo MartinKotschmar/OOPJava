@@ -1,6 +1,7 @@
 package dev.oopjava.Entitys;
 
 import dev.oopjava.Display.Game;
+import dev.oopjava.Level.LEVELS;
 
 import javax.management.ObjectName;
 import javax.swing.*;
@@ -130,4 +131,7 @@ public class Handler {
         deathScreen.setVisible(true);
     }
 
+    public void setLevel(LEVELS level) {
+        activeGame.setLevel(level);
+    }
 }

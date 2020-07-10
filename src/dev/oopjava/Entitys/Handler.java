@@ -1,6 +1,7 @@
 package dev.oopjava.Entitys;
 
 import dev.oopjava.Display.Game;
+import dev.oopjava.Level.LEVELS;
 
 import javax.management.ObjectName;
 import javax.swing.*;
@@ -121,6 +122,10 @@ public class Handler {
         showDeathScreen();
         activeGame.stop();
     }
+    public void playerWin(){
+        showWinScreen();
+        activeGame.stop();
+    }
 
     private void showDeathScreen() {
         JFrame deathScreen = new JFrame();
@@ -129,5 +134,15 @@ public class Handler {
         deathScreen.setLocationRelativeTo(null);
         deathScreen.setVisible(true);
     }
+    private void showWinScreen() {
+        JFrame winScreen = new JFrame();
+        winScreen.add(new JLabel("Du hast gewonnen!!"));
+        winScreen.pack();
+        winScreen.setLocationRelativeTo(null);
+        winScreen.setVisible(true);
+    }
 
+    public void setLevel(LEVELS level) {
+        activeGame.setLevel(level);
+    }
 }

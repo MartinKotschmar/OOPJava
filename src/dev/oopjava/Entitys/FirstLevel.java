@@ -4,14 +4,14 @@ import dev.oopjava.tileset.Assets;
 
 import java.awt.*;
 
-public class MainBorder {
+public class FirstLevel {
     private int screenWidth,screenHeight;
-    private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, scale;
+    private int numberOfRooms, x1, y1, x2, y2, x3, y3, scale;
     private int totalX, totalY,levelWidthSize, levelHeightSize,normalRooms, index;
-    private int x, y, i, a;
+    private int x, y, i, a, a1;
     private int YAssetParts, XAssetParts, maxX, maxY;
-    private int xz1, xz2, xz3, xz4, xz5;
-    private int yz1, yz2, yz3, yz4, yz5;
+    private int xz1, xz2, xz3;
+    private int yz1, yz2, yz3;
     private int width, height;
     private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
     private boolean itemroom;
@@ -20,9 +20,10 @@ public class MainBorder {
     private int currentWidthFloorTB, currentHeightFloorTB;
     Graphics g;
     private WallGenerator wall;
+    private FirstLevelBackgroundaccessoires acc1;
 
 
-    public MainBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5, int scale, boolean itemroom, Graphics g) {
+    public FirstLevel(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int scale, boolean itemroom, Graphics g) {
         this.numberOfRooms = numberOfRooms;
         this.x1 = x1;
         this.y1 = y1;
@@ -30,10 +31,6 @@ public class MainBorder {
         this.y2 = y2;
         this.x3 = x3;
         this.y3 = y3;
-        this.x4 = x4;
-        this.y4 = y4;
-        this.x5 = x5;
-        this.y5 = y5;
         this.scale = scale;
         this.itemroom = itemroom;
         this.g = g;
@@ -56,8 +53,8 @@ public class MainBorder {
         screenWidth = tk.getScreenSize().width;
         screenHeight = tk.getScreenSize().height;
 
-        totalX = x1 + x2 + x3 + x4 + x5;
-        totalY = y1 + y2 + y3 + y4 + y5;
+        totalX = x1 + x2 + x3;
+        totalY = y1 + y2 + y3;
 
         levelWidthSize = numberOfRooms * screenWidth;
         levelHeightSize = numberOfRooms * screenHeight;
@@ -111,7 +108,7 @@ public class MainBorder {
     }
 
     public void StaticBorder( int currentHeightWallLeft) {
-        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner left bottom
+        g.drawImage(Assets.cornerLB, ((1920 - x) / 10), currentHeightWallLeft + a, null); //static corner left bottom
         g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner right bottom
     }
 
@@ -166,10 +163,6 @@ public class MainBorder {
         }
     }
 
-    public void Floor() {
-
-    }
-
     public void BorderTopBottom(int heightWallBottom) {
         this.heightWallBottom = heightWallBottom;
 
@@ -207,7 +200,7 @@ public class MainBorder {
 
     public void CreateBorder() {
 
-        if(itemroom == true) {
+        if(itemroom) {
             x = screenWidth/2;
             y = screenHeight/2;
         }
@@ -219,35 +212,32 @@ public class MainBorder {
                     x = x1;
                     y = y1;
                     a = 0;
+                    a1 = 0;
+                    acc1 = new FirstLevelBackgroundaccessoires(x,y,a, a1,g);
                     BorderLeftRight();
                     wall = new WallGenerator(48,0,48,96,g);
                     g.drawImage(Assets.arrows, 244, 176, null);
                     g.drawImage(Assets.space, 308,184,null);
+                    acc1.FirstLevel();
                     break;
                 case(1):
                     x = x2;
                     y = y2;
                     a = heightWallBottom + height;
+                    a1 = 0;
+                    acc1 = new FirstLevelBackgroundaccessoires(x,y,a,a1,g);
                     BorderLeftRight();
                     wall = new WallGenerator(16,48,64,48,g);
+                    acc1.SecondLevel();
                     break;
                 case(2):
                     x = x3;
                     y = y3;
                     a += heightWallBottom + height;
+                    a1 += -x2;
+                    acc1 = new FirstLevelBackgroundaccessoires(x,y,a,a1,g);
                     BorderLeftRight();
-                    break;
-                case(3):
-                    x = x4;
-                    y = y4;
-                    a += heightWallBottom + height;
-                    BorderLeftRight();
-                    break;
-                case(4):
-                    x = x5;
-                    y = y5;
-                    a += heightWallBottom + height;
-                    BorderLeftRight();
+                    acc1.ThirdLevel();
                     break;
                 default:
                     break;

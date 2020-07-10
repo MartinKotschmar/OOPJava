@@ -33,9 +33,9 @@ public class Assets {
                                 oldiehat, oldieknife, newbiespear, newbieknife, newbienormal,
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe,
-                                hara,
-                                arrows, space;
-    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes, flasks;
+                                hara, arrows, space;
+    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes, flasks, Boss, Coin;
+
 
 
     public static void init(){
@@ -303,6 +303,45 @@ public class Assets {
         Tileset animation_flask1v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/flasks/flasks_1_4.png"));
 
         flasks[3] = animation_flask1v1.location(0,0,width,height);
+
+
+
+        Boss = new BufferedImage[4];
+
+        Tileset animation_Boss1v1 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/vampire/v2/vampire_v2_1.png"));
+
+        Boss[0] = animation_Boss1v1.location(0,0,width,height);
+
+        Tileset animation_Boss1v2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/vampire/v2/vampire_v2_2.png"));
+
+        Boss[1] = animation_Boss1v2.location(0,0,width,height);
+
+        Tileset animation_Boss1v3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/vampire/v2/vampire_v2_3.png"));
+
+        Boss[2] = animation_Boss1v3.location(0,0,width,height);
+
+        Tileset animation_Boss1v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/vampire/v2/vampire_v2_4.png"));
+
+        Boss[3] = animation_Boss1v4.location(0,0,width,height);
+
+
+        Coin = new BufferedImage[4];
+
+        Tileset animation_Coin1 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/coin/coin_1.png"));
+
+        Coin[0] = animation_Coin1.location(0,0,width,height);
+
+        Tileset animation_Coin2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/coin/coin_2.png"));
+
+        Coin[1] = animation_Coin2.location(0,0,width,height);
+
+        Tileset animation_Coin3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/coin/coin_3.png"));
+
+        Coin[2] = animation_Coin3.location(0,0,width,height);
+
+        Tileset animation_Coin4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/coin/coin_4.png"));
+
+        Coin[3] = animation_Coin4.location(0,0,width,height);
     }
 
 

@@ -33,6 +33,7 @@ public class Game implements Runnable {
     public Handler handler;
     public Processing processing;
     public Camera camera;
+    private GateWay gateWay;
 
     public Game(String title) {     //Game Methode erstellen
         this.title = title;
@@ -64,7 +65,12 @@ public class Game implements Runnable {
 
         Assets.init();
 
-        handler.addObject(new Player(1920/10,1080/10, 10, scale, ID.Player, handler));
+        player = new Player(1920/10,1080/10, 10, scale, ID.Player, handler);
+        handler.addObject(player);
+
+        gateWay = new GateWay(175, 1040, 0, null, handler);
+        handler.addObject(gateWay);
+        handler.addCollidableObject(gateWay);
 
         enemy = new Skeleton(32,32, 1, scale, ID.Skeleton, handler);
         enemy.setMove(true, 100);
@@ -181,6 +187,9 @@ public class Game implements Runnable {
     }
 
     public void setLevel(LEVELS level) {
+        //TODO CHECK WHICH LEVEL
+        player.tp(1920/10,1080/10);
+
         this.level.setLevel(level);
     }
 }

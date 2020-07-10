@@ -12,21 +12,12 @@ public class Processing {
     private BufferedImage image;
 
     public void Update() {
-        for(int i = 0; i < object.size(); i++) {
+        for (int i = 0; i < object.size(); i++) {
             Background tempObject = object.get(i);
 
             tempObject.Update();
         }
     }
-
-    public void addObject(Background tempObject){
-        object.add(tempObject);
-    }
-
-    public void removeObject(Background tempObject) {
-        object.remove(tempObject);
-    }
-
 
     public int getX() {
         return x;
@@ -44,14 +35,6 @@ public class Processing {
         this.y = y;
     }
 
-    public int getI() {
-        return i;
-    }
-
-    public void setI(int i) {
-        this.i = i;
-    }
-
     public BufferedImage getImage() {
         return image;
     }
@@ -60,9 +43,9 @@ public class Processing {
         this.image = image;
     }
 
-    public void Render (Graphics g) {
+    public void Render(Graphics g) {
 
-        for(int i = 0; i < object.size(); i++) {
+        for (int i = 0; i < object.size(); i++) {
             Background tempObject = object.get(i);
 
             tempObject.Render(g);

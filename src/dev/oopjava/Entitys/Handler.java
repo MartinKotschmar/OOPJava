@@ -3,7 +3,6 @@ package dev.oopjava.Entitys;
 import dev.oopjava.Display.Game;
 import dev.oopjava.Level.LEVELS;
 
-import javax.management.ObjectName;
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
@@ -17,6 +16,7 @@ public class Handler {
     private Game activeGame;
 
     private static Handler instance;
+
     public static Handler getInstance() {
         return instance;
     }
@@ -118,11 +118,12 @@ public class Handler {
         this.wallRectangles.add(wallRectangle);
     }
 
-    public void playerDied(){
+    public void playerDied() {
         showDeathScreen();
         activeGame.stop();
     }
-    public void playerWin(){
+
+    public void playerWin() {
         showWinScreen();
         activeGame.stop();
     }
@@ -134,6 +135,7 @@ public class Handler {
         deathScreen.setLocationRelativeTo(null);
         deathScreen.setVisible(true);
     }
+
     private void showWinScreen() {
         JFrame winScreen = new JFrame();
         winScreen.add(new JLabel("Du hast gewonnen!!"));

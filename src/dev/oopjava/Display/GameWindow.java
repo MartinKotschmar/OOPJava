@@ -78,7 +78,6 @@ public class GameWindow {
         canvas.setPreferredSize(dimension);     //prefSize getSize
         canvas.setMinimumSize(dimension);       //min
         canvas.setMaximumSize(dimension);       //max
-            //canvas.add();
         gamePanel.add(canvas);      // add Canvas für Grafik abbildung
     }
 

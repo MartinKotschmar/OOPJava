@@ -14,7 +14,7 @@ public class Boss extends ObjectSettings {
     private int movedDistance = 0;
     private DIRECTIONS direction;
 
-    public Boss(int x, int y, int speed,int scale, ID id, Handler handler) {
+    public Boss(int x, int y, int speed, int scale, ID id, Handler handler) {
         super(x, y, speed, id);
         this.handler = handler;
         this.scale = scale;
@@ -33,7 +33,7 @@ public class Boss extends ObjectSettings {
     public void Update() {
         switch (direction) {
             case RIGHT -> {
-                if(movedDistance < maxDistanceX) {
+                if (movedDistance < maxDistanceX) {
                     x++;
                     movedDistance++;
                 } else {
@@ -42,7 +42,7 @@ public class Boss extends ObjectSettings {
                 }
             }
             case LEFT -> {
-                if(movedDistance < maxDistanceX) {
+                if (movedDistance < maxDistanceX) {
                     x--;
                     movedDistance++;
                 } else {
@@ -51,7 +51,7 @@ public class Boss extends ObjectSettings {
                 }
             }
             case DOWN -> {
-                if(movedDistance < maxDistanceY) {
+                if (movedDistance < maxDistanceY) {
                     y++;
                     movedDistance++;
                 } else {
@@ -60,7 +60,7 @@ public class Boss extends ObjectSettings {
                 }
             }
             case UP -> {
-                if(movedDistance < maxDistanceY) {
+                if (movedDistance < maxDistanceY) {
                     y--;
                     movedDistance++;
                 } else {
@@ -69,18 +69,19 @@ public class Boss extends ObjectSettings {
                 }
             }
         }
-        animation.tick(1,1);
+        animation.tick(1, 1);
     }
 
     @Override
     public void Render(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        //g2.scale(scale,scale);
-        g.drawImage(animation.getTiles(),x,y, null);
+        g.drawImage(animation.getTiles(), x, y, null);
     }
 
     @Override
-    public Rectangle getBounds() { return new Rectangle(x, y, width, height);}
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, width, height);
+    }
 
 
     @Override

@@ -5,15 +5,13 @@ import dev.oopjava.tileset.Assets;
 import java.awt.*;
 
 public class ThirdLevel {
-    private int screenWidth,screenHeight;
+    private int screenWidth, screenHeight;
     private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, scale;
-    private int totalX, totalY,levelWidthSize, levelHeightSize,normalRooms, index;
+    private int totalX, totalY, levelWidthSize, levelHeightSize, normalRooms, index;
     private int x, y, i, a, a3;
     private int YAssetParts, XAssetParts, maxX, maxY;
-    private int xz1, xz2, xz3, xz4, xz5;
-    private int yz1, yz2, yz3, yz4, yz5;
     private int width, height;
-    private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
+    private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop, heightWallBottom;
     private boolean itemroom;
     private int currentWidthFloor, currentHeightFloor;
     private int YFloorParts, XFloorParts;
@@ -43,15 +41,6 @@ public class ThirdLevel {
         CreateBorder();
     }
 
-
-    public int getTotalY() {
-        return totalY;
-    }
-
-    public void setTotalY(int totalY) {
-        this.totalY = totalY;
-    }
-
     public void Variables() {
 
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -73,7 +62,6 @@ public class ThirdLevel {
 
         currentWidthWallTop = width;
 
-        //if(itemroom == true) {normalRooms = numberOfRooms - 1;} else normalRooms = numberOfRooms;
         normalRooms = 0;
 
     }
@@ -88,18 +76,20 @@ public class ThirdLevel {
         maxX = x / scale;
         maxY = y / scale;
 
-        for(;YAssetParts > 0; YAssetParts--) {
+        for (; YAssetParts > 0; YAssetParts--) {
 
-            if(i>1) {i=0;}
-            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10), currentHeightWallLeft - height + a, null);   //create wall left
-            g.drawImage(Assets.wallRight[i],  1920/5 - width - ((1920 - x)/10), currentHeightWallLeft - height + a , null); //create wall right
+            if (i > 1) {
+                i = 0;
+            }
+            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x) / 10), currentHeightWallLeft - height + a, null);   //create wall left
+            g.drawImage(Assets.wallRight[i], 1920 / 5 - width - ((1920 - x) / 10), currentHeightWallLeft - height + a, null); //create wall right
             currentHeightWallLeft += height;
             i++;
         }
 
         //Collision Wall
-        Rectangle tempLeftRect = new Rectangle(((1920 - x) / 10),a,16, currentHeightWallLeft);
-        Rectangle tempRightRect = new Rectangle(1920/5 - width - ((1920 - x)/10),a,16, currentHeightWallLeft);
+        Rectangle tempLeftRect = new Rectangle(((1920 - x) / 10), a, 16, currentHeightWallLeft);
+        Rectangle tempRightRect = new Rectangle(1920 / 5 - width - ((1920 - x) / 10), a, 16, currentHeightWallLeft);
         Handler.getInstance().addWallRectangles(tempLeftRect);
         Handler.getInstance().addWallRectangles(tempRightRect);
 
@@ -110,31 +100,33 @@ public class ThirdLevel {
         BorderTopBottom(currentHeightWallLeft);
     }
 
-    public void StaticBorder( int currentHeightWallLeft) {
-        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner left bottom
-        g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner right bottom
+    public void StaticBorder(int currentHeightWallLeft) {
+        g.drawImage(Assets.cornerLB, 0 + ((1920 - x) / 10), currentHeightWallLeft + a, null); //static corner left bottom
+        g.drawImage(Assets.cornerRB, 1920 / 5 - width - ((1920 - x) / 10), currentHeightWallLeft + a, null); //static corner right bottom
     }
 
-    public void FloorCorners( int currentHeightWallLeft) {
+    public void FloorCorners(int currentHeightWallLeft) {
         currentWidthFloor = width;
         currentHeightFloor = height;
         currentWidthFloorTB = width;
         currentHeightFloorTB = height;
-        g.drawImage(Assets.floorLT, currentWidthFloor + (1920 - x)/10, currentHeightFloor + a, null); //create Floor
-        g.drawImage(Assets.floorRT, x / scale - (2 * width) + (1920 - x)/10, currentHeightFloor + a , null); //create Floor
-        g.drawImage(Assets.floorLB, currentWidthFloor + (1920 - x)/10, currentHeightWallLeft - height + a, null); //create Floor
-        g.drawImage(Assets.floorRB, x / scale - 2 * width + (1920 - x)/10, currentHeightWallLeft - height +a , null); //create Floor
+        g.drawImage(Assets.floorLT, currentWidthFloor + (1920 - x) / 10, currentHeightFloor + a, null); //create Floor
+        g.drawImage(Assets.floorRT, x / scale - (2 * width) + (1920 - x) / 10, currentHeightFloor + a, null); //create Floor
+        g.drawImage(Assets.floorLB, currentWidthFloor + (1920 - x) / 10, currentHeightWallLeft - height + a, null); //create Floor
+        g.drawImage(Assets.floorRB, x / scale - 2 * width + (1920 - x) / 10, currentHeightWallLeft - height + a, null); //create Floor
 
-        for(; YFloorParts > 0; YFloorParts--) {
-            g.drawImage(Assets.floorLeft, currentWidthFloor + (1920 - x)/10, currentHeightFloor + a + height, null); //create Floor
-            g.drawImage(Assets.floorRight, x / scale - (2 * width) + (1920 - x)/10, currentHeightFloor + a + height, null); //create Floor
+        for (; YFloorParts > 0; YFloorParts--) {
+            g.drawImage(Assets.floorLeft, currentWidthFloor + (1920 - x) / 10, currentHeightFloor + a + height, null); //create Floor
+            g.drawImage(Assets.floorRight, x / scale - (2 * width) + (1920 - x) / 10, currentHeightFloor + a + height, null); //create Floor
             currentHeightFloor += height;
         }
-        for(; XFloorParts > 0; XFloorParts--) {
+        for (; XFloorParts > 0; XFloorParts--) {
 
-            if (i > 1) {i = 0;}
+            if (i > 1) {
+                i = 0;
+            }
 
-            if(XFloorParts < ((int) Math.ceil(x / (16 * scale)) -4)/2|| XFloorParts > ((int) Math.ceil(x / (16 * scale)) - 4)/2+1) {
+            if (XFloorParts < ((int) Math.ceil(x / (16 * scale)) - 4) / 2 || XFloorParts > ((int) Math.ceil(x / (16 * scale)) - 4) / 2 + 1) {
                 g.drawImage(Assets.floorBottom[i], currentWidthFloorTB + (1920 - x) / 10 + width, currentHeightWallLeft - height + a, null); //create Floor
                 g.drawImage(Assets.floorTop[i], currentWidthFloorTB + (1920 - x) / 10 + width, height + a, null); //create Floor
                 currentWidthFloorTB += width;
@@ -142,7 +134,8 @@ public class ThirdLevel {
             } else {
                 g.drawImage(Assets.floorCenter[i], currentWidthFloorTB + ((1920 - x) / 10) + width, currentHeightWallLeft - height + a, null);
                 g.drawImage(Assets.floorCenter[i], currentWidthFloorTB + ((1920 - x) / 10) + width, height + a, null);
-                currentWidthFloorTB += width; i++;
+                currentWidthFloorTB += width;
+                i++;
             }
         }
         XFloorParts = (int) Math.ceil(x / (16 * scale)) - 4;
@@ -155,7 +148,7 @@ public class ThirdLevel {
                 if (i > 11) {
                     i = 0;
                 }
-                g.drawImage(Assets.floorCenter[i], currentWidthFloor + width + (1920 - x)/10, currentHeightFloor + height + a, null); //create Floor
+                g.drawImage(Assets.floorCenter[i], currentWidthFloor + width + (1920 - x) / 10, currentHeightFloor + height + a, null); //create Floor
                 currentWidthFloor += width;
                 i++;
             }
@@ -165,17 +158,15 @@ public class ThirdLevel {
         }
     }
 
-    public void Floor() {
-
-    }
-
     public void BorderTopBottom(int heightWallBottom) {
         this.heightWallBottom = heightWallBottom;
 
-        for(;XAssetParts > 0; XAssetParts--) {
-            if(i>2){i = 0; }
+        for (; XAssetParts > 0; XAssetParts--) {
+            if (i > 2) {
+                i = 0;
+            }
 
-            if(XAssetParts < ((int) Math.ceil(x / (16 * scale)) - 2)/2 || XAssetParts > ((int) Math.ceil(x / (16 * scale)) - 2)/2 +1) {
+            if (XAssetParts < ((int) Math.ceil(x / (16 * scale)) - 2) / 2 || XAssetParts > ((int) Math.ceil(x / (16 * scale)) - 2) / 2 + 1) {
                 g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x) / 10), 0 + a, null); //create wall top
                 g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x) / 10), heightWallBottom + a, null); //create wall bottom
             } else {
@@ -188,10 +179,10 @@ public class ThirdLevel {
         }
 
         // COLLISSION WALL
-        Rectangle tempTopARect = new Rectangle((((1920 - x) / 10)), a,currentWidthWallTop/2-8, 16);
+        Rectangle tempTopARect = new Rectangle((((1920 - x) / 10)), a, currentWidthWallTop / 2 - 8, 16);
         Rectangle tempTopBRect = new Rectangle(tempTopARect);
         tempTopBRect.x += 32 + tempTopARect.width;
-        Rectangle tempDownARect = new Rectangle(((1920 - x)/10),heightWallBottom + a,currentWidthWallTop/2-8,16);
+        Rectangle tempDownARect = new Rectangle(((1920 - x) / 10), heightWallBottom + a, currentWidthWallTop / 2 - 8, 16);
         Rectangle tempDownBRect = new Rectangle(tempDownARect);
         tempDownBRect.x += 32 + tempDownARect.width;
 
@@ -207,59 +198,59 @@ public class ThirdLevel {
 
     public void CreateBorder() {
 
-        if(itemroom == true) {
-            x = screenWidth/2;
-            y = screenHeight/2;
+        if (itemroom == true) {
+            x = screenWidth / 2;
+            y = screenHeight / 2;
         }
 
-        for(;normalRooms < numberOfRooms; normalRooms++) {
+        for (; normalRooms < numberOfRooms; normalRooms++) {
             index = normalRooms;
-            switch(index) {
-                case(0):
+            switch (index) {
+                case (0):
                     x = x1;
                     y = y1;
                     a = 0;
                     a3 = 0;
-                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a, a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x, y, a, a3, g);
                     BorderLeftRight();
-                    wall = new WallGenerator(48,0,48,96,g);
-                    wall = new WallGenerator(48,0,48,96,g);
-                    wall = new WallGenerator(256,0,256,96,g);
-                    wall = new WallGenerator(48,96,96,96,g);
+                    wall = new WallGenerator(48, 0, 48, 96, g);
+                    wall = new WallGenerator(48, 0, 48, 96, g);
+                    wall = new WallGenerator(256, 0, 256, 96, g);
+                    wall = new WallGenerator(48, 96, 96, 96, g);
                     acc3.FirstLevel();
                     break;
-                case(1):
+                case (1):
                     x = x2;
                     y = y2;
                     a = heightWallBottom + height;
                     a3 = 0;
-                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a,a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x, y, a, a3, g);
                     BorderLeftRight();
-                    wall = new WallGenerator(16,48,64,48,g);
+                    wall = new WallGenerator(16, 48, 64, 48, g);
                     acc3.SecondLevel();
                     break;
-                case(2):
+                case (2):
                     x = x3;
                     y = y3;
                     a += heightWallBottom + height;
                     a3 += -x2;
-                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a,a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x, y, a, a3, g);
                     BorderLeftRight();
                     acc3.ThirdLevel();
                     break;
-                case(3):
+                case (3):
                     x = x4;
                     y = y4;
                     a += heightWallBottom + height;
-                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a,a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x, y, a, a3, g);
                     BorderLeftRight();
                     acc3.FourthLevel();
                     break;
-                case(4):
+                case (4):
                     x = x5;
                     y = y5;
                     a += heightWallBottom + height;
-                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a,a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x, y, a, a3, g);
                     BorderLeftRight();
                     acc3.FifthLevel();
                     break;

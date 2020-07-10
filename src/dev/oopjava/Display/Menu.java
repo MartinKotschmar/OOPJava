@@ -1,8 +1,7 @@
 package dev.oopjava.Display;
 //Import package
-import dev.oopjava.Display.GameWindow;
+
 import dev.oopjava.Level.LEVELS;
-import org.w3c.dom.css.RGBColor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,17 +24,17 @@ public class Menu {
     private JButton button3;
 
 
-    public Menu(String title, int width, int height){    //Klasse Display zu erstellen einer Bildschirmabbildung
+    public Menu(String title, int width, int height) {    //Klasse Display zu erstellen einer Bildschirmabbildung
         this.title = title;     //Titel des Fensters
         this.dimensionWindow = new Dimension(width, height);
-        this.dimensionButtonRigidArea = new Dimension(0,165);
-        this.dimensionButtonSize = new Dimension(450,150);
+        this.dimensionButtonRigidArea = new Dimension(0, 165);
+        this.dimensionButtonSize = new Dimension(450, 150);
 
         createDisplay();     //create Methode zum eigentlichen erstellen
 
     }
 
-    private void createDisplay(){
+    private void createDisplay() {
         frame = new JFrame(title);
         frame.setSize(dimensionWindow);       //Fenstergröße width, height
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);      //Vollbild
@@ -52,7 +51,6 @@ public class Menu {
             e.printStackTrace();
         }
 
-        //panel = new JPanel();
         panel = label;
         BoxLayout layout = new BoxLayout(panel, BoxLayout.Y_AXIS);
         panel.setLayout(layout);
@@ -103,7 +101,6 @@ public class Menu {
         // Action Listener auf Buttons machen
         button1.addActionListener(e -> {
             frame.dispose();
-            //new GameWindow();
             Game game = new Game("Dungeons and Mi´s");
             game.start();
         });
@@ -123,7 +120,6 @@ public class Menu {
 
     private void createLevelSelection() {
         frame.remove(panel);
-        //frame.setVisible(false);
 
 
         JLabel panel = null;

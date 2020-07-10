@@ -1,20 +1,17 @@
 package dev.oopjava.Display;
 
-import dev.oopjava.tileset.*;
-import dev.oopjava.Level.*;
 import dev.oopjava.Entitys.*;
+import dev.oopjava.Level.CreateLevel;
+import dev.oopjava.Level.LEVELS;
+import dev.oopjava.tileset.Assets;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.LinkedList;
 
 public class Game implements Runnable {
 
-    private Randomizer randomizer;
     private GameWindow display;        //Display Klasse erstellen
     private CreateLevel level;  //Level erstellen
-    private Skeleton enemy;
     private Player player;
 
     public int scale, index;       //Breite, Höhe
@@ -33,68 +30,51 @@ public class Game implements Runnable {
     public Handler handler;
     public Processing processing;
     public Camera camera;
-    private GateWay gateWay;
 
     public Game(String title) {     //Game Methode erstellen
         this.title = title;
 
         scale = 5;
-        backscale = 1/scale;
+        backscale = 1 / scale;
         index = 0;
         Timer = System.currentTimeMillis();
 
 
         handler = new Handler(this);
-        camera = new Camera(this,0 ,0);
+        camera = new Camera(this, 0, 0);
         character = "Priest1";
         Graphics();
-        player = new Player(1920/10,1080/10, 10, scale, ID.Player, handler);
+        player = new Player(1920 / 10, 1080 / 10, 10, scale, ID.Player, handler);
         level = new CreateLevel(handler, scale, index, processing);
     }
 
-    public Camera getCamera() {
-        return camera;
-    }
 
-    public void setCamera(Camera camera) {
-        this.camera = camera;
-    }
-
-    private void Graphics(){
+    private void Graphics() {
 
         display = new GameWindow(title, handler);
 
-        randomizer = new Randomizer();
-
         Assets.init();
-
-        //handler.addObject(player);
-
-
     }
 
-    private void Update(Handler handler){      //Update Fenster Methode
+    private void Update(Handler handler) {      //Update Fenster Methode
 
         this.handler = handler;
 
-        for(int i = 0; i < handler.getObject().size(); i++) {
-            if(handler.getObject().get(i).getId() == ID.Player) {
+        for (int i = 0; i < handler.getObject().size(); i++) {
+            if (handler.getObject().get(i).getId() == ID.Player) {
                 camera.centerOnEntity(handler.getObject().get(i));
             }
         }
 
         handler.Update();
-
-       //this.getCamera().move(1,1);
-
     }
 
-    private void Render(Handler handler){      //Render Methode (In weiser Vorraussicht)
+    private void Render(Handler handler) {      //Render Methode (In weiser Vorraussicht)
 
         this.handler = handler;
 
         bs = display.getCanvas().getBufferStrategy();
-        if(bs == null){
+        if (bs == null) {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
@@ -104,13 +84,10 @@ public class Game implements Runnable {
         g2.translate(-camera.getX(), -camera.getY());
 
         level.Render(g);
-        //g.drawImage(Assets.hara,200,100,null);
-        //g2.scale(0.2,0.2);
 
         handler.Render(g);
         g2.translate(camera.getX(), camera.getY());
 
-        //enemy.Render(g, Timer);
         g.dispose();
         bs.show();
 
@@ -118,7 +95,6 @@ public class Game implements Runnable {
 
     public void run() {     //run Methode zum Fenster Updaten
 
-        //Graphics();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60;
         double amountOfTicks2 = 180;
@@ -131,15 +107,15 @@ public class Game implements Runnable {
         int ticks = 0;
         while (running) {
             long now = System.nanoTime();
-            delta += (now - lastTime) /ns;
-            delta2 += (now - lastTime) /ns2;
+            delta += (now - lastTime) / ns;
+            delta2 += (now - lastTime) / ns2;
             lastTime = now;
-            if(delta >= 1) {
+            if (delta >= 1) {
                 Update(handler);
                 ticks++;
                 delta--;
             }
-            if(delta2 >= 1) {
+            if (delta2 >= 1) {
                 Render(handler);
                 frames++;
                 delta2--;
@@ -157,9 +133,9 @@ public class Game implements Runnable {
 
     }
 
-    public synchronized void start(){       //erstellen GameLoop (start)
+    public synchronized void start() {       //erstellen GameLoop (start)
 
-        if(running)
+        if (running)
             return;
 
         running = true;
@@ -167,9 +143,9 @@ public class Game implements Runnable {
         thread.start();
     }
 
-    public synchronized void stop(){        //GameLoop bedingt (stoppen)
+    public synchronized void stop() {        //GameLoop bedingt (stoppen)
 
-        if(!running)
+        if (!running)
             return;
         running = false;
 
@@ -182,8 +158,6 @@ public class Game implements Runnable {
     }
 
     public void setLevel(LEVELS level) {
-        //TODO CHECK WHICH LEVEL
-        //player.tp(1920/10,1080/10);
 
         this.level.setLevel(level);
     }

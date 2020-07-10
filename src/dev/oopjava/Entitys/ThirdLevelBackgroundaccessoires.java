@@ -2,8 +2,6 @@ package dev.oopjava.Entitys;
 
 import dev.oopjava.tileset.Assets;
 
-import dev.oopjava.Display.*;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

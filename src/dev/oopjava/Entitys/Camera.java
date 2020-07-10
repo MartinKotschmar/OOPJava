@@ -5,26 +5,19 @@ import dev.oopjava.Display.Game;
 public class Camera {
 
     Game game;
-    private SecondLevelBorder border;
-    private Player player;
     private float x, y;
     private float X, Y;
 
-    public Camera(Game game, float x, float y){
+    public Camera(Game game, float x, float y) {
         this.game = game;
         this.x = x;
         this.y = y;
     }
 
-    public void centerOnEntity(ObjectSettings object){
-        x = object.getX() * 5 - 1920/2;
-        y = object.getY() * 5 - 1080/2;
+    public void centerOnEntity(ObjectSettings object) {
+        x = object.getX() * 5 - 1920 / 2;
+        y = object.getY() * 5 - 1080 / 2;
     }
-
-   /*public void move(float xAmt, float yAmt){
-        xOffset += xAmt;
-        yOffset += yAmt;
-    }*/
 
     public float getX() {
         return x;

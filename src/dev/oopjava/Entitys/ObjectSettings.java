@@ -5,7 +5,7 @@ import java.awt.*;
 public abstract class ObjectSettings {
 
     protected CharacterAnimation animation;
-    protected int x,y;
+    protected int x, y;
     protected int velX = 1, velY = 1;
     protected int speed;
     protected ID id;
@@ -23,7 +23,9 @@ public abstract class ObjectSettings {
     }
 
     public abstract void Update();
+
     public abstract void Render(Graphics g);
+
     public abstract Rectangle getBounds();
 
     public void setY(int y) {
@@ -32,10 +34,6 @@ public abstract class ObjectSettings {
 
     public void setX(int x) {
         this.x = x;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
     }
 
     public void setId(ID id) {
@@ -50,19 +48,15 @@ public abstract class ObjectSettings {
         return y;
     }
 
-    public double getSpeed() {
-        return speed;
-    }
-
     public ID getId() {
         return id;
     }
 
     public void removeHealth(double healthAmountToRemove) {
-        if(health > 0) {
+        if (health > 0) {
             health -= healthAmountToRemove;
         }
-        if(health <= 0) {
+        if (health <= 0) {
             die();
         }
     }
@@ -70,12 +64,12 @@ public abstract class ObjectSettings {
     protected abstract void die();
 
     public void addHealth(double healthAmountToAdd) {
-        if(health < 100) {
+        if (health < 100) {
             health += healthAmountToAdd;
         } else {
             return;
         }
-        if(health > 100) {
+        if (health > 100) {
             health = 100;
         }
     }

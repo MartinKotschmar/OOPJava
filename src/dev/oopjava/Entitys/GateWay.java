@@ -25,7 +25,7 @@ public class GateWay extends ObjectSettings {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 32,16);
+        return new Rectangle(x, y, 32, 16);
     }
 
     @Override

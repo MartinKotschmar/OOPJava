@@ -5,7 +5,7 @@ import dev.oopjava.tileset.Assets;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Skeleton extends ObjectSettings{
+public class Skeleton extends ObjectSettings {
 
     private static BufferedImage[] character;
     //Bewegungskonstanten
@@ -15,7 +15,7 @@ public class Skeleton extends ObjectSettings{
     private boolean reverted = false;
 
 
-    public Skeleton(int x, int y, int speed,int scale, ID id, Handler handler){
+    public Skeleton(int x, int y, int speed, int scale, ID id, Handler handler) {
         super(x, y, speed, id);
         this.handler = handler;
         this.scale = scale;
@@ -25,15 +25,14 @@ public class Skeleton extends ObjectSettings{
         health = 50;
         attackDamage = 0.5;
 
-        //TODO Change
         character = Assets.skeleton2v1;
         animation = new CharacterAnimation(tick, speed, character);
     }
 
     public void Update() {
-        if(horizontal) {
-            if(reverted) {
-                if(movedDistance > 0) {
+        if (horizontal) {
+            if (reverted) {
+                if (movedDistance > 0) {
                     x--;
                     movedDistance--;
                     velX = 1;
@@ -41,7 +40,7 @@ public class Skeleton extends ObjectSettings{
                     reverted = false;
                 }
             } else {
-                if(movedDistance < maxDistance) {
+                if (movedDistance < maxDistance) {
                     x++;
                     movedDistance++;
                     velX = -1;
@@ -50,8 +49,8 @@ public class Skeleton extends ObjectSettings{
                 }
             }
         } else {
-            if(reverted) {
-                if(movedDistance > 0) {
+            if (reverted) {
+                if (movedDistance > 0) {
                     y--;
                     movedDistance--;
                     velY = 1;
@@ -59,7 +58,7 @@ public class Skeleton extends ObjectSettings{
                     reverted = false;
                 }
             } else {
-                if(movedDistance < maxDistance) {
+                if (movedDistance < maxDistance) {
                     y++;
                     movedDistance++;
                     velY = -1;
@@ -68,18 +67,17 @@ public class Skeleton extends ObjectSettings{
                 }
             }
         }
-        animation.tick(velX,velY);
+        animation.tick(velX, velY);
     }
 
-    public void setMove(boolean horizontal, int distance){
+    public void setMove(boolean horizontal, int distance) {
         this.horizontal = horizontal;
         this.maxDistance = distance;
     }
 
     public void Render(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        //g2.scale(scale,scale);
-        g.drawImage(animation.getTiles(),x,y, null);
+        g.drawImage(animation.getTiles(), x, y, null);
 
     }
 

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 public abstract class Background {
 
-    protected int x,y,i;
+    protected int x, y, i;
     protected BufferedImage image;
     protected ID id;
 
@@ -13,11 +13,12 @@ public abstract class Background {
         this.x = x;
         this.y = y;
         this.i = i;
-        this.image =image;
+        this.image = image;
         this.id = id;
     }
 
     public abstract void Update();
+
     public abstract void Render(Graphics g);
 
     public int getX() {

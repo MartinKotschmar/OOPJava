@@ -5,7 +5,7 @@ import dev.oopjava.tileset.Assets;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Coin extends ObjectSettings  {
+public class Coin extends ObjectSettings {
 
     private static BufferedImage[] character;
 
@@ -20,17 +20,17 @@ public class Coin extends ObjectSettings  {
 
     @Override
     public void Update() {
-        animation.tick(0.5,0.5);
+        animation.tick(0.5, 0.5);
     }
 
     @Override
     public void Render(Graphics g) {
-        g.drawImage(animation.getTiles(),x,y, null);
+        g.drawImage(animation.getTiles(), x, y, null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x+7, y+7,2, 3);
+        return new Rectangle(x + 7, y + 7, 2, 3);
     }
 
     @Override

@@ -6,25 +6,23 @@ import java.awt.*;
 
 public class SecondLevelBorder {
     private int screenWidth,screenHeight;
-    private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, scale;
-    private int totalX, totalY, levelWidthSize, levelHeightSize, normalRooms, index;
-    private int x, y, i, a, a2;
+    private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, scale;
+    private int totalX, totalY,levelWidthSize, levelHeightSize,normalRooms, index;
+    private int x, y, i, a;
     private int YAssetParts, XAssetParts, maxX, maxY;
-    private int xz1, xz2, xz3, xz4;
-    private int yz1, yz2, yz3, yz4;
-    private int newX, newY, newA;
+    private int xz1, xz2, xz3, xz4, xz5;
+    private int yz1, yz2, yz3, yz4, yz5;
     private int width, height;
-    private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop, heightWallBottom;
+    private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop,heightWallBottom;
     private boolean itemroom;
-    Graphics g;
-    private Backgroundaccessoires acc;
     private int currentWidthFloor, currentHeightFloor;
     private int YFloorParts, XFloorParts;
     private int currentWidthFloorTB, currentHeightFloorTB;
+    Graphics g;
     private WallGenerator wall;
 
 
-    public SecondLevelBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
+    public SecondLevelBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5, int scale, boolean itemroom, Graphics g) {
         this.numberOfRooms = numberOfRooms;
         this.x1 = x1;
         this.y1 = y1;
@@ -34,6 +32,8 @@ public class SecondLevelBorder {
         this.y3 = y3;
         this.x4 = x4;
         this.y4 = y4;
+        this.x5 = x5;
+        this.y5 = y5;
         this.scale = scale;
         this.itemroom = itemroom;
         this.g = g;
@@ -56,8 +56,8 @@ public class SecondLevelBorder {
         screenWidth = tk.getScreenSize().width;
         screenHeight = tk.getScreenSize().height;
 
-        totalX = x1 + x2 + x3 + x4;
-        totalY = y1 + y2 + y3 + y4;
+        totalX = x1 + x2 + x3 + x4 + x5;
+        totalY = y1 + y2 + y3 + y4 + y5;
 
         levelWidthSize = numberOfRooms * screenWidth;
         levelHeightSize = numberOfRooms * screenHeight;
@@ -65,7 +65,6 @@ public class SecondLevelBorder {
         width = 16;
         height = 16;
         i = 0;
-        newA = 0;
 
         currentHeightWallLeft = height;
         currentHeightWallRight = height;
@@ -92,21 +91,21 @@ public class SecondLevelBorder {
         for(;YAssetParts > 0; YAssetParts--) {
 
             if(i>1) {i=0;}
-            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10 + (a2/5)), currentHeightWallLeft - height + a, null);   //create wall left
-            g.drawImage(Assets.wallRight[i],  1920/5 - width - ((1920 - x)/10) + (a2/5), currentHeightWallLeft - height + a , null); //create wall right
+            g.drawImage(Assets.wallLeft[i], 0 + ((1920 - x)/10), currentHeightWallLeft - height + a, null);   //create wall left
+            g.drawImage(Assets.wallRight[i],  1920/5 - width - ((1920 - x)/10), currentHeightWallLeft - height + a , null); //create wall right
             currentHeightWallLeft += height;
             i++;
         }
         currentHeightWallLeft -= height;
         i = 0;
-        //StaticBorder(currentHeightWallLeft);
-        //FloorCorners(currentHeightWallLeft);
-        //BorderTopBottom(currentHeightWallLeft);
+        StaticBorder(currentHeightWallLeft);
+        FloorCorners(currentHeightWallLeft);
+        BorderTopBottom(currentHeightWallLeft);
     }
 
     public void StaticBorder( int currentHeightWallLeft) {
-        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10) + (a2/5), currentHeightWallLeft + a, null); //static corner left bottom
-        g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10) + (a2/5), currentHeightWallLeft + a, null); //static corner right bottom
+        g.drawImage(Assets.cornerLB, 0 + ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner left bottom
+        g.drawImage(Assets.cornerRB, 1920/5 - width - ((1920 - x)/10), currentHeightWallLeft + a, null); //static corner right bottom
     }
 
     public void FloorCorners( int currentHeightWallLeft) {
@@ -114,14 +113,14 @@ public class SecondLevelBorder {
         currentHeightFloor = height;
         currentWidthFloorTB = width;
         currentHeightFloorTB = height;
-        g.drawImage(Assets.floorLT, currentWidthFloor + (1920 - x)/10 + (a2/5), currentHeightFloor + a, null); //create Floor
-        g.drawImage(Assets.floorRT, x / scale - (2 * width) + (1920 - x)/10 + (a2/5), currentHeightFloor + a , null); //create Floor
-        g.drawImage(Assets.floorLB, currentWidthFloor + (1920 - x)/10 + (a2/5), currentHeightWallLeft - height + a, null); //create Floor
-        g.drawImage(Assets.floorRB, x / scale - 2 * width + (1920 - x)/10 + (a2/5), currentHeightWallLeft - height +a , null); //create Floor
+        g.drawImage(Assets.floorLT, currentWidthFloor + (1920 - x)/10, currentHeightFloor + a, null); //create Floor
+        g.drawImage(Assets.floorRT, x / scale - (2 * width) + (1920 - x)/10, currentHeightFloor + a , null); //create Floor
+        g.drawImage(Assets.floorLB, currentWidthFloor + (1920 - x)/10, currentHeightWallLeft - height + a, null); //create Floor
+        g.drawImage(Assets.floorRB, x / scale - 2 * width + (1920 - x)/10, currentHeightWallLeft - height +a , null); //create Floor
 
         for(; YFloorParts > 0; YFloorParts--) {
-            g.drawImage(Assets.floorLeft, currentWidthFloor + (1920 - x)/10 + (a2/5), currentHeightFloor + a + height, null); //create Floor
-            g.drawImage(Assets.floorRight, x / scale - (2 * width) + (1920 - x)/10 + (a2/5), currentHeightFloor + a + height, null); //create Floor
+            g.drawImage(Assets.floorLeft, currentWidthFloor + (1920 - x)/10, currentHeightFloor + a + height, null); //create Floor
+            g.drawImage(Assets.floorRight, x / scale - (2 * width) + (1920 - x)/10, currentHeightFloor + a + height, null); //create Floor
             currentHeightFloor += height;
         }
         for(; XFloorParts > 0; XFloorParts--) {
@@ -129,13 +128,13 @@ public class SecondLevelBorder {
             if (i > 1) {i = 0;}
 
             if(XFloorParts < ((int) Math.ceil(x / (16 * scale)) -4)/2|| XFloorParts > ((int) Math.ceil(x / (16 * scale)) - 4)/2+1) {
-                g.drawImage(Assets.floorBottom[i], currentWidthFloorTB + (1920 - x) / 10 + (a2/5) + width, currentHeightWallLeft - height + a, null); //create Floor
-                g.drawImage(Assets.floorTop[i], currentWidthFloorTB + (1920 - x) / 10 + (a2/5) + width, height + a, null); //create Floor
+                g.drawImage(Assets.floorBottom[i], currentWidthFloorTB + (1920 - x) / 10 + width, currentHeightWallLeft - height + a, null); //create Floor
+                g.drawImage(Assets.floorTop[i], currentWidthFloorTB + (1920 - x) / 10 + width, height + a, null); //create Floor
                 currentWidthFloorTB += width;
                 i++;
             } else {
-                g.drawImage(Assets.floorCenter[i], currentWidthFloorTB + ((1920 - x) / 10) + (a2/5) + width, currentHeightWallLeft - height + a, null);
-                g.drawImage(Assets.floorCenter[i], currentWidthFloorTB + ((1920 - x) / 10) + (a2/5) + width, height + a, null);
+                g.drawImage(Assets.floorCenter[i], currentWidthFloorTB + ((1920 - x) / 10) + width, currentHeightWallLeft - height + a, null);
+                g.drawImage(Assets.floorCenter[i], currentWidthFloorTB + ((1920 - x) / 10) + width, height + a, null);
                 currentWidthFloorTB += width; i++;
             }
         }
@@ -149,7 +148,7 @@ public class SecondLevelBorder {
                 if (i > 11) {
                     i = 0;
                 }
-                g.drawImage(Assets.floorCenter[i], currentWidthFloor + width + (1920 - x)/10 + (a2/5), currentHeightFloor + height + a, null); //create Floor
+                g.drawImage(Assets.floorCenter[i], currentWidthFloor + width + (1920 - x)/10, currentHeightFloor + height + a, null); //create Floor
                 currentWidthFloor += width;
                 i++;
             }
@@ -170,11 +169,11 @@ public class SecondLevelBorder {
             if(i>2){i = 0; }
 
             if(XAssetParts < ((int) Math.ceil(x / (16 * scale)) - 2)/2 || XAssetParts > ((int) Math.ceil(x / (16 * scale)) - 2)/2 +1) {
-                g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x) / 10) + (a2/5), 0 + a, null); //create wall top
-                g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x) / 10) + (a2/5), heightWallBottom + a, null); //create wall bottom
+                g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x) / 10), 0 + a, null); //create wall top
+                g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x) / 10), heightWallBottom + a, null); //create wall bottom
             } else {
-                g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10) + (a2/5), 0 + a, null);
-                g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10) + (a2/5), heightWallBottom + a, null);
+                g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10), 0 + a, null);
+                g.drawImage(Assets.floorCenter[i], currentWidthWallTop + ((1920 - x) / 10), heightWallBottom + a, null);
                 currentWidthFloor += width * 2;
             }
             currentWidthWallTop += width;
@@ -192,79 +191,39 @@ public class SecondLevelBorder {
             y = screenHeight/2;
         }
 
-        for(i = 0; normalRooms < numberOfRooms; normalRooms++) {
+        for(;normalRooms < numberOfRooms; normalRooms++) {
             index = normalRooms;
             switch(index) {
                 case(0):
                     x = x1;
                     y = y1;
-                    newX = x;
-                    newY = y;
                     a = 0;
-                    a2 = 0;
-                    acc = new Backgroundaccessoires(x,y,a, a2,g);
-                          /*  g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 16, height + a + 80, null);
-                            g.drawImage(Assets.stonessmall, width + ((1920 - x)/10) + a2/5 + 32, height + a + 80, null);*/
                     BorderLeftRight();
-                    acc.FirstLevel();
-
-                         /*   g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5, height + a - 16, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 48, height + a - 16, null);*/
                     break;
                 case(1):
                     x = x2;
                     y = y2;
-                    a += heightWallBottom + width;
-                    a2 = 0;
-                    acc = new Backgroundaccessoires(x,y, a , a2,g);
-                            /*g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 192, height + a + 160, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 208, height + a + 160, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 224, height + a + 160, null);
-                            g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 224, height + a + 144, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 112, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 128, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 144, null);
-                            g.drawImage(Assets.skeleton, width + ((1920 - x)/10) + a2/5 + 240, height + a + 160, null);
-                            g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 64, height + a + 128, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 48, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 64, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 80, height + a + 64, null);
-                            g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5, height + a + 32, null);
-                            g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5, height + a + 128, null);*/
-
+                    a = heightWallBottom + height;
                     BorderLeftRight();
-
-                          /*  g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 64, height + a - 16, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5 + 176, height + a - 16, null);*/
-                    acc.SecondLevel();
+                    wall = new WallGenerator(16,48,64,48,g);
                     break;
                 case(2):
                     x = x3;
                     y = y3;
-                    a2 += -x2;
-                    acc = new Backgroundaccessoires(x,y, a, a2, g);
-                           /* g.drawImage(Assets.boxes[4], width + ((1920 - x)/10) + a2/5 + 240, height + a, null);
-                            g.drawImage(Assets.trashmedium, width + ((1920 - x)/10) + a2/5 + 32, height + a + 112, null);
-                            g.drawImage(Assets.randomitems[0], width + ((1920 - x)/10) + a2/5 + 64, height + a + 128, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 48, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 96, height + a + 64, null);
-                            g.drawImage(Assets.stonesmedium, width + ((1920 - x)/10) + a2/5 + 80, height + a + 64, null);
-                            g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5 + 240, height + a + 32, null);
-                            g.drawImage(Assets.burningconsolemedium, width + ((1920 - x)/10) + a2/5 + 240, height + a + 128, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5, height + a + 160, null);
-                            g.drawImage(Assets.burningtorch, width + ((1920 - x)/10) + a2/5+16, height + a + 160, null); */
+                    a += heightWallBottom + height;
                     BorderLeftRight();
-                    acc.ThirdLevel();
-
                     break;
                 case(3):
                     x = x4;
                     y = y4;
                     a += heightWallBottom + height;
-                    acc = new Backgroundaccessoires(x,y,a, a2, g);
-
                     BorderLeftRight();
-                    acc.FourthLevel();
+                    break;
+                case(4):
+                    x = x5;
+                    y = y5;
+                    a += heightWallBottom + height;
+                    BorderLeftRight();
                     break;
                 default:
                     break;

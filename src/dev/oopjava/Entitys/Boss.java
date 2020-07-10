@@ -20,7 +20,7 @@ public class Boss extends ObjectSettings {
         tick = 150;
         width = 16;
         height = 16;
-        health = 100;
+        health = 10;
         attackDamage = 0.7;
         direction = DIRECTIONS.DOWN;
 
@@ -88,7 +88,10 @@ public class Boss extends ObjectSettings {
     protected void die() {
         handler.removeObject(this);
         handler.removeCollidableObject(this);
-        handler.playerWin();
+        Coin coin = new Coin(x, y, 0, null, handler);
+        handler.addObject(coin);
+        handler.addCollidableObject(coin);
+
     }
 
 }

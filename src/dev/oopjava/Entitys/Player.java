@@ -146,7 +146,10 @@ public class Player extends ObjectSettings{
                     tempObj.die();
                 } else if(tempObj instanceof GateWay){
                     tempObj.die();
-                } else {
+                } else if(tempObj instanceof Coin) {
+                    handler.playerWin();
+                }
+                else {
                     removeHealth(tempObj.getAttackDamage());
                 }
                 return true;

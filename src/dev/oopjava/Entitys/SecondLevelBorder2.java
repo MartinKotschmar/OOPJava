@@ -3,9 +3,8 @@ package dev.oopjava.Entitys;
 import dev.oopjava.tileset.Assets;
 
 import java.awt.*;
-import java.awt.geom.Arc2D;
 
-public class SecondLevelBorder {
+public class SecondLevelBorder2 {
         private int screenWidth,screenHeight;
         private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, scale;
         private int totalX, totalY, levelWidthSize, levelHeightSize, normalRooms, index;
@@ -23,7 +22,7 @@ public class SecondLevelBorder {
         //private Randomizer randomizer; (Randomassets in weißer Voraussicht)
 
 
-    public SecondLevelBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
+    public SecondLevelBorder2(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int scale, boolean itemroom, Graphics g) {
                 this.numberOfRooms = numberOfRooms;
                 this.x1 = x1;
                 this.y1 = y1;

@@ -21,7 +21,7 @@ public class Boss extends ObjectSettings {
         width = 16;
         height = 16;
         health = 100;
-        attackDamage = 1;
+        attackDamage = 0.7;
         direction = DIRECTIONS.DOWN;
 
         character = Assets.Boss;

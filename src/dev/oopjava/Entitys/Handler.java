@@ -145,4 +145,9 @@ public class Handler {
     public void setLevel(LEVELS level) {
         activeGame.setLevel(level);
     }
+
+    public void resetObjects() {
+        object = new LinkedList<>();
+        object.add(activeGame.getPlayer());
+    }
 }

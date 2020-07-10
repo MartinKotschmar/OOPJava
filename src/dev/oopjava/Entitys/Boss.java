@@ -9,7 +9,8 @@ public class Boss extends ObjectSettings {
 
     private static BufferedImage[] character;
     private boolean horizontal = true;
-    private int maxDistance = 80;
+    private int maxDistanceY = 80;
+    private int maxDistanceX = 160;
     private int movedDistance = 0;
     private DIRECTIONS direction;
 
@@ -20,7 +21,7 @@ public class Boss extends ObjectSettings {
         tick = 150;
         width = 16;
         height = 16;
-        health = 100;
+        health = 10;
         attackDamage = 0.7;
         direction = DIRECTIONS.DOWN;
 
@@ -32,7 +33,7 @@ public class Boss extends ObjectSettings {
     public void Update() {
         switch (direction) {
             case RIGHT -> {
-                if(movedDistance < maxDistance) {
+                if(movedDistance < maxDistanceX) {
                     x++;
                     movedDistance++;
                 } else {
@@ -41,7 +42,7 @@ public class Boss extends ObjectSettings {
                 }
             }
             case LEFT -> {
-                if(movedDistance < maxDistance) {
+                if(movedDistance < maxDistanceX) {
                     x--;
                     movedDistance++;
                 } else {
@@ -50,7 +51,7 @@ public class Boss extends ObjectSettings {
                 }
             }
             case DOWN -> {
-                if(movedDistance < maxDistance) {
+                if(movedDistance < maxDistanceY) {
                     y++;
                     movedDistance++;
                 } else {
@@ -59,7 +60,7 @@ public class Boss extends ObjectSettings {
                 }
             }
             case UP -> {
-                if(movedDistance < maxDistance) {
+                if(movedDistance < maxDistanceY) {
                     y--;
                     movedDistance++;
                 } else {
@@ -88,7 +89,10 @@ public class Boss extends ObjectSettings {
     protected void die() {
         handler.removeObject(this);
         handler.removeCollidableObject(this);
-        handler.playerWin();
+        Coin coin = new Coin(x, y, 0, null, handler);
+        handler.addObject(coin);
+        handler.addCollidableObject(coin);
+
     }
 
 }

@@ -58,18 +58,68 @@ public class CreateLevel {
     }
 
     private void initiateLevelObjects(LEVELS activeLevel) {
-        Handler handler = Handler.getInstance();
         handler.resetObjects();
 
+        switch (activeLevel) {
+            case LEVEL1 -> level1Objects();
+            case LEVEL2 -> level2Objects();
+            case LEVEL3 -> level3Objects();
+        }
+    }
+
+    private void level1Objects() {
         GateWay gateWay = new GateWay(175, 1040, 0, null, handler);
+        gateWay.setDestination(LEVELS.LEVEL2);
         handler.addObject(gateWay);
         handler.addCollidableObject(gateWay);
+    }
 
-        Skeleton skeleton1 = new Skeleton(32,32, 1, scale, ID.Skeleton, handler);
+    private void level2Objects() {
+        GateWay gateWay = new GateWay(175, 1040, 0, null, handler);
+        gateWay.setDestination(LEVELS.LEVEL3);
+        handler.addObject(gateWay);
+        handler.addCollidableObject(gateWay);
+    }
+
+    private void level3Objects() {
+
+        Skeleton skeleton1 = new Skeleton(140,170, 1, scale, ID.Skeleton, handler);
+        skeleton1.setMove(true,120);
         handler.addObject(skeleton1);
         handler.addCollidableObject(skeleton1);
 
-        Boss boss = new Boss(64,64,2,scale,ID.Boss, handler);
+        Skeleton skeleton2 = new Skeleton(183,249, 1, scale, ID.Skeleton, handler);
+        skeleton2.setMove(false,100);
+        handler.addObject(skeleton2);
+        handler.addCollidableObject(skeleton2);
+
+        Skeleton skeleton3 = new Skeleton(123,409, 1, scale, ID.Skeleton, handler);
+        skeleton3.setMove(true,140);
+        handler.addObject(skeleton3);
+        handler.addCollidableObject(skeleton3);
+
+        Skeleton Skeleton4 = new Skeleton(123,549, 1, scale, ID.Skeleton, handler);
+        Skeleton4.setMove(true,140);
+        handler.addObject(Skeleton4);
+        handler.addCollidableObject(Skeleton4);
+
+        Skeleton skeleton5 = new Skeleton(183,629, 1, scale, ID.Skeleton, handler);
+        skeleton5.setMove(false,90);
+        handler.addObject(skeleton5);
+        handler.addCollidableObject(skeleton5);
+
+        Skeleton Skeleton6 = new Skeleton(143,809, 1, scale, ID.Skeleton, handler);
+        Skeleton6.setMove(true,80);
+        handler.addObject(Skeleton6);
+        handler.addCollidableObject(Skeleton6);
+
+        Skeleton Skeleton7 = new Skeleton(43,879, 1, scale, ID.Skeleton, handler);
+        Skeleton7.setMove(true,180);
+        handler.addObject(Skeleton7);
+        handler.addCollidableObject(Skeleton7);
+
+
+        Boss boss = new Boss(123,929,2,scale,ID.Boss, handler);
         handler.addObject(boss);
         handler.addCollidableObject(boss);
     }

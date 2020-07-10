@@ -47,7 +47,7 @@ public class Player extends ObjectSettings{
         g.setColor(Color.white);
         g.setFont(new Font(g.getFont().getName(), Font.PLAIN, 5));
         int viewHealth = (int) health;
-        g.drawString(""+ viewHealth, x+3, y+20);
+        g.drawString(""+ viewHealth + " (" + x + "/" + y + ")", x+3, y+20);
     }
 
     public void Update() {
@@ -111,7 +111,8 @@ public class Player extends ObjectSettings{
                 case RIGHT -> attackRect.x += attackRectSize;
             }
 
-            for(ObjectSettings tempObj : handler.getCollidableObjects()) {
+            LinkedList<ObjectSettings> collidableObjects = new LinkedList<>(handler.getCollidableObjects());
+            for(ObjectSettings tempObj : collidableObjects) {
                 if (attackRect.getBounds().intersects(tempObj.getBounds())) {
                     tempObj.removeHealth(attackDamage);
                 }

@@ -39,7 +39,7 @@ public class CreateLevel {
         g2.scale(5,5);
         //g.drawImage(Assets.hara,150,160,null);
         //border = new MainBorder(5,1920,1080,1440,1080,480,756,960,1080, 1920,1080,scale,true,g);
-        border2 = new SecondLevelBorder(4,480, 756,1440,1080,1440,1080,480,756,0,0, scale, true,g);
+        //border2 = new SecondLevelBorder(4,480, 756,1440,1080,1440,1080,480,756,0,0, scale, true,g);
         //border3 = new Thirdlevel(5,1920,1080,480,752,1920,1080,480,752,1920,1320,scale,true,g);
         switch (activeLevel){
             case LEVEL1 -> new FirstLevel(5,1920,1080,1440,1080,480,756,scale,true,g);
@@ -104,10 +104,35 @@ public class CreateLevel {
     }
 
     private void level2Objects() {
-        GateWay gateWay = new GateWay(175, 1040, 0, null, handler);
+        GateWay gateWay = new GateWay(180, 749, 0, null, handler);
         gateWay.setDestination(LEVELS.LEVEL3);
         handler.addObject(gateWay);
         handler.addCollidableObject(gateWay);
+
+        Skeleton skeleton1 = new Skeleton(123,189, 1, scale, ID.Skeleton, handler);
+        skeleton1.setMove(true,130);
+        handler.addObject(skeleton1);
+        handler.addCollidableObject(skeleton1);
+
+        Skeleton skeleton2 = new Skeleton(103,309, 1, scale, ID.Skeleton, handler);
+        skeleton2.setMove(true,150);
+        handler.addObject(skeleton2);
+        handler.addCollidableObject(skeleton2);
+
+        Skeleton skeleton3 = new Skeleton(113,419, 1, scale, ID.Skeleton, handler);
+        skeleton3.setMove(true,150);
+        handler.addObject(skeleton3);
+        handler.addCollidableObject(skeleton3);
+
+        Skeleton skeleton4 = new Skeleton(83,529, 1, scale, ID.Skeleton, handler);
+        skeleton4.setMove(true,180);
+        handler.addObject(skeleton4);
+        handler.addCollidableObject(skeleton4);
+
+        Skeleton skeleton5 = new Skeleton(183,629, 1, scale, ID.Skeleton, handler);
+        skeleton5.setMove(false,100);
+        handler.addObject(skeleton5);
+        handler.addCollidableObject(skeleton5);
     }
 
     private void level3Objects() {

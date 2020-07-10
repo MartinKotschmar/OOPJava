@@ -76,7 +76,5 @@ public class Backgroundaccessoires{
         g.drawImage(Assets.randomitems[0], (width + ((1920 - x)/10) + a2/5 + (int) Math.ceil(x / 10) - 2 * width), height + a + 16, null);
         g.drawImage(Assets.trashsmall, (width + ((1920 - x)/10) + a2/5 + (int) Math.ceil(x / 10) - 2 * width), height + a + 32, null);
     }
-
-
 }
 

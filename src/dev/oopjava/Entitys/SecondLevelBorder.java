@@ -20,6 +20,7 @@ public class SecondLevelBorder {
     private int currentWidthFloorTB, currentHeightFloorTB;
     Graphics g;
     private WallGenerator wall;
+    private Backgroundaccessoires acc;
 
 
     public SecondLevelBorder(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5, int scale, boolean itemroom, Graphics g) {
@@ -198,29 +199,33 @@ public class SecondLevelBorder {
                     x = x1;
                     y = y1;
                     a = 0;
+                    acc = new Backgroundaccessoires(x,y,a,g);
                     BorderLeftRight();
-                    wall = new WallGenerator(48,0,48,96,g);
-                    g.drawImage(Assets.arrows, 244, 176, null);
-                    g.drawImage(Assets.space, 308,184,null);
+                    acc.FirstLevel();
                     break;
                 case(1):
                     x = x2;
                     y = y2;
                     a = heightWallBottom + height;
+                    acc = new Backgroundaccessoires(x,y,a,g);
                     BorderLeftRight();
-                    wall = new WallGenerator(16,48,64,48,g);
+                    acc.SecondLevel();
                     break;
                 case(2):
                     x = x3;
                     y = y3;
                     a += heightWallBottom + height;
+                    acc = new Backgroundaccessoires(x,y,a,g);
                     BorderLeftRight();
+                    acc.ThirdLevel();
                     break;
                 case(3):
                     x = x4;
                     y = y4;
                     a += heightWallBottom + height;
+                    acc = new Backgroundaccessoires(x,y,a,g);
                     BorderLeftRight();
+                    acc.FourthLevel();
                     break;
                 case(4):
                     x = x5;

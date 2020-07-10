@@ -40,6 +40,7 @@ public class Thirdlevel {
         this.g = g;
 
         Variables();
+        CreateBorder();
     }
 
 
@@ -75,8 +76,6 @@ public class Thirdlevel {
         //if(itemroom == true) {normalRooms = numberOfRooms - 1;} else normalRooms = numberOfRooms;
         normalRooms = 0;
 
-        CreateBorder();
-
     }
 
     public void BorderLeftRight() {
@@ -97,6 +96,13 @@ public class Thirdlevel {
             currentHeightWallLeft += height;
             i++;
         }
+
+        //Collision Wall
+        Rectangle tempLeftRect = new Rectangle(((1920 - x) / 10),a,16, currentHeightWallLeft);
+        Rectangle tempRightRect = new Rectangle(1920/5 - width - ((1920 - x)/10),a,16, currentHeightWallLeft);
+        Handler.getInstance().addWallRectangles(tempLeftRect);
+        Handler.getInstance().addWallRectangles(tempRightRect);
+
         currentHeightWallLeft -= height;
         i = 0;
         StaticBorder(currentHeightWallLeft);
@@ -180,6 +186,20 @@ public class Thirdlevel {
             currentWidthWallTop += width;
             i++;
         }
+
+        // COLLISSION WALL
+        Rectangle tempTopARect = new Rectangle((((1920 - x) / 10)), a,currentWidthWallTop/2-8, 16);
+        Rectangle tempTopBRect = new Rectangle(tempTopARect);
+        tempTopBRect.x += 32 + tempTopARect.width;
+        Rectangle tempDownARect = new Rectangle(((1920 - x)/10),heightWallBottom + a,currentWidthWallTop/2-8,16);
+        Rectangle tempDownBRect = new Rectangle(tempDownARect);
+        tempDownBRect.x += 32 + tempDownARect.width;
+
+        Handler.getInstance().addWallRectangles(tempTopARect);
+        Handler.getInstance().addWallRectangles(tempTopBRect);
+        Handler.getInstance().addWallRectangles(tempDownARect);
+        Handler.getInstance().addWallRectangles(tempDownBRect);
+
         currentWidthWallTop = width;
         currentHeightWallLeft = height;
         i = 0;
@@ -246,4 +266,5 @@ public class Thirdlevel {
         }
 
     }
+
 }

@@ -197,7 +197,7 @@ public class Menu {
         button3.addActionListener(e -> {
             frame.dispose();
             Game game = new Game("Dungeons and Mi´s");
-            //game.setLevel(LEVELS.LEVEL3);
+            game.setLevel(LEVELS.LEVEL3);
             game.start();
         });
     }

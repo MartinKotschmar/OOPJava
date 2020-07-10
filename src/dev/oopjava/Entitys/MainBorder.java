@@ -98,10 +98,11 @@ public class MainBorder {
         }
 
         //Collision Wall
+        /*
         Rectangle tempLeftRect = new Rectangle(((1920 - x) / 10),a,16, currentHeightWallLeft);
         Rectangle tempRightRect = new Rectangle(1920/5 - width - ((1920 - x)/10),a,16, currentHeightWallLeft);
         Handler.getInstance().addWallRectangles(tempLeftRect);
-        Handler.getInstance().addWallRectangles(tempRightRect);
+        Handler.getInstance().addWallRectangles(tempRightRect);  */
 
         currentHeightWallLeft -= height;
         i = 0;
@@ -184,6 +185,8 @@ public class MainBorder {
             i++;
         }
 
+        // COLLISSION WALL
+        /*
         Rectangle tempTopARect = new Rectangle((((1920 - x) / 10)), a,currentWidthWallTop/2-8, 16);
         Rectangle tempTopBRect = new Rectangle(tempTopARect);
         tempTopBRect.x += 32 + tempTopARect.width;
@@ -194,7 +197,7 @@ public class MainBorder {
         Handler.getInstance().addWallRectangles(tempTopARect);
         Handler.getInstance().addWallRectangles(tempTopBRect);
         Handler.getInstance().addWallRectangles(tempDownARect);
-        Handler.getInstance().addWallRectangles(tempDownBRect);
+        Handler.getInstance().addWallRectangles(tempDownBRect); */
 
         currentWidthWallTop = width;
         currentHeightWallLeft = height;

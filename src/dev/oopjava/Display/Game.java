@@ -43,9 +43,12 @@ public class Game implements Runnable {
         index = 0;
         Timer = System.currentTimeMillis();
 
+
         handler = new Handler(this);
         camera = new Camera(this,0 ,0);
         character = "Priest1";
+        Graphics();
+        player = new Player(1920/10,1080/10, 10, scale, ID.Player, handler);
         level = new CreateLevel(handler, scale, index, processing);
     }
 
@@ -65,21 +68,9 @@ public class Game implements Runnable {
 
         Assets.init();
 
-        player = new Player(1920/10,1080/10, 10, scale, ID.Player, handler);
-        handler.addObject(player);
+        //handler.addObject(player);
 
-        gateWay = new GateWay(175, 1040, 0, null, handler);
-        handler.addObject(gateWay);
-        handler.addCollidableObject(gateWay);
 
-        enemy = new Skeleton(32,32, 1, scale, ID.Skeleton, handler);
-        enemy.setMove(true, 100);
-        handler.addObject(enemy);
-        handler.addCollidableObject(enemy);
-
-        Boss boss = new Boss(64,64,2,scale,ID.Boss, handler);
-        handler.addObject(boss);
-        handler.addCollidableObject(boss);
     }
 
     private void Update(Handler handler){      //Update Fenster Methode
@@ -127,7 +118,7 @@ public class Game implements Runnable {
 
     public void run() {     //run Methode zum Fenster Updaten
 
-        Graphics();
+        //Graphics();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60;
         double amountOfTicks2 = 180;
@@ -195,5 +186,9 @@ public class Game implements Runnable {
         //player.tp(1920/10,1080/10);
 
         this.level.setLevel(level);
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

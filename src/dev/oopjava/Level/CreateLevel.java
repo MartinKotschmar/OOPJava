@@ -24,6 +24,7 @@ public class CreateLevel {
         this.index = index;
         this.processing = processing;
         activeLevel = LEVELS.LEVEL1;
+        initiateLevelObjects(activeLevel);
     }
 
     public void Render(Graphics g){
@@ -53,5 +54,23 @@ public class CreateLevel {
 
     public void setLevel(LEVELS level) {
         this.activeLevel = level;
+        initiateLevelObjects(level);
+    }
+
+    private void initiateLevelObjects(LEVELS activeLevel) {
+        Handler handler = Handler.getInstance();
+        handler.resetObjects();
+
+        GateWay gateWay = new GateWay(175, 1040, 0, null, handler);
+        handler.addObject(gateWay);
+        handler.addCollidableObject(gateWay);
+
+        Skeleton skeleton1 = new Skeleton(32,32, 1, scale, ID.Skeleton, handler);
+        handler.addObject(skeleton1);
+        handler.addCollidableObject(skeleton1);
+
+        Boss boss = new Boss(64,64,2,scale,ID.Boss, handler);
+        handler.addObject(boss);
+        handler.addCollidableObject(boss);
     }
 }

@@ -2,6 +2,6 @@ package dev.oopjava.Entitys;
 
 public enum ID {
 
-    Player(), Skeleton;
+    Player(), Skeleton(),Boss();
 
 }

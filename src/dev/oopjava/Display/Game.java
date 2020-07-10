@@ -76,6 +76,10 @@ public class Game implements Runnable {
         enemy.setMove(true, 100);
         handler.addObject(enemy);
         handler.addCollidableObject(enemy);
+
+        Boss boss = new Boss(64,64,2,scale,ID.Boss, handler);
+        handler.addObject(boss);
+        handler.addCollidableObject(boss);
     }
 
     private void Update(Handler handler){      //Update Fenster Methode

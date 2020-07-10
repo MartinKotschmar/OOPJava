@@ -34,7 +34,7 @@ public class Assets {
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe,
                                 hara;
-    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes, flasks;
+    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes, flasks, Boss;
 
 
 
@@ -302,6 +302,25 @@ public class Assets {
 
         flasks[3] = animation_flask1v1.location(0,0,width,height);
 
+
+
+        Boss = new BufferedImage[4];
+
+        Tileset animation_Boss1v1 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/vampire/v2/vampire_v2_1.png"));
+
+        Boss[0] = animation_Boss1v1.location(0,0,width,height);
+
+        Tileset animation_Boss1v2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/vampire/v2/vampire_v2_2.png"));
+
+        Boss[1] = animation_Boss1v2.location(0,0,width,height);
+
+        Tileset animation_Boss1v3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/vampire/v2/vampire_v2_3.png"));
+
+        Boss[2] = animation_Boss1v3.location(0,0,width,height);
+
+        Tileset animation_Boss1v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/vampire/v2/vampire_v2_4.png"));
+
+        Boss[3] = animation_Boss1v4.location(0,0,width,height);
     }
 
 

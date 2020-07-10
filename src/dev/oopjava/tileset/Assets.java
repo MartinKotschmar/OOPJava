@@ -33,9 +33,9 @@ public class Assets {
                                 oldiehat, oldieknife, newbiespear, newbieknife, newbienormal,
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe,
-                                hara;
+                                hara,
+                                arrows, space;
     public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes, flasks;
-
 
 
     public static void init(){
@@ -196,6 +196,12 @@ public class Assets {
         reddrinksmall = parts.location(128,144, width,height); // reddrinksmall
         goldenkey = parts.location(144,144, width,height); // goldenkey
 
+        //controls
+        Tileset controlsarrows = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/controls/Pfeile2.png"));
+        arrows = controlsarrows.location(0,0,48,24);
+        Tileset controlsspace = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/controls/Space.png"));
+        space = controlsspace.location(0,0,48,16);
+
 
         //Characters
         Tileset characters = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Character_2.png"));
@@ -268,21 +274,17 @@ public class Assets {
 
         skeleton2v1[0] = animation_skeleton2v1.location(0,0,width,height);
 
-
         Tileset animation_skeleton2v2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_2.png"));
 
         skeleton2v1[1] = animation_skeleton2v2.location(0,0,width,height);
-
 
         Tileset animation_skeleton2v3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_3.png"));
 
         skeleton2v1[2] = animation_skeleton2v3.location(0,0,width,height);
 
-
         Tileset animation_skeleton2v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_4.png"));
 
         skeleton2v1[3] = animation_skeleton2v4.location(0,0,width,height);
-
 
         flasks = new BufferedImage[4];
 
@@ -301,7 +303,6 @@ public class Assets {
         Tileset animation_flask1v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/flasks/flasks_1_4.png"));
 
         flasks[3] = animation_flask1v1.location(0,0,width,height);
-
     }
 
 

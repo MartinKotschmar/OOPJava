@@ -221,6 +221,8 @@ public class MainBorder {
                     a = 0;
                     BorderLeftRight();
                     wall = new WallGenerator(48,0,48,96,g);
+                    g.drawImage(Assets.arrows, 244, 176, null);
+                    g.drawImage(Assets.space, 308,184,null);
                     break;
                 case(1):
                     x = x2;

@@ -15,8 +15,9 @@ public class SecondLevelBorder {
         private int yz1, yz2, yz3, yz4;
         private int newX, newY, newA;
         private int width, height;
+        private int XFloorParts;
         private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop, heightWallBottom;
-        private boolean itemroom;
+        private boolean itemroom, k;
         Graphics g;
         private Backgroundaccessoires acc;
         //private Randomizer randomizer; (Randomassets in weißer Voraussicht)
@@ -69,6 +70,8 @@ public class SecondLevelBorder {
                 currentHeightWallRight = height;
 
                 currentWidthWallTop = width;
+
+                k = false;
 
                 //if(itemroom == true) {normalRooms = numberOfRooms - 1;} else normalRooms = numberOfRooms;
                 normalRooms = 0;
@@ -133,6 +136,7 @@ public class SecondLevelBorder {
 
                 YAssetParts = (int) Math.ceil(y / (16d * scale)) - 1; //Number of Tiles y total height except corner tile bottom
                 XAssetParts = (int) Math.ceil(x / (16d * scale)) - 2; //Number of Tiles x Corners will be added by left and right wall
+                XFloorParts = (int) Math.ceil(x / (16d * scale)) - 4;
 
                 maxX = x / scale;
                 maxY = y / scale;
@@ -162,10 +166,17 @@ public class SecondLevelBorder {
                 for(;XAssetParts > 0; XAssetParts--) {
                     if(i > 2){i = 0;}
 
-                    g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, 0 + a, null); //create wall top
-                    g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x)/10) + a2/5, heightWallBottom + a, null); //create wall bottom
-                    currentWidthWallTop += width;
-                    i++;
+                    if(k == false) {
+                        if (XFloorParts < ((int) Math.ceil(x / (16 * scale)) - 4) / 2 || XFloorParts > ((int) Math.ceil(x / (16 * scale)) - 4) / 2 + 1) {
+                            g.drawImage(Assets.wallTop[i], currentWidthWallTop + ((1920 - x) / 10) + a2 / 5, 0 + a, null); //create wall top
+                            g.drawImage(Assets.wallBottom[i], currentWidthWallTop + ((1920 - x) / 10) + a2 / 5, heightWallBottom + a, null); //create wall bottom
+                            currentWidthWallTop += width;
+                            i++;
+                        } else {
+                            currentWidthWallTop += width;
+                            i++;
+                        }
+                    }
                 }
                 currentWidthWallTop = width;
                 currentHeightWallLeft = height;

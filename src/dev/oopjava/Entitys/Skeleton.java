@@ -80,8 +80,7 @@ public class Skeleton extends ObjectSettings{
         Graphics2D g2 = (Graphics2D) g;
         //g2.scale(scale,scale);
         g.drawImage(animation.getTiles(),x,y, null);
-        g.setColor(Color.red);
-        ((Graphics2D) g).draw(getBounds());
+
     }
 
     public Rectangle getBounds() {

@@ -76,10 +76,15 @@ public class CreateLevel {
     }
 
     private void level1Objects() {
-        GateWay gateWay = new GateWay(180, 589, 0, null, handler);
-        gateWay.setDestination(LEVELS.LEVEL2);
+        GateWay gateWay = new GateWay(180, 0, 0, null, handler);
+        gateWay.setDestination(LEVELS.LEVEL1);
         handler.addObject(gateWay);
         handler.addCollidableObject(gateWay);
+
+        GateWay gateWay2 = new GateWay(180, 589, 0, null, handler);
+        gateWay2.setDestination(LEVELS.LEVEL2);
+        handler.addObject(gateWay2);
+        handler.addCollidableObject(gateWay2);
 
         Skeleton skeleton1 = new Skeleton(143,169, 1, scale, ID.Skeleton, handler);
         skeleton1.setMove(true,80);
@@ -104,10 +109,15 @@ public class CreateLevel {
     }
 
     private void level2Objects() {
-        GateWay gateWay = new GateWay(180, 749, 0, null, handler);
-        gateWay.setDestination(LEVELS.LEVEL3);
+        GateWay gateWay = new GateWay(182, 0, 0, null, handler);
+        gateWay.setDestination(LEVELS.LEVEL1);
         handler.addObject(gateWay);
         handler.addCollidableObject(gateWay);
+
+        GateWay gateWay2 = new GateWay(180, 749, 0, null, handler);
+        gateWay2.setDestination(LEVELS.LEVEL3);
+        handler.addObject(gateWay2);
+        handler.addCollidableObject(gateWay2);
 
         Skeleton skeleton1 = new Skeleton(123,189, 1, scale, ID.Skeleton, handler);
         skeleton1.setMove(true,130);
@@ -136,6 +146,10 @@ public class CreateLevel {
     }
 
     private void level3Objects() {
+        GateWay gateWay = new GateWay(183, 1022, 0, null, handler);
+        gateWay.setDestination(LEVELS.LEVEL3);
+        handler.addObject(gateWay);
+        handler.addCollidableObject(gateWay);
 
         Skeleton skeleton1 = new Skeleton(140,170, 1, scale, ID.Skeleton, handler);
         skeleton1.setMove(true,120);

@@ -21,8 +21,6 @@ public class GateWay extends ObjectSettings {
 
     @Override
     public void Render(Graphics g) {
-        g.setColor(Color.green);
-        ((Graphics2D) g).draw(getBounds());
     }
 
     @Override

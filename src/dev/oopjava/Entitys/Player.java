@@ -41,15 +41,13 @@ public class Player extends ObjectSettings{
         //g2.scale(scale,scale);
 
         g.drawImage(animation.getTiles(),x,y, null);
-        g.setColor(Color.red);
-        ((Graphics2D) g).draw(getBounds());
-        g.setColor(Color.green);
+
 
         // Render Health
         g.setColor(Color.white);
         g.setFont(new Font(g.getFont().getName(), Font.PLAIN, 5));
         int viewHealth = (int) health;
-        g.drawString(""+ viewHealth + " (" + x + "/" + y + ")", x+3, y+20);
+        g.drawString(""+ viewHealth, x+3, y+20);
     }
 
     public void Update() {

@@ -98,9 +98,6 @@ public class FirstLevel {
 
         Rectangle tempLeftRect = new Rectangle(((1920 - x) / 10),a,16, currentHeightWallLeft);
         Rectangle tempRightRect = new Rectangle(1920/5 - width - ((1920 - x)/10),a,16, currentHeightWallLeft);
-        g.setColor(Color.green);
-        ((Graphics2D) g).draw(tempLeftRect);
-        ((Graphics2D) g).draw(tempRightRect);
         Handler.getInstance().addWallRectangles(tempLeftRect);
         Handler.getInstance().addWallRectangles(tempRightRect);
 

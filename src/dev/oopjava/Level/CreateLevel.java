@@ -40,7 +40,7 @@ public class CreateLevel {
         switch (activeLevel){
             case LEVEL1 -> new FirstLevel(5,1920,1080,1440,1080,480,756,scale,true,g);
             case LEVEL2 -> new SecondLevelBorder(4,480, 756,1440,1080,1440,1080,480,756, scale, true,g);
-            //case LEVEL3 -> new Thirdlevel(5,1920,1080,480,752,1920,1080,480,752,1920,1320,scale,true,g);
+            case LEVEL3 -> new ThirdLevel(5,1920,1080,480,752,1920,1080,480,752,1920,1320,scale,true,g);
         }
 
         //

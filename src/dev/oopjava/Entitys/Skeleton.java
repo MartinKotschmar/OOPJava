@@ -84,19 +84,10 @@ public class Skeleton extends ObjectSettings{
         ((Graphics2D) g).draw(getBounds());
     }
 
-    public void MoveRight() {
-        x += speed;
-    }
-    public void MoveLeft() {
-        x += -speed;
-    }
-
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }
 
-
-    //TODO Die Asset
 
     @Override
     protected void die() {

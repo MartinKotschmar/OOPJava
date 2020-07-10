@@ -1,5 +1,6 @@
 package dev.oopjava.Entitys;
 
+import dev.oopjava.Level.LEVELS;
 import dev.oopjava.tileset.Assets;
 
 import java.awt.*;
@@ -115,7 +116,6 @@ public class Player extends ObjectSettings{
                     tempObj.removeHealth(attackDamage);
                 }
             }
-
         }
     }
 
@@ -143,6 +143,8 @@ public class Player extends ObjectSettings{
             if (newPosition.getBounds().intersects(tempObj.getBounds())) {
                 if(tempObj instanceof Flask) {
                     addHealth(tempObj.health);
+                    tempObj.die();
+                } else if(tempObj instanceof GateWay){
                     tempObj.die();
                 } else {
                     removeHealth(tempObj.getAttackDamage());
@@ -191,5 +193,10 @@ public class Player extends ObjectSettings{
 
     public void setExY(int exY) {
         this.exY = exY;
+    }
+
+    public void tp(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }

@@ -8,14 +8,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 
-public class ThirdlevelBackgroundaccessoires{
+public class ThirdLevelBackgroundaccessoires {
     private int x, y , width, height, a, a3;
     Graphics g;
     BufferedImage[] randomitems;
     BufferedImage[] flames;
     BufferedImage[] boxes;
 
-    public ThirdlevelBackgroundaccessoires(int x, int y, int a, int a3, Graphics g) {
+    public ThirdLevelBackgroundaccessoires(int x, int y, int a, int a3, Graphics g) {
         this.x =x;
         this.y =y;
         this.a = a;

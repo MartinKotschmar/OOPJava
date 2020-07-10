@@ -18,6 +18,7 @@ public class SecondLevelBorder {
         private int currentHeightWallLeft, currentHeightWallRight, currentWidthWallTop, heightWallBottom;
         private boolean itemroom;
         Graphics g;
+        private WallGenerator wall;
         private Backgroundaccessoires acc;
         //private Randomizer randomizer; (Randomassets in weißer Voraussicht)
 

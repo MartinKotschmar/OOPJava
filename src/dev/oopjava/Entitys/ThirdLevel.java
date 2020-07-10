@@ -4,7 +4,7 @@ import dev.oopjava.tileset.Assets;
 
 import java.awt.*;
 
-public class Thirdlevel {
+public class ThirdLevel {
     private int screenWidth,screenHeight;
     private int numberOfRooms, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, scale;
     private int totalX, totalY,levelWidthSize, levelHeightSize,normalRooms, index;
@@ -20,10 +20,10 @@ public class Thirdlevel {
     private int currentWidthFloorTB, currentHeightFloorTB;
     Graphics g;
     private WallGenerator wall;
-    private ThirdlevelBackgroundaccessoires acc3;
+    private ThirdLevelBackgroundaccessoires acc3;
 
 
-    public Thirdlevel(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5, int scale, boolean itemroom, Graphics g) {
+    public ThirdLevel(int numberOfRooms, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5, int scale, boolean itemroom, Graphics g) {
         this.numberOfRooms = numberOfRooms;
         this.x1 = x1;
         this.y1 = y1;
@@ -200,9 +200,12 @@ public class Thirdlevel {
                     y = y1;
                     a = 0;
                     a3 = 0;
-                    acc3 = new ThirdlevelBackgroundaccessoires(x,y,a, a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a, a3,g);
                     BorderLeftRight();
                     wall = new WallGenerator(48,0,48,96,g);
+                    wall = new WallGenerator(48,0,48,96,g);
+                    wall = new WallGenerator(256,0,256,96,g);
+                    wall = new WallGenerator(48,96,96,96,g);
                     acc3.FirstLevel();
                     break;
                 case(1):
@@ -210,7 +213,7 @@ public class Thirdlevel {
                     y = y2;
                     a = heightWallBottom + height;
                     a3 = 0;
-                    acc3 = new ThirdlevelBackgroundaccessoires(x,y,a,a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a,a3,g);
                     BorderLeftRight();
                     wall = new WallGenerator(16,48,64,48,g);
                     acc3.SecondLevel();
@@ -220,7 +223,7 @@ public class Thirdlevel {
                     y = y3;
                     a += heightWallBottom + height;
                     a3 += -x2;
-                    acc3 = new ThirdlevelBackgroundaccessoires(x,y,a,a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a,a3,g);
                     BorderLeftRight();
                     acc3.ThirdLevel();
                     break;
@@ -228,7 +231,7 @@ public class Thirdlevel {
                     x = x4;
                     y = y4;
                     a += heightWallBottom + height;
-                    acc3 = new ThirdlevelBackgroundaccessoires(x,y,a,a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a,a3,g);
                     BorderLeftRight();
                     acc3.FourthLevel();
                     break;
@@ -236,7 +239,7 @@ public class Thirdlevel {
                     x = x5;
                     y = y5;
                     a += heightWallBottom + height;
-                    acc3 = new ThirdlevelBackgroundaccessoires(x,y,a,a3,g);
+                    acc3 = new ThirdLevelBackgroundaccessoires(x,y,a,a3,g);
                     BorderLeftRight();
                     acc3.FifthLevel();
                     break;

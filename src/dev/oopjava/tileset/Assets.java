@@ -34,7 +34,7 @@ public class Assets {
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe,
                                 hara;
-    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes;
+    public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes, flasks;
 
 
 
@@ -283,6 +283,24 @@ public class Assets {
 
         skeleton2v1[3] = animation_skeleton2v4.location(0,0,width,height);
 
+
+        flasks = new BufferedImage[4];
+
+        Tileset animation_flask1v1 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/flasks/flasks_1_1.png"));
+
+        flasks[0] = animation_flask1v1.location(0,0,width,height);
+
+        Tileset animation_flask1v2 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/flasks/flasks_1_2.png"));
+
+        flasks[1] = animation_flask1v1.location(0,0,width,height);
+
+        Tileset animation_flask1v3 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/flasks/flasks_1_3.png"));
+
+        flasks[2] = animation_flask1v1.location(0,0,width,height);
+
+        Tileset animation_flask1v4 = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/items and trap_animation/flasks/flasks_1_4.png"));
+
+        flasks[3] = animation_flask1v1.location(0,0,width,height);
 
     }
 

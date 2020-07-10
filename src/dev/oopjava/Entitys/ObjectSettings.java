@@ -70,7 +70,14 @@ public abstract class ObjectSettings {
     protected abstract void die();
 
     public void addHealth(double healthAmountToAdd) {
-        health += healthAmountToAdd;
+        if(health < 100) {
+            health += healthAmountToAdd;
+        } else {
+            return;
+        }
+        if(health > 100) {
+            health = 100;
+        }
     }
 
     public double getAttackDamage() {

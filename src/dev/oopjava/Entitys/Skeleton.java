@@ -14,6 +14,7 @@ public class Skeleton extends ObjectSettings{
     private int movedDistance = 0;
     private boolean reverted = false;
 
+
     public Skeleton(int x, int y, int speed,int scale, ID id, Handler handler){
         super(x, y, speed, id);
         this.handler = handler;
@@ -101,6 +102,9 @@ public class Skeleton extends ObjectSettings{
     protected void die() {
         handler.removeObject(this);
         handler.removeCollidableObject(this);
+        Flask flask = new Flask(x, y, 0, null, handler);
+        handler.addObject(flask);
+        handler.addCollidableObject(flask);
     }
 
     public void setID(ID id) {

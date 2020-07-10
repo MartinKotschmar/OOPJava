@@ -7,6 +7,7 @@ import dev.oopjava.Entitys.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.LinkedList;
 
 public class Game implements Runnable {
 
@@ -63,8 +64,6 @@ public class Game implements Runnable {
         Assets.init();
 
         handler.addObject(new Player(1920/10,1080/10, 10, scale, ID.Player, handler));
-
-        //entitys = new EntityControl(handler, character, scale);
 
         enemy = new Skeleton(32,32, 1, scale, ID.Skeleton, handler);
         enemy.setMove(true, 100);

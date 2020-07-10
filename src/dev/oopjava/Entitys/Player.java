@@ -141,7 +141,12 @@ public class Player extends ObjectSettings{
 
         for(ObjectSettings tempObj : collidableObjects) {
             if (newPosition.getBounds().intersects(tempObj.getBounds())) {
-                removeHealth(tempObj.getAttackDamage());
+                if(tempObj instanceof Flask) {
+                    addHealth(tempObj.health);
+                    tempObj.die();
+                } else {
+                    removeHealth(tempObj.getAttackDamage());
+                }
                 return true;
             }
         }

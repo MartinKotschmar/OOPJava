@@ -12,6 +12,7 @@ public class Handler {
     LinkedList<ObjectSettings> object = new LinkedList<>();
     private LinkedList<ObjectSettings> collidableObjects = new LinkedList<>();
     private LinkedList<Rectangle> wallRectangles = new LinkedList<>();
+    private LinkedList<ObjectSettings> collectableObjects = new LinkedList<>();
     private Game activeGame;
 
     private static Handler instance;
@@ -26,8 +27,16 @@ public class Handler {
         instance = this;
     }
 
+    public void Render(Graphics g) {
+        LinkedList<ObjectSettings> listToRender = new LinkedList<>(object);
+        for (ObjectSettings tempObject : listToRender) {
+            tempObject.Render(g);
+        }
+    }
+
     public void Update() {
-        for (ObjectSettings tempObject : object) {
+        LinkedList<ObjectSettings> listToUpdate = new LinkedList<>(object);
+        for (ObjectSettings tempObject : listToUpdate) {
             tempObject.Update();
         }
     }
@@ -38,13 +47,6 @@ public class Handler {
 
     public void setObject(LinkedList<ObjectSettings> object) {
         this.object = object;
-    }
-
-    public void Render(Graphics g) {
-
-        for (ObjectSettings tempObject : object) {
-            tempObject.Render(g);
-        }
     }
 
     public void addObject(ObjectSettings tempObject) {
@@ -127,4 +129,5 @@ public class Handler {
         deathScreen.setLocationRelativeTo(null);
         deathScreen.setVisible(true);
     }
+
 }

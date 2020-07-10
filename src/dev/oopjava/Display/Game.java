@@ -188,7 +188,7 @@ public class Game implements Runnable {
 
     public void setLevel(LEVELS level) {
         //TODO CHECK WHICH LEVEL
-        player.tp(1920/10,1080/10);
+        //player.tp(1920/10,1080/10);
 
         this.level.setLevel(level);
     }

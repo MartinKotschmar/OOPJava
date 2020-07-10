@@ -1,6 +1,7 @@
 package dev.oopjava.Display;
 //Import package
 import dev.oopjava.Display.GameWindow;
+import dev.oopjava.Level.LEVELS;
 
 import javax.swing.*;
 import java.awt.*;
@@ -83,7 +84,7 @@ public class Menu {
             game.start();
         });
         button2.addActionListener(e -> {
-            //Levelauswahl
+            createLevelSelection();
         });
         button3.addActionListener(e -> { //Lambda
             System.exit(0);
@@ -93,6 +94,67 @@ public class Menu {
         frame.pack();
         frame.setVisible(true);     // Display Fenster abbilden
 
+    }
+
+    private void createLevelSelection() {
+        frame.remove(panel);
+        //frame.setVisible(false);
+        JPanel panel = new JPanel();
+
+        BoxLayout layout = new BoxLayout(panel, BoxLayout.Y_AXIS);
+        panel.setLayout(layout);
+
+        panel.setSize(dimensionWindow);
+        panel.setMinimumSize(dimensionWindow);
+        panel.setMaximumSize(dimensionWindow);
+        panel.setPreferredSize(dimensionWindow);
+
+        button1 = new JButton("Level1");
+        button2 = new JButton("Level2");
+        button3 = new JButton("Level3");
+
+        panel.add(Box.createVerticalGlue()); //Platz nach unten
+
+        button1.setMinimumSize(dimensionButtonSize);
+        button1.setMaximumSize(dimensionButtonSize);
+        panel.add(button1);
+        panel.add(Box.createRigidArea(dimensionButtonRigidArea)); //Rigid Area Platzhalter
+        button2.setMinimumSize(dimensionButtonSize);
+        button2.setMaximumSize(dimensionButtonSize);
+        panel.add(button2);
+        panel.add(Box.createRigidArea(dimensionButtonRigidArea)); // Rigid Area Platzhalter
+        button3.setMinimumSize(dimensionButtonSize);
+        button3.setMaximumSize(dimensionButtonSize);
+        panel.add(button3);
+
+        panel.add(Box.createVerticalGlue()); //Platz nach oben
+
+        button1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button3.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        frame.add(panel);
+        frame.revalidate();
+        frame.repaint();
+
+        button1.addActionListener(e -> {
+            frame.dispose();
+            Game game = new Game("Dungeons and Mi´s");
+            game.start();
+        });
+        button2.addActionListener(e -> {
+            frame.dispose();
+            Game game = new Game("Dungeons and Mi´s");
+            game.setLevel(LEVELS.LEVEL2);
+            game.start();
+
+        });
+        button3.addActionListener(e -> {
+            frame.dispose();
+            Game game = new Game("Dungeons and Mi´s");
+            //game.setLevel(LEVELS.LEVEL3);
+            game.start();
+        });
     }
 
 }

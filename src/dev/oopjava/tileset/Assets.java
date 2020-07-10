@@ -33,7 +33,8 @@ public class Assets {
                                 oldiehat, oldieknife, newbiespear, newbieknife, newbienormal,
                                 blueflame, blueflameghost, femalefrankenstein, malefrankenstein,
                                 ghostknife, ghostspear, ghostsythe,
-                                hara;
+                                hara,
+                                arrows, space;
     public static BufferedImage[] priest1v1, priest1v1left, skeleton2v1, randomitems, flames, boxes;
 
 
@@ -195,6 +196,12 @@ public class Assets {
         bluedrinkmedium = parts.location(112,144, width,height); // bluedrinkmedium
         reddrinksmall = parts.location(128,144, width,height); // reddrinksmall
         goldenkey = parts.location(144,144, width,height); // goldenkey
+
+        //controls
+        Tileset controlsarrows = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/controls/Pfeile2.png"));
+        arrows = controlsarrows.location(0,0,48,24);
+        Tileset controlsspace = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/controls/Space.png"));
+        space = controlsspace.location(0,0,48,16);
 
 
         //Characters

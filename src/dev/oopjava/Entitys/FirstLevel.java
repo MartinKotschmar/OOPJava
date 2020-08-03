@@ -214,7 +214,6 @@ public class FirstLevel {
                     a1 = 0;
                     acc1 = new FirstLevelBackgroundaccessoires(x, y, a, a1, g);
                     BorderLeftRight();
-                    wall = new WallGenerator(48, 0, 48, 96, g);
                     g.drawImage(Assets.arrows, 244, 176, null);
                     g.drawImage(Assets.space, 308, 184, null);
                     acc1.FirstLevel();

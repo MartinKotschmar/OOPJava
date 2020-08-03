@@ -1,5 +1,7 @@
 package dev.oopjava.tileset;
 
+import org.w3c.dom.ls.LSProgressEvent;
+
 import java.awt.image.BufferedImage;
 
 public class Assets {
@@ -8,6 +10,7 @@ public class Assets {
 
     public static BufferedImage cornerLT, cornerRT, cornerLB, cornerRB, floor3x3, floor4x3, floor1,
             floorLT, floorRT, floorLB, floorRB,
+            LevelAssets[],
             floorTop[],
             floorBottom[],
             floorLeft,
@@ -37,11 +40,47 @@ public class Assets {
 
     public static void init() {
 
+        Tileset parts = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Tileset.png"));
+
+        LevelAssets = new BufferedImage[];
+
+        //Floor-Center (0-11)
+        //Floor-Top (12-13)
+        //Floor-Bottom (14-15)
+        //Floor-Left (16)
+        //Floor-Right (17)
+        //Floor-Corners (18-21)
+
+        LevelAssets[0] = parts.location(96, 0, width, height);
+        LevelAssets[1] = parts.location(112, 0, width, height);
+        LevelAssets[2] = parts.location(128, 0, width, height);
+        LevelAssets[3] = parts.location(144, 0, width, height);
+        LevelAssets[4] = parts.location(96, 16, width, height);
+        LevelAssets[5] = parts.location(112, 16, width, height);
+        LevelAssets[6] = parts.location(128, 16, width, height);
+        LevelAssets[7] = parts.location(144, 16, width, height);
+        LevelAssets[8] = parts.location(96, 32, width, height);
+        LevelAssets[9] = parts.location(112, 32, width, height);
+        LevelAssets[10] = parts.location(128, 32, width, height);
+        LevelAssets[11] = parts.location(144, 32, width, height);
+
+        LevelAssets[12] = parts.location(32, 16, width, height);
+        LevelAssets[13] = parts.location(48, 16, width, height);
+
+        LevelAssets[14] = parts.location(32, 48, width, height);
+        LevelAssets[15] = parts.location(48, 48, width, height);
+
+        LevelAssets[16] = parts.location(16, 32, width, height);
+        LevelAssets[17] = parts.location(64, 32, width, height);
+
+        LevelAssets[18] = parts.location(16, 16, width, height);
+        LevelAssets[19] = parts.location(64, 16, width, height);
+        LevelAssets[20] = parts.location(64, 48, width, height);
+        LevelAssets[21] = parts.location(16, 48, width, height);
+
         randomitems = new BufferedImage[9];
         flames = new BufferedImage[5];
         boxes = new BufferedImage[6];
-
-        Tileset parts = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Dungeon_Tileset.png"));
 
         Tileset Twall = new Tileset(ImageLoader.loadImage("/textures/Assets-pack/character and tileset/Wall.png"));
 
@@ -71,9 +110,9 @@ public class Assets {
         //borders and ground
 
         cornerLT = parts.location(0, 0, width, height);
-        cornerLB = parts.location(0, 64, width, height);
         cornerRT = parts.location(80, 0, width, height);
         cornerRB = parts.location(80, 64, width, height);
+        cornerLB = parts.location(0, 64, width, height);
         floor4x3 = parts.location(96, 0, 64, 48);
         floor3x3 = parts.location(96, 0, 64, 32);
         floor1 = parts.location(16, 16, width, height);
@@ -95,8 +134,8 @@ public class Assets {
 
         floorLT = parts.location(16, 16, width, height);
         floorRT = parts.location(64, 16, width, height);
-        floorLB = parts.location(16, 48, width, height);
         floorRB = parts.location(64, 48, width, height);
+        floorLB = parts.location(16, 48, width, height);
 
         floorTop = new BufferedImage[2];
 
